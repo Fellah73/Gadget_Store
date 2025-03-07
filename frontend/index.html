@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechSphere</title>
     <!-- Tailwind CSS CDN -->
+     <script src="assets/js/loadHomeComponents.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="style.css" />
@@ -16,74 +17,10 @@
 
     <!-- Add padding to body content so it appears below the fixed navbar -->
     <div class="pt-16 p-4">
-      <div
-        class="mt-16 container mx-auto flex flex-col items-start p-8 bg-gradient-to-r from-blue-900 to-blue-700 text-white rounded-lg"
-      >
-        <h1 class="text-4xl font-bold mb-4">
-          Get <span class="text-primary">Best Device</span> With Lowest Price.
-        </h1>
-        <p class="mb-6">
-          iPad is a line of tablet computers designed, developed and marketed by
-          Apple Inc., which run the iOS and iPad OS mobile operating systems.
-        </p>
-        <div class="flex space-x-4">
-          <a
-            href="#"
-            class="bg-primary text-primary-foreground px-4 py-2 rounded-lg"
-            >Explore Now</a
-          >
-          <a href="#" class="bg-white text-blue-900 px-4 py-2 rounded-lg"
-            >Watch Promotion</a
-          >
-        </div>
-        <div class="mt-8 flex items-center">
-          <img
-            src="https://i5.walmartimages.com/seo/Sony-PlayStation-5-Video-Game-Console-Ps5-Disc-Console-Japanese-Edition-New_1536c1c9-0c26-4ce6-a5e1-1825ca064d05.1434e86832a815bb366d12b0a854390d.jpeg"
-            alt="PlayStation 5"
-            class="mr-4 w-[200px] h-[200px] object-cover rounded-sm"
-          />
-          <div class="bg-white text-black p-4 rounded-lg">
-            <h2 class="font-bold">PlayStation 5</h2>
-            <p>Price: $1500</p>
-          </div>
-        </div>
-      </div>
+      <div id="hero-container"></div>
     </div>
 
     <!-- JavaScript for mobile menu toggle -->
-    <script>
-      // the navbar section
-      document.addEventListener("DOMContentLoaded", function () {
-        fetch("components/navbar.html")
-          .then((response) => response.text())
-          .then((data) => {
-            document.getElementById("navbar-container").innerHTML = data;
-
-            // Reattach event listener after loading navbar
-            const mobileMenuButton = document.querySelector(
-              '[aria-controls="mobile-menu"]'
-            );
-            const mobileMenu = document.getElementById("mobile-menu");
-
-            if (mobileMenuButton) {
-              mobileMenuButton.addEventListener("click", () => {
-                const expanded =
-                  mobileMenuButton.getAttribute("aria-expanded") === "true";
-                mobileMenuButton.setAttribute("aria-expanded", !expanded);
-                mobileMenu.classList.toggle("hidden");
-              });
-            }
-
-            //update currnet page in the navabar
-            const currentNavbar = document.getElementById("home");
-            if (currentNavbar) {
-              
-              currentNavbar.style.color = "rgb(59, 130, 246)";
-              currentNavbar.style.borderBottomColor="rgb(59, 130, 246)";
-            }
-          })
-          .catch((error) => console.error("Error loading navbar:", error));
-      });
-    </script>
+    
   </body>
 </html>
