@@ -42,4 +42,20 @@ document.addEventListener("DOMContentLoaded", function () {
           console.error("Error loading hero section:", error)
         );
     }
+
+    // Then load the categoriesGrid section
+    fetch("components/categoriesGrid.html")
+      .then((response) => response.text())
+      .then((data) => {
+        // Replace the existing content with the categoriesGrid section
+        const mainContent = document.getElementById("categoriesGrid-container");
+        if (mainContent) {
+          mainContent.innerHTML = data;
+        } else {
+          console.error("Main content container not found");
+        }
+      })
+      .catch((error) =>
+        console.error("Error loading categoriesGrid section:", error)
+      );
   });
