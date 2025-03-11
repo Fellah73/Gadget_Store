@@ -3,18 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TechSphere</title>
-    
+    <title>Tech Sphere</title>
+
     <!-- Tailwind CSS CDN -->
     <script type="module" src="assets/js/loadHomeComponents.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="style.css" />
-    
-    
   </head>
+  <style>
+    #container {
+      background-image: url("assets/images/backgroundImage.webp");
+      background-size: cover; /* Ajuste l'image pour couvrir tout l'écran */
+      background-position: center; /* Centre l'image */
+      background-repeat: no-repeat; /* Empêche la répétition de l'image */
+      background-attachment: fixed; /* Fixe l'image pour qu'elle ne bouge pas au scroll */
+    }
+  </style>
 
-  <body class="font-sans">
+  <body class="font-sans" id="container">
     <!-- Navigation Bar -->
     <div id="navbar-container"></div>
 
@@ -26,6 +33,7 @@
       <div id="benefits-container"></div>
       <div id="testimonials-container"></div>
     </div>
+    <div id="footer-container"></div>
 
     <!-- JavaScript for mobile menu toggle -->
   </body>

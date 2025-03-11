@@ -165,4 +165,30 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) =>
       console.error("Error loading testimonials section:", error)
     );
+
+    //load footer
+    fetch("components/footer.html")
+    .then((response) => response.text())
+    .then((data) => {
+      // Replace the existing content with the footer section
+      const mainContent = document.getElementById("footer-container");
+      if (mainContent) {
+        mainContent.innerHTML = data;
+
+        const backToTopButton = document.getElementById("back-to-top");
+
+        backToTopButton.addEventListener("click", () => {
+
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        })
+      } else {
+        console.error("Main content container not found");
+      }
+    })
+    .catch((error) =>
+      console.error("Error loading footer section:", error)
+    );
 });
