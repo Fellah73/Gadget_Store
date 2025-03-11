@@ -130,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Main content container not found");
       }
 
-
       // fetch the benefits section
       fetch("components/homeComponents/benefits.html")
         .then((response) => response.text())
@@ -149,5 +148,21 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) =>
       console.error("Error loading bestSellers section:", error)
+    );
+
+  // load the testimonials section
+  fetch("components/homeComponents/testimonials.html")
+    .then((response) => response.text())
+    .then((data) => {
+      // Replace the existing content with the testimonials section
+      const mainContent = document.getElementById("testimonials-container");
+      if (mainContent) {
+        mainContent.innerHTML = data;
+      } else {
+        console.error("Main content container not found");
+      }
+    })
+    .catch((error) =>
+      console.error("Error loading testimonials section:", error)
     );
 });
