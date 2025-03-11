@@ -1,7 +1,6 @@
 import { createProductCard } from "./rendredComponents/productCard.js";
 import { products } from "./static/stataicData.js";
 
-
 document.addEventListener("DOMContentLoaded", function () {
   fetch("components/navbar.html")
     .then((response) => response.text())
@@ -61,8 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error loading categoriesGrid section:", error)
     );
 
-
-
   // Then load the bestSellers section
   fetch("components/homeComponents/bestSellers.html")
     .then((response) => response.text())
@@ -71,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const mainContent = document.getElementById("bestSellers-container");
       if (mainContent) {
         mainContent.innerHTML = data;
-        
 
         console.log("Best Sellers loaded");
         // Simple carousel logic
@@ -99,21 +95,57 @@ document.addEventListener("DOMContentLoaded", function () {
           container.style.transform = `translateX(-${scrollAmount}px)`;
         });
 
-
-        if(products){
- 
+        if (products) {
           products.forEach((product) => {
             const productCard = createProductCard(product);
             container.appendChild(productCard);
           });
-
         }
 
+        const leftIndicator = document.getElementById("indicator-to-left");
+        const rightIndicator = document.getElementById("indicator-to-right");
 
+        const previousButton = document.getElementById("prev-btn");
 
+        previousButton.addEventListener("click", () => {
+          rightIndicator.style.backgroundColor = "white";
+          leftIndicator.style.backgroundColor = "rgb(120 113 108)";
+
+          if (scrollAmount == 0) {
+            leftIndicator.style.backgroundColor = "white";
+          }
+        });
+
+        const nextButton = document.getElementById("next-btn");
+
+        nextButton.addEventListener("click", () => {
+          leftIndicator.style.backgroundColor = "white";
+          rightIndicator.style.backgroundColor = "rgb(120 113 108)";
+
+          if (scrollAmount >= container.scrollWidth) {
+            rightIndicator.style.backgroundColor = "white";
+          }
+        });
       } else {
         console.error("Main content container not found");
       }
+
+
+      // fetch the benefits section
+      fetch("components/homeComponents/benefits.html")
+        .then((response) => response.text())
+        .then((data) => {
+          // Replace the existing content with the benefits section
+          const mainContent = document.getElementById("benefits-container");
+          if (mainContent) {
+            mainContent.innerHTML = data;
+          } else {
+            console.error("Main content container not found");
+          }
+        })
+        .catch((error) =>
+          console.error("Error loading benefits section:", error)
+        );
     })
     .catch((error) =>
       console.error("Error loading bestSellers section:", error)

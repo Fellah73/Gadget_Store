@@ -6,7 +6,7 @@ export function createProductCard(data) {
 
     // Remplir la carte avec le contenu HTML
     card.innerHTML = `
-        <div class="relative overflow-hidden">
+        <div class="relative overflow-hidden rounded-xl">
             <!-- Badges -->
             <div class="absolute top-3 left-3 z-10 flex flex-col space-y-2">
                 <span class="px-3 py-4 bg-zinc-600 text-white text-lg font-semibold rounded-full">
