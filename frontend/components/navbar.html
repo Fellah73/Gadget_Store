@@ -7,25 +7,31 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="../style.css" />
     <style>
-        /* Custom animations */
-        @keyframes float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-          100% { transform: translateY(0px); }
+      /* Custom animations */
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
         }
-        .category-icon {
-          transition: all 0.3s ease;
+        50% {
+          transform: translateY(-10px);
         }
-        .category-card:hover .category-icon {
-          animation: float 2s ease-in-out infinite;
+        100% {
+          transform: translateY(0px);
         }
-        .category-card:hover .shop-btn {
-          transform: translateY(-5px);
-        }
-        .shop-btn {
-          transition: all 0.3s ease;
-        }
-      </style>
+      }
+      .category-icon {
+        transition: all 0.3s ease;
+      }
+      .category-card:hover .category-icon {
+        animation: float 2s ease-in-out infinite;
+      }
+      .category-card:hover .shop-btn {
+        transform: translateY(-5px);
+      }
+      .shop-btn {
+        transition: all 0.3s ease;
+      }
+    </style>
     <title>Document</title>
   </head>
   <body>
@@ -34,7 +40,7 @@
         <div class="flex justify-between items-center h-16">
           <!-- Logo -->
           <div class="flex-shrink-0 flex items-center">
-            <a href="#" class="flex items-center">
+            <a href="./index.html" class="flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -51,8 +57,8 @@
               </svg>
 
               <div class="ml-2 font-bold">
-                <span class="text-xl  text-gray-800">Tech</span>
-                <span class="text-xl  text-blue-600">Sphere</span>
+                <span class="text-xl text-gray-800">Tech</span>
+                <span class="text-xl text-blue-600">Sphere</span>
               </div>
             </a>
           </div>
@@ -60,14 +66,15 @@
           <!-- Navigation Links - Desktop -->
           <div class="hidden md:flex items-center space-x-8">
             <a
-            id="home"
-              href="#"
+              id="home"
+              href="./index.html"
               class="text-gray-700 hover:text-blue-500 border-b-2 px-3 py-2 rounded-md font-medium transition duration-150"
               >Home</a
             >
 
             <a
-              href="#"
+              id="shop"
+              href="./shop.html"
               class="text-gray-700 hover:text-blue-500 border-b-2 px-3 py-2 rounded-md font-medium"
               >Shop</a
             >
@@ -94,68 +101,197 @@
               </button>
 
               <!-- Dropdown Menu -->
-            <div class="absolute left-0 mt-2 w-screen md:max-w-xl  lg:max-w-4xl  bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-x-1/4 origin-top scale-95 group-hover:scale-100 z-50 overflow-hidden">
-                <div class="w-[100%] md:grid md:grid-cols-2 mx-auto md:gap-4 py-5 lg:flex lg:flex-row lg:gap-x-4 px-10">
+              <div
+                class="absolute left-0 mt-2 w-screen md:max-w-xl lg:max-w-4xl bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-x-1/4 origin-top scale-95 group-hover:scale-100 z-50 overflow-hidden"
+              >
+                <div
+                  class="w-[100%] md:grid md:grid-cols-2 mx-auto md:gap-4 py-5 lg:flex lg:flex-row lg:gap-x-4 px-10"
+                >
                   <!-- Phones -->
-                  <div class="lg:max-w-[22%] category-card bg-gradient-to-tl from-gray-50 to-gray-500 p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200">
-                    <div class="category-icon bg-gray-600 text-white p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                  <div
+                    class="lg:max-w-[22%] category-card bg-gradient-to-tl from-gray-50 to-gray-500 p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200"
+                  >
+                    <div
+                      class="category-icon bg-gray-600 text-white p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-8 w-8"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <rect
+                          x="5"
+                          y="2"
+                          width="14"
+                          height="20"
+                          rx="2"
+                          ry="2"
+                        ></rect>
                         <line x1="12" y1="18" x2="12" y2="18"></line>
                       </svg>
                     </div>
-                    <h3 class="font-bold text-center text-gray-800 text-lg mb-2">Smartphones</h3>
-                    <p class="text-gray-600 text-base font-semibold text-center mb-4">Latest mobile technology</p>
-                    <a href="#" class="shop-btn block bg-gray-600 text-white font-bold text-center py-2 px-4 rounded-lg transition-all w-full">Shop Now</a>
+                    <h3
+                      class="font-bold text-center text-gray-800 text-lg mb-2"
+                    >
+                      Smartphones
+                    </h3>
+                    <p
+                      class="text-gray-600 text-base font-semibold text-center mb-4"
+                    >
+                      Latest mobile technology
+                    </p>
+                    <a
+                      href="./shop.html#phones"
+                      class="shop-btn block bg-gray-600 text-white font-bold text-center py-2 px-4 rounded-lg transition-all w-full"
+                      >Shop Now</a
+                    >
                   </div>
 
                   <!-- Smart Watches -->
-                  <div class="lg:max-w-[22%] category-card bg-gradient-to-tl from-blue-50 to-blue-400 p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-purple-200">
-                    <div class="category-icon bg-blue-700 text-white p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <div
+                    class="lg:max-w-[22%] category-card bg-gradient-to-tl from-blue-50 to-blue-400 p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-purple-200"
+                  >
+                    <div
+                      class="category-icon bg-blue-700 text-white p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-8 w-8"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
                         <circle cx="12" cy="12" r="7"></circle>
                         <polyline points="12 9 12 12 13.5 13.5"></polyline>
-                        <path d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"></path>
+                        <path
+                          d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"
+                        ></path>
                       </svg>
                     </div>
-                    <h3 class="font-bold text-center text-gray-800 text-lg mb-2">Smart Watches</h3>
-                    <p class="text-gray-600 text-base font-semibold text-center mb-4">Wearable tech for every lifestyle</p>
-                    <a href="#" class="shop-btn block bg-blue-700 text-white font-bold text-center py-2 px-4 rounded-lg transition-all w-full">Shop Now</a>
+                    <h3
+                      class="font-bold text-center text-gray-800 text-lg mb-2"
+                    >
+                      Smart Watches
+                    </h3>
+                    <p
+                      class="text-gray-600 text-base font-semibold text-center mb-4"
+                    >
+                      Wearable tech for every lifestyle
+                    </p>
+                    <a
+                      href="./shop.html#smartwatches"
+                      class="shop-btn block bg-blue-700 text-white font-bold text-center py-2 px-4 rounded-lg transition-all w-full"
+                      >Shop Now</a
+                    >
                   </div>
 
                   <!-- Gaming Consoles -->
-                  <div class="lg:max-w-[22%] category-card bg-gradient-to-tl from-blue-50 to-blue-300 p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-blue-200">
-                    <div class="category-icon bg-blue-500 text-white p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 3h12l3 9H3l3-9z"></path>
-                            <path d="M3 12h18v6a3 3 0 01-3 3H6a3 3 0 01-3-3v-6z"></path>
-                            <path d="M16 12V5l-4 4-4-4v7"></path>
-                          </svg>                          
-                    </div>
-                    <h3 class="font-bold text-center text-gray-800 text-lg mb-2">Gaming Consoles</h3>
-                    <p class="text-gray-600 text-base font-semibold text-center mb-4">Explore next-gen gaming systems</p>
-                    <a href="#" class="shop-btn block bg-blue-500 hover:bg-blue-600 text-white font-bold text-center py-2 px-4 rounded-lg transition-all w-full">Shop Now</a>
-                  </div>
-                                                    
-                  <!-- Headphones -->
-                  <div class="lg:max-w-[22%] category-card bg-gradient-to-tl from-cyan-400 to-cyan-100 p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-red-200">
-                    <div class="category-icon bg-cyan-700 text-white p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                  <div
+                    class="lg:max-w-[22%] category-card bg-gradient-to-tl from-blue-50 to-blue-300 p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-blue-200"
+                  >
+                    <div
+                      class="category-icon bg-blue-500 text-white p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="50"
+                        height="50"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#1e3a8a"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M6 3h12l3 9H3l3-9z"></path>
+                        <path
+                          d="M3 12h18v6a3 3 0 01-3 3H6a3 3 0 01-3-3v-6z"
+                        ></path>
+                        <path d="M16 12V5l-4 4-4-4v7"></path>
                       </svg>
                     </div>
-                    <h3 class="font-bold text-center text-gray-800 text-lg mb-2">Headphones</h3>
-                    <p class="text-gray-600 text-base font-semibold text-center mb-4">Premium audio experience</p>
-                    <a href="#" class="shop-btn block bg-cyan-700 text-white font-bold text-center py-2 px-4 rounded-lg transition-all w-full">Shop Now</a>
+                    <h3
+                      class="font-bold text-center text-gray-800 text-lg mb-2"
+                    >
+                      Gaming Consoles
+                    </h3>
+                    <p
+                      class="text-gray-600 text-base font-semibold text-center mb-4"
+                    >
+                      Explore next-gen gaming systems
+                    </p>
+                    <a
+                      href="./shop.html#consoles"
+                      class="shop-btn block bg-blue-500 hover:bg-blue-600 text-white font-bold text-center py-2 px-4 rounded-lg transition-all w-full"
+                      >Shop Now</a
+                    >
+                  </div>
+
+                  <!-- Headphones -->
+                  <div
+                    class="lg:max-w-[22%] category-card bg-gradient-to-tl from-cyan-400 to-cyan-100 p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-red-200"
+                  >
+                    <div
+                      class="category-icon bg-cyan-700 text-white p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-8 w-8"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                        <path
+                          d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <h3
+                      class="font-bold text-center text-gray-800 text-lg mb-2"
+                    >
+                      Headphones
+                    </h3>
+                    <p
+                      class="text-gray-600 text-base font-semibold text-center mb-4"
+                    >
+                      Premium audio experience
+                    </p>
+                    <a
+                      href="./shop.html#headsets"
+                      class="shop-btn block bg-cyan-700 text-white font-bold text-center py-2 px-4 rounded-lg transition-all w-full"
+                      >Shop Now</a
+                    >
                   </div>
                 </div>
-                
+
                 <!-- Featured category banner -->
                 <div class="bg-gray-100 p-4">
-                  <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
-                    <p class="text-gray-700 font-medium">Featured Collection: <span class="text-blue-600 font-bold">New Arrivals 2025</span></p>
-                    <a href="products" class="text-blue-600 hover:text-blue-800 font-medium">View All →</a>
+                  <div
+                    class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center"
+                  >
+                    <p class="text-gray-700 font-medium">
+                      Featured Collection:
+                      <span class="text-blue-600 font-bold"
+                        >New Arrivals 2025</span
+                      >
+                    </p>
+                    <a
+                      href="products"
+                      class="text-blue-600 hover:text-blue-800 font-medium"
+                      >View All →</a
+                    >
                   </div>
                 </div>
               </div>
@@ -189,20 +325,8 @@
             </div>
 
             <!-- Cart -->
-            <a href="#" class="text-gray-700 hover:text-blue-500 relative">
-              <svg
-                class="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                ></path>
-              </svg>
+            <a href="#" class="text-gray-700 hover:text-blue-500 text-4xl relative">
+              🛒
               <span
                 class="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center"
                 >0</span
@@ -239,12 +363,14 @@
       <div class="md:hidden hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <a
-            href="#"
-            class="block px-3 py-2 rounded-md text-base font-medium text-blue-500 bg-blue-50 hover:text-blue-500 hover:bg-gray-50"
+            id="mobile-home-link"
+            href="./index.html"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50"
             >Home</a
           >
           <a
-            href="#"
+            id="mobile-shop-link"
+            href="./shop.html"
             class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50"
             >Shop</a
           >

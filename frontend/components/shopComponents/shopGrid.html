@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catégories Tech</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.5/cdn.min.js"
+      defer
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <style>
+      .backdrop-blur {
+        backdrop-filter: blur(8px);
+      }
+
+      .card {
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .button-glow {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .button-glow::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(45deg);
+        animation: glowEffect 3s infinite;
+      }
+
+      @keyframes glowEffect {
+        0% {
+          left: -50%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .image-container {
+        overflow: hidden;
+      }
+
+      .image-container img {
+        transition: transform 0.5s ease;
+      }
+
+      .card:hover .image-container img {
+        transform: scale(1.1);
+      }
+
+      body {
+        min-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <header
+      class="w-full py-4 text-center backdrop-blur bg-opacity-70 fixed top-0 z-10"
+    >
+      <h1 class="text-4xl font-bold mb-6">Our Tech Categories</h1>
+      <div
+        class="flex flex-row justify-center items-center gap-x-10 px-5 text-lg text-neutral-300 font-semibold tracking-wide"
+      >
+        <a
+          href="#smartwatches"
+          class="px-10 py-4 text-black bg-gray-400 rounded-full hover:bg-gray-500 transition-all button-glow"
+          >Smartwatches</a
+        >
+        <a
+          href="#headsets"
+          class="px-10 py-4 text-black bg-neutral-500 rounded-full hover:bg-neutral-400 transition-all button-glow"
+          >Headsets</a
+        >
+        <a
+          href="#phones"
+          class="px-10 py-4 bg-gray-600 rounded-full hover:bg-gray-500 transition-all button-glow"
+          >Phones</a
+        >
+        <a
+          href="#consoles"
+          class="text-black px-10 py-4 bg-cyan-500 rounded-full hover:bg-cyan-600 transition-all button-glow"
+          >Gaming Consoles</a
+        >
+      </div>
+    </header>
+
+    
+  </body>
+</html>
+
