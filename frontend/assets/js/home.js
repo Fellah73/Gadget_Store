@@ -74,11 +74,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const container = document.getElementById("products-container");
         const prevBtn = document.getElementById("prev-btn");
         const nextBtn = document.getElementById("next-btn");
+        const leftIndicator = document.getElementById("indicator-to-left");
+        const rightIndicator = document.getElementById("indicator-to-right");
         let scrollAmount = 0;
         const cardWidth = 300; // Width of card + margin
 
         nextBtn.addEventListener("click", () => {
           scrollAmount += cardWidth;
+          leftIndicator.style.backgroundColor = "white";
+          rightIndicator.style.backgroundColor = "rgb(120 113 108)";
           // Prevent scrolling too far
           if (scrollAmount > container.scrollWidth - container.clientWidth) {
             scrollAmount = container.scrollWidth - container.clientWidth;
@@ -88,9 +92,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         prevBtn.addEventListener("click", () => {
           scrollAmount -= cardWidth;
+          rightIndicator.style.backgroundColor = "white";
+          leftIndicator.style.backgroundColor = "rgb(120 113 108)";
           // Prevent scrolling too far in reverse
           if (scrollAmount < 0) {
             scrollAmount = 0;
+            leftIndicator.style.backgroundColor = "white";
           }
           container.style.transform = `translateX(-${scrollAmount}px)`;
         });
@@ -101,31 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
             container.appendChild(productCard);
           });
         }
-
-        const leftIndicator = document.getElementById("indicator-to-left");
-        const rightIndicator = document.getElementById("indicator-to-right");
-
-        const previousButton = document.getElementById("prev-btn");
-
-        previousButton.addEventListener("click", () => {
-          rightIndicator.style.backgroundColor = "white";
-          leftIndicator.style.backgroundColor = "rgb(120 113 108)";
-
-          if (scrollAmount == 0) {
-            leftIndicator.style.backgroundColor = "white";
-          }
-        });
-
-        const nextButton = document.getElementById("next-btn");
-
-        nextButton.addEventListener("click", () => {
-          leftIndicator.style.backgroundColor = "white";
-          rightIndicator.style.backgroundColor = "rgb(120 113 108)";
-
-          if (scrollAmount >= container.scrollWidth) {
-            rightIndicator.style.backgroundColor = "white";
-          }
-        });
       } else {
         console.error("Main content container not found");
       }
@@ -166,8 +148,8 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error loading testimonials section:", error)
     );
 
-    //load footer
-    fetch("components/footer.html")
+  //load footer
+  fetch("components/footer.html")
     .then((response) => response.text())
     .then((data) => {
       // Replace the existing content with the footer section
@@ -178,17 +160,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const backToTopButton = document.getElementById("back-to-top");
 
         backToTopButton.addEventListener("click", () => {
-
           window.scrollTo({
             top: 0,
             behavior: "smooth",
           });
-        })
+        });
       } else {
         console.error("Main content container not found");
       }
     })
-    .catch((error) =>
-      console.error("Error loading footer section:", error)
-    );
+    .catch((error) => console.error("Error loading footer section:", error));
 });

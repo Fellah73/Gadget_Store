@@ -72,3 +72,100 @@ export const products = [
     reviews: 147,
   }
 ];
+
+function getRandomImageUrl() {
+  const imageUrls = [
+    "assets/images/heroSection/iphone.webp",
+    "assets/images/heroSection/headphones.webp",
+    "assets/images/heroSection/smartwatch.webp",
+    "assets/images/heroSection/gamingConsole.webp",
+  ];
+  const randomIndex = Math.floor(Math.random() * imageUrls.length);
+  return imageUrls[randomIndex];
+}
+
+export const productData = [
+  {
+    id: 1,
+    image: getRandomImageUrl(),
+    title: "Gaming Pro X1",
+    description:
+      "Puissant processeur, carte graphique RTX et écran haute fréquence pour une expérience gaming immersive.",
+    rating: 5,
+    reviews: 128,
+    detailsUrl: "product.html?id=1",
+  },
+  {
+    id: 1,
+    image: getRandomImageUrl(),
+    title: "Gaming Pro X1",
+    description:
+      "Puissant processeur, carte graphique RTX et écran haute fréquence pour une expérience gaming immersive.",
+    rating: 5,
+    reviews: 128,
+    detailsUrl: "product.html?id=1",
+    price : 100
+  },
+  {
+    id: 1,
+    image: getRandomImageUrl(),
+    title: "Gaming Pro X1",
+    description:
+      "Puissant processeur, carte graphique RTX et écran haute fréquence pour une expérience gaming immersive.",
+    rating: 5,
+    reviews: 128,
+    detailsUrl: "product.html?id=1",
+    price : 100
+  },
+  {
+    id: 1,
+    image: getRandomImageUrl(),
+    title: "Gaming Pro X1",
+    description:
+      "Puissant processeur, carte graphique RTX et écran haute fréquence pour une expérience gaming immersive.",
+    rating: 5,
+    reviews: 128,
+    detailsUrl: "product.html?id=1",
+    price : 100
+  },
+  {
+    id: 1,
+    image: getRandomImageUrl(),
+    title: "Gaming Pro X1",
+    description:
+      "Puissant processeur, carte graphique RTX et écran haute fréquence pour une expérience gaming immersive.",
+    rating: 5,
+    reviews: 128,
+    detailsUrl: "product.html?id=1",
+  },
+  {
+    id: 1,
+    image: getRandomImageUrl(),
+    title: "Gaming Pro X1",
+    description:
+      "Puissant processeur, carte graphique RTX et écran haute fréquence pour une expérience gaming immersive.",
+    rating: 5,
+    reviews: 128,
+    detailsUrl: "product.html?id=1",
+  },
+  {
+    id: 1,
+    image: getRandomImageUrl(),
+    title: "Gaming Pro X1",
+    description:
+      "Puissant processeur, carte graphique RTX et écran haute fréquence pour une expérience gaming immersive.",
+    rating: 5,
+    reviews: 128,
+    detailsUrl: "product.html?id=1",
+  },
+  {
+    id: 1,
+    image: getRandomImageUrl(),
+    title: "Gaming Pro X1",
+    description:
+      "Puissant processeur, carte graphique RTX et écran haute fréquence pour une expérience gaming immersive.",
+    rating: 5,
+    reviews: 128,
+    detailsUrl: "product.html?id=1",
+  },
+];

@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
   fetch("components/navbar.html")
     .then((response) => response.text())
@@ -51,6 +52,29 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error loading categoriesGrid section:", error)
     );
 
+  //animation des section
+  const sections = document.querySelectorAll(".hidden-animate-fadeIn");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-fadeIn");
+          entry.target.classList.remove("hidden-animate-fadeIn");
+          observer.unobserve(entry.target); // On stoppe l'observation une fois animée
+        }
+      });
+    },
+    { threshold: 0.2 } // Déclenchement quand 20% de la section est visible
+  );
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+
+
+
+
   // load footer
   fetch("components/footer.html")
     .then((response) => response.text())
@@ -74,3 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.error("Error loading footer section:", error));
 });
+
+
+
+
