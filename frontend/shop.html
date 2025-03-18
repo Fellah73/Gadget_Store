@@ -1,644 +1,582 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tech Sphere - Shop</title>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js"
-      defer
-    ></script>
-    <script type="module" src="./assets/js/shop.js" defer></script>
-    <script type="module" src="./assets/js/productsHandler.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .hidden-animate-fadeIn {
-        opacity: 0; /* On cache les sections par défaut */
-      }
-      .animate-fadeIn {
-        animation: fadeIn 0.5s ease-out forwards;
-      }
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-      }
-      .animate-pulse-slow {
-        animation: pulse 3s infinite;
-      }
-      @keyframes slideInRight {
-        from {
-          transform: translateX(50px);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-      .animate-slide-in {
-        animation: slideInRight 0.5s ease-out forwards;
-      }
-      .delay-100 {
-        animation-delay: 0.1s;
-      }
-      .delay-200 {
-        animation-delay: 0.2s;
-      }
-      .delay-300 {
-        animation-delay: 0.3s;
-      }
-      .delay-400 {
-        animation-delay: 0.4s;
-      }
-      .delay-500 {
-        animation-delay: 0.5s;
-      }
-    </style>
-  </head>
-  <body class="bg-gray-50">
-    <!-- 1️⃣ Navigation Bar -->
-    <div id="navbar-container"></div>
-    <!-- 2️⃣ Hero Section -->
-    <div class="pt-16 p-4 flex flex-col gap-y-5">
-      <div id="heroShop-container" class="animate-fadeIn mt-20"></div>
-      <div id="categoriesGrid-container"></div>
-    </div>
-    <main class="container mx-auto py-10 px-4">
-      <!-- smartwatches section -->
-      <section
-        id="smartwatches"
-        class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
-      >
-        <div class="container mx-auto">
-          <!-- 1️⃣ Titre de la catégorie -->
-          <div class="flex items-center mb-6">
-            <span class="text-5xl mr-4">⌚</span>
-            <div>
-              <h2 class="text-3xl font-bold text-gray-700">Smartwatches</h2>
-              <p class="text-gray-600 text-xl font-semibold">
-                Stay connected and track your health with our smartwatches!
-              </p>
-            </div>
-          </div>
-          <!-- 2️⃣ Filtres & Tri -->
-          <div
-            class="bg-gradient-to-br from-gray-600 to-gray-500 p-6 rounded-lg shadow-lg mb-2"
-          >
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <!-- Filtre par marque -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >Brand</label
-                >
-                <select
-                  class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
-                >
-                  <option>All brands</option>
-                  <option>Apple</option>
-                  <option>Samsung</option>
-                  <option>Xiaomi</option>
-                  <option>Google</option>
-                </select>
-              </div>
-              <!-- Filtre par prix -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >Prix</label
-                >
-                <div class="flex flex-col gap-y-4">
-                  <div class="flex justify-between text-blue-400 font-medium">
-                    <span>0€</span>
-                    <span>2000€</span>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Tech Sphere - Shop</title>
+      <script
+         src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js"
+         defer
+         ></script>
+      <script type="module" src="./assets/js/shop.js" defer></script>
+      <script type="module" src="./assets/js/productsHandler.js" defer></script>
+      <script type="module" src="./assets/js/headsetsHandler.js" defer></script>
+      <script type="module" src="./assets/js/phonesHandler.js" defer></script>
+      <script type="module" src="./assets/js/consolesHandler.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+         @keyframes fadeIn {
+         from {
+         opacity: 0;
+         transform: translateY(20px);
+         }
+         to {
+         opacity: 1;
+         transform: translateY(0);
+         }
+         }
+         .hidden-animate-fadeIn {
+         opacity: 0; /* On cache les sections par défaut */
+         }
+         .animate-fadeIn {
+         animation: fadeIn 0.5s ease-out forwards;
+         }
+         @keyframes pulse {
+         0%,
+         100% {
+         transform: scale(1);
+         }
+         50% {
+         transform: scale(1.05);
+         }
+         }
+         .animate-pulse-slow {
+         animation: pulse 3s infinite;
+         }
+         @keyframes slideInRight {
+         from {
+         transform: translateX(50px);
+         opacity: 0;
+         }
+         to {
+         transform: translateX(0);
+         opacity: 1;
+         }
+         }
+         .animate-slide-in {
+         animation: slideInRight 0.5s ease-out forwards;
+         }
+         .delay-100 {
+         animation-delay: 0.1s;
+         }
+         .delay-200 {
+         animation-delay: 0.2s;
+         }
+         .delay-300 {
+         animation-delay: 0.3s;
+         }
+         .delay-400 {
+         animation-delay: 0.4s;
+         }
+         .delay-500 {
+         animation-delay: 0.5s;
+         }
+      </style>
+   </head>
+   <body class="bg-gray-50">
+      <!-- 1️⃣ Navigation Bar -->
+      <div id="navbar-container"></div>
+      <!-- 2️⃣ Hero Section -->
+      <div class="pt-16 p-4 flex flex-col gap-y-5">
+         <div id="heroShop-container" class="animate-fadeIn mt-20"></div>
+         <div id="categoriesGrid-container"></div>
+      </div>
+      <main class="container mx-auto py-10 px-4">
+         <!-- smartwatches section -->
+         <section
+            id="smartwatches"
+            class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
+            >
+            <div class="container mx-auto">
+               <!-- 1️⃣ Titre de la catégorie -->
+               <div class="flex items-center mb-6">
+                  <span class="text-5xl mr-4">⌚</span>
+                  <div>
+                     <h2 class="text-3xl font-bold text-gray-700">Smartwatches</h2>
+                     <p class="text-gray-600 text-xl font-semibold">
+                        Stay connected and track your health with our smartwatches!
+                     </p>
                   </div>
-                  <input
-                    type="range"
-                    min="0"
-                    max="2000"
-                    class="w-full accent-blue-500"
-                    id="phone-price-range"
-                  />
-                </div>
-              </div>
-              <!-- Filtre par caractéristiques -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >Phone Size</label
-                >
-                <select
-                  class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
-                >
-                  <option>All sizes</option>
-                  <option>< 5.5"</option>
-                  <option>5.5" - 6.0"</option>
-                  <option>6.1" - 6.5"</option>
-                  <option>> 6.5"</option>
-                </select>
-              </div>
-              <!-- Tri -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >filter by</label
-                >
-                <select
-                  class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
-                >
-                  <option>Growing price</option>
-                  <option>Lowest price</option>
-                  <option>Highest price</option>
-                  <option>Newest</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <!-- 3️⃣ Produits Smartwatches Scroll -->
-          <div class="relative overflow-hidden text-black">
-            <div id="smartwatches-grid" class="flex space-x-4 md:space-x-8 py-4
-            px-10 w-full transition-transform duration-500 ease-in-out"" >
-          </div>
-          <button
-            id="prev-btn-smartwatches"
+               </div>
+               <!-- 2️⃣ Filtres & Tri -->
+               <div
+                  class="bg-transparent backdrop:blur-sm bg-opacity-40 border-2 shadow-lg shadow-gray-400 border-gray-400 p-6 rounded-lg mb-2"
+                  >
+                  <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
+                     <!-- Filtre par marque -->
+                     <div>
+                        <label class="block text-lg font-semibold text-black mb-2"
+                           >Brand</label
+                           >
+                        <select
+                           class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
+                           >
+                           <option>All brands</option>
+                           <option>Apple</option>
+                           <option>Samsung</option>
+                           <option>Xiaomi</option>
+                           <option>Google</option>
+                        </select>
+                     </div>
+                     <!-- Filtre par prix -->
+                     <div>
+                        <label class="block text-lg font-semibold text-black mb-2"
+                           >Prix</label
+                           >
+                        <div class="flex flex-col gap-y-4">
+                           <div
+                              class="flex justify-between text-black font-medium tracking-wide text-lg"
+                              >
+                              <span>0 €</span>
+                              <span>2000 €</span>
+                           </div>
+                           <input
+                              type="range"
+                              min="0"
+                              max="2000"
+                              class="w-full accent-black"
+                              id="phone-price-range"
+                              />
+                        </div>
+                     </div>
+                     <!-- Filtre par caractéristiques -->
+                     <div>
+                        <label class="block text-lg font-semibold text-black mb-2"
+                           >Phone Size</label
+                           >
+                        <select
+                           class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
+                           >
+                           <option>All sizes</option>
+                           <option>< 5.5"</option>
+                           <option>5.5" - 6.0"</option>
+                           <option>6.1" - 6.5"</option>
+                           <option>> 6.5"</option>
+                        </select>
+                     </div>
+                     <!-- Tri -->
+                     <div>
+                        <label class="block text-lg font-semibold text-black mb-2"
+                           >filter by</label
+                           >
+                        <select
+                           class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
+                           >
+                           <option>Growing price</option>
+                           <option>Lowest price</option>
+                           <option>Highest price</option>
+                           <option>Newest</option>
+                        </select>
+                     </div>
+                   </div>
+                  </div>
+               </div>
+               <!-- 3️⃣ Produits Smartwatches Scroll -->
+               <div class="relative overflow-hidden text-black">
+                  <div id="smartwatches-grid" class="flex rounded-2xl space-x-4 md:space-x-8 py-6
+                     px-10 w-full transition-transform duration-500 ease-in-out" >
+                  </div>
+                  <button
+                     id="prev-btn-smartwatches"
+                     class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+                     >
+                  <
+                  </button>
+                  <button
+                     id="next-btn-smartwatches"
+                     class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+                     >
+                  >
+                  </button>
+               </div>
+               <!-- Indicators -->
+               <div class="flex justify-center mt-6 space-x-2">
+                  <button
+                     id="left-indecator-smartwatches"
+                     class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+                     ></button>
+                  <button
+                     id="right-indecator-smartwatches"
+                     class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+                     ></button>
+               </div>
+              
+       
+         </section>
+         <!-- headsets section -->
+         <section
+            id="headsets"
+            class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
+            >
+         <div class="container mx-auto">
+         <!-- 1️⃣ Titre de la catégorie -->
+         <div class="flex items-center mb-6">
+         <span class="text-5xl mr-4">
+         <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="48px" height="48px">
+         <path d="M12 1C6.48 1 2 5.48 2 11v5c0 2.21 1.79 4 4 4h2v-6H6v-3c0-3.86 3.14-7 7-7s7 3.14 7 7v3h-2v6h2c2.21 0 4-1.79 4-4v-5c0-5.52-4.48-10-10-10zm-5 17H6c-1.1 0-2-.9-2-2v-2h3v4zm12 0h-3v-4h3v2c0 1.1-.9 2-2 2z"/>
+         </svg>
+         </span>
+         <div>
+         <h2 class="text-3xl font-bold text-gray-700">Headsets</h2>
+         <p class="text-gray-600 text-xl font-semibold">
+         Experience immersive sound with our top-quality headsets!
+         </p>
+         </div>
+         </div>
+         <!-- 2️⃣ Filtres & Tri -->
+         <div
+            class="bg-transparent backdrop:blur-sm bg-opacity-40 border-2 shadow-lg shadow-gray-400 border-gray-400 p-6 rounded-2xl mb-8"
+            >
+         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+         <!-- Filtre par marque -->
+         <div>
+         <label class="block text-lg font-semibold text-black mb-2"
+            >Brand</label
+            >
+         <select
+            class="z-20 w-full p-3 border-2 border-neutral-300 rounded-md bg-gradient-to-r from-neutral-600 to-neutral-500 text-white hover:bg-neutral-600 transition"
+            >
+         <option>All brands</option>
+         <option>Apple</option>
+         <option>Samsung</option>
+         <option>Xiaomi</option>
+         <option>Google</option>
+         </select>
+         </div>
+         <!-- Filtre par prix -->
+         <div>
+         <label class="block text-lg font-semibold text-black mb-2"
+            >Prix</label
+            >
+         <div class="flex flex-col gap-y-4">
+         <div class="flex justify-between text-black font-medium">
+         <span>0€</span>
+         <span>2000€</span>
+         </div>
+         <input
+            type="range"
+            min="0"
+            max="2000"
+            class="w-full accent-gray-500"
+            id="phone-price-range"
+            />
+         </div>
+         </div>
+         <!-- Filtre par caractéristiques -->
+         <div>
+         <label class="block text-lg font-semibold text-black mb-2"
+            >Phone Size</label
+            >
+         <select
+            class="z-20 w-full p-3 border-2 border-neutral-300 rounded-md bg-gradient-to-r from-neutral-500 to-neutral-400 text-white hover:bg-neutral-600 transition"
+            >
+         <option>All sizes</option>
+         <option>< 5.5"</option>
+         <option>5.5" - 6.0"</option>
+         <option>6.1" - 6.5"</option>
+         <option>> 6.5"</option>
+         </select>
+         </div>
+         <!-- Tri -->
+         <div>
+         <label class="block text-lg font-semibold text-black mb-2"
+            >filter by</label
+            >
+         <select
+            class="z-20 w-full p-3 border-2 border-neutral-300 rounded-md bg-gradient-to-r from-neutral-500 to-neutral-400 text-white hover:bg-neutral-600 transition"
+            >
+         <option>Growing price</option>
+         <option>Lowest price</option>
+         <option>Highest price</option>
+         <option>Newest</option>
+         </select>
+         </div>
+         </div>
+         </div>
+         <!-- 3️⃣ Produits Smartwatches Scroll -->
+         <div class="relative overflow-hidden text-black">
+         <div id="headsets-grid" class="flex rounded-2xl space-x-4 md:space-x-8 py-6
+            px-10 w-full transition-transform duration-500 ease-in-out" >
+         </div>
+         <button
+            id="prev-btn-headsets"
             class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
-          >
-            <
-          </button>
-          <button
-            id="next-btn-smartwatches"
+            >
+         <
+         </button>
+         <button
+            id="next-btn-headsets"
             class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
-          >
             >
+         >
+         </button>
+         </div>
+         </div>
+         <!-- Indicators -->
+         <div class="flex justify-between items-center mt-6">
+          <!-- Indicateurs centrés -->
+          <div class="flex justify-center space-x-2 flex-1">
+            <button id="left-indecator-headsets" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
+            <button id="right-indecator-headsets" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
+          </div>
+        
+          <!-- Bouton "Show more" aligné à droite -->
+          <button 
+            id="load-more-headsets"
+            class="bg-gray-500 hover:scale-105 hover:shadow-xl hover:shadow-gray-500 text-white font-bold py-2 px-4 rounded-3xl ml-auto">
+            Show more
           </button>
         </div>
-        <!-- Indicators -->
-        <div class="flex justify-center mt-6 space-x-2">
-          <button
-            id="left-indecator-smartwatches"
+        
+         </section>
+         <!-- smartphones section -->
+         <section
+            id="phones"
+            class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
+            >
+         <div class="container mx-auto">
+         <!-- 1️⃣ Titre de la catégorie -->
+         <div class="flex items-center mb-6">
+         <span class="text-5xl mr-4">📱</span>
+         <div>
+         <h2 class="text-3xl font-bold text-gray-700">Smartphones</h2>
+         <p class="text-gray-600 text-xl font-semibold">
+         Explore our latest and most powerful smartphones!
+         </p>
+         </div>
+         </div>
+         <!-- 2️⃣ Filtres & Tri -->
+         <div
+            class="bg-transparent backdrop:blur-sm bg-opacity-40 p-6 rounded-lg shadow-lg mb-8 shadow-gray-400 border-2 border-gray-400"
+            >
+         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+         <!-- Filtre par marque -->
+         <div>
+         <label class="block text-lg font-semibold  text-black mb-2"
+            >Brand</label
+            >
+         <select
+            class="z-20 w-full p-3  border-2 border-white rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
+            >
+         <option>All brands</option>
+         <option>Apple</option>
+         <option>Samsung</option>
+         <option>Xiaomi</option>
+         <option>Google</option>
+         </select>
+         </div>
+         <!-- Filtre par prix -->
+         <div>
+         <label class="block text-lg font-semibold text-black mb-2"
+            >Prix</label
+            >
+         <div class="flex flex-col gap-y-4">
+         <div class="flex justify-between text-black font-medium">
+         <span>0€</span>
+         <span>2000€</span>
+         </div>
+         <input
+            type="range"
+            min="0"
+            max="2000"
+            class="w-full accent-gray-800"
+            id="phone-price-range"
+            />
+         </div>
+         </div>
+         <!-- Filtre par caractéristiques -->
+         <div>
+         <label class="block text-lg font-semibold text-black mb-2"
+            >Phone Size</label
+            >
+         <select
+            class="z-20 w-full p-3 border-2 border-white rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
+            >
+         <option>All sizes</option>
+         <option>< 5.5"</option>
+         <option>5.5" - 6.0"</option>
+         <option>6.1" - 6.5"</option>
+         <option>> 6.5"</option>
+         </select>
+         </div>
+         <!-- Tri -->
+         <div>
+         <label class="block text-lg font-semibold text-black mb-2"
+            >filter by</label
+            >
+         <select
+            class="z-20 w-full p-3 border-2 border-white rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
+            >
+         <option>Growing price</option>
+         <option>Lowest price</option>
+         <option>Highest price</option>
+         <option>Newest</option>
+         </select>
+         </div>
+         </div>
+         </div>
+         <!-- 3️⃣ Produits Phone Scroll -->
+         <div class="relative overflow-hidden text-black">
+         <div id="phones-grid" class="flex rounded-2xl space-x-4 md:space-x-8 py-6
+            px-10 w-full transition-transform duration-500 ease-in-out" >
+         </div>
+         <button
+            id="prev-btn-phones"
+            class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+            >
+         <
+         </button>
+         <button
+            id="next-btn-phones"
+            class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+            >
+         >
+         </button>
+         </div>
+         </div>
+         <!-- Indicators -->
+         <div class="flex justify-center mt-6 space-x-2">
+         <button
+            id="left-indecator-phones"
             class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
-          ></button>
-          <button
-            id="right-indecator-smartwatches"
+            ></button>
+         <button
+            id="right-indecator-phones"
             class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
-          ></button>
-        </div>
-      </section>
-      <!-- headsets section -->
-      <section
-        id="headsets"
-        class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
-      >
-        <div class="container mx-auto">
-          <!-- 1️⃣ Titre de la catégorie -->
-          <div class="flex items-center mb-6">
-            <span class="text-5xl mr-4">🎧</span>
-            <div>
-              <h2 class="text-3xl font-bold text-gray-700">Headsets</h2>
-              <p class="text-gray-600 text-xl font-semibold">
-                Experience immersive sound with our top-quality headsets!
-              </p>
-            </div>
-          </div>
-          <!-- 2️⃣ Filtres & Tri -->
-          <div
-            class="bg-gradient-to-r from-neutral-600 to-neutral-500 p-6 rounded-lg shadow-lg mb-8"
-          >
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <!-- Filtre par marque -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >Brand</label
-                >
-                <select
-                  class="z-20 w-full p-3 border-2 border-neutral-300 rounded-md bg-gradient-to-r from-neutral-600 to-neutral-500 text-white hover:bg-neutral-600 transition"
-                >
-                  <option>All brands</option>
-                  <option>Apple</option>
-                  <option>Samsung</option>
-                  <option>Xiaomi</option>
-                  <option>Google</option>
-                </select>
-              </div>
-              <!-- Filtre par prix -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >Prix</label
-                >
-                <div class="flex flex-col gap-y-4">
-                  <div class="flex justify-between text-gray-200 font-medium">
-                    <span>0€</span>
-                    <span>2000€</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="0"
-                    max="2000"
-                    class="w-full accent-gray-500"
-                    id="phone-price-range"
-                  />
-                </div>
-              </div>
-              <!-- Filtre par caractéristiques -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >Phone Size</label
-                >
-                <select
-                  class="z-20 w-full p-3 border-2 border-neutral-300 rounded-md bg-gradient-to-r from-neutral-500 to-neutral-400 text-white hover:bg-neutral-600 transition"
-                >
-                  <option>All sizes</option>
-                  <option>< 5.5"</option>
-                  <option>5.5" - 6.0"</option>
-                  <option>6.1" - 6.5"</option>
-                  <option>> 6.5"</option>
-                </select>
-              </div>
-              <!-- Tri -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >filter by</label
-                >
-                <select
-                  class="z-20 w-full p-3 border-2 border-neutral-300 rounded-md bg-gradient-to-r from-neutral-500 to-neutral-400 text-white hover:bg-neutral-600 transition"
-                >
-                  <option>Growing price</option>
-                  <option>Lowest price</option>
-                  <option>Highest price</option>
-                  <option>Newest</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <!-- 3️⃣ Grille des Produits -->
-          <div
-            id="headsets-grid"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 mb-12"
-          >
-            <!-- Produit 1 -->
-            <div
-              class="card rounded-xl overflow-hidden bg-gray-800 bg-opacity-80 backdrop-blur"
+            ></button>
+         </div>
+         </div>
+         </section>
+         <!--  Gaming Consoles section -->
+         <section
+            id="consoles"
+            class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
             >
-              <div class="image-container h-48">
-                <img
-                  src="assets/images/shopSection/shopHero.webp"
-                  alt="Gaming Laptop"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2 text-purple-300">
-                  Gaming Pro X1
-                </h3>
-                <p class="text-gray-300 mb-4">
-                  Puissant processeur, carte graphique RTX et écran haute
-                  fréquence pour une expérience gaming immersive.
-                </p>
-                <div class="flex items-center mb-2">
-                  <div class="text-yellow-400">⭐⭐⭐⭐⭐</div>
-                  <span class="text-gray-500 text-sm ml-2">(128 avis)</span>
-                </div>
-                <div class="flex space-x-2">
-                  <a
-                    href="product.html?id=123"
-                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md flex-1 text-center"
-                    >Voir détails</a
-                  >
-                  <button
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-2 rounded-md transition-transform hover:scale-105"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- smartphones section -->
-      <section
-        id="phones"
-        class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
-      >
-        <div class="container mx-auto">
-          <!-- 1️⃣ Titre de la catégorie -->
-          <div class="flex items-center mb-6">
-            <span class="text-5xl mr-4">📱</span>
-            <div>
-              <h2 class="text-3xl font-bold text-gray-700">Smartphones</h2>
-              <p class="text-gray-600 text-xl font-semibold">
-                Explore our latest and most powerful smartphones!
-              </p>
-            </div>
-          </div>
-          <!-- 2️⃣ Filtres & Tri -->
-          <div
-            class="bg-gradient-to-r from-gray-800 to-gray-600 p-6 rounded-lg shadow-lg mb-8"
-          >
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <!-- Filtre par marque -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >Brand</label
-                >
-                <select
-                  class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
-                >
-                  <option>All brands</option>
-                  <option>Apple</option>
-                  <option>Samsung</option>
-                  <option>Xiaomi</option>
-                  <option>Google</option>
-                </select>
-              </div>
-              <!-- Filtre par prix -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >Prix</label
-                >
-                <div class="flex flex-col gap-y-4">
-                  <div class="flex justify-between text-blue-400 font-medium">
-                    <span>0€</span>
-                    <span>2000€</span>
+            <div class="container mx-auto">
+               <!-- 1️⃣ Titre de la catégorie -->
+               <div class="flex items-center mb-6">
+                  <span class="text-5xl mr-4">🎮</span>
+                  <div>
+                     <h2 class="text-3xl font-bold text-gray-700">Gaming Consoles</h2>
+                     <p class="text-gray-600 text-xl font-semibold">
+                        Enjoy next-gen gaming with our powerful consoles!
+                     </p>
                   </div>
-                  <input
-                    type="range"
-                    min="0"
-                    max="2000"
-                    class="w-full accent-blue-500"
-                    id="phone-price-range"
-                  />
-                </div>
-              </div>
-              <!-- Filtre par caractéristiques -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >Phone Size</label
-                >
-                <select
-                  class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
-                >
-                  <option>All sizes</option>
-                  <option>< 5.5"</option>
-                  <option>5.5" - 6.0"</option>
-                  <option>6.1" - 6.5"</option>
-                  <option>> 6.5"</option>
-                </select>
-              </div>
-              <!-- Tri -->
-              <div>
-                <label class="block text-lg font-semibold text-white mb-2"
-                  >filter by</label
-                >
-                <select
-                  class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
-                >
-                  <option>Growing price</option>
-                  <option>Lowest price</option>
-                  <option>Highest price</option>
-                  <option>Newest</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <!-- 3️⃣ Grille des Produits -->
-          <div
-            id="phones-grid"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
-          >
-            <!-- Produit 1 -->
-            <div
-              class="card rounded-xl overflow-hidden bg-gray-800 bg-opacity-80 backdrop-blur"
-            >
-              <div class="image-container h-48">
-                <img
-                  src="assets/images/shopSection/shopHero.webp"
-                  alt="Gaming Laptop"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2 text-purple-300">
-                  Gaming Pro X1
-                </h3>
-                <p class="text-gray-300 mb-4">
-                  Puissant processeur, carte graphique RTX et écran haute
-                  fréquence pour une expérience gaming immersive.
-                </p>
-                <div class="flex items-center mb-2">
-                  <div class="text-yellow-400">⭐⭐⭐⭐⭐</div>
-                  <span class="text-gray-500 text-sm ml-2">(128 avis)</span>
-                </div>
-                <div class="flex space-x-2">
-                  <a
-                    href="product.html?id=123"
-                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md flex-1 text-center"
-                    >Voir détails</a
+               </div>
+               <!-- 2️⃣ Filtres & Tri -->
+               <div
+                  class="bg-transparent backdrop:blur-sm bg-opacity-40 border-2 shadow-lg shadow-gray-400 border-gray-400 p-6 rounded-lg  mb-8"
                   >
-                  <button
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-2 rounded-md transition-transform hover:scale-105"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--  Gaming Consoles section -->
-      <section
-        id="consoles"
-        class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
-      >
-        <div class="container mx-auto">
-          <!-- 1️⃣ Titre de la catégorie -->
-          <div class="flex items-center mb-6">
-            <span class="text-5xl mr-4">🎮</span>
-            <div>
-              <h2 class="text-3xl font-bold text-gray-700">Gaming Consoles</h2>
-              <p class="text-gray-600 text-xl font-semibold">
-                Enjoy next-gen gaming with our powerful consoles!
-              </p>
-            </div>
-          </div>
-          <!-- 2️⃣ Filtres & Tri -->
-          <div
-            class="bg-gradient-to-r from-cyan-600 to-cyan-500 p-6 rounded-lg shadow-lg mb-8"
-          >
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <!-- Filtre par marque -->
-              <div class="text-black">
-                <label class="block text-lg font-semibold mb-2">Brand</label>
-                <select
-                  class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md text-white bg-gradient-to-r from-gray-700 to-gray-500 hover:bg-gray-600 transition"
-                >
-                  <option>All brands</option>
-                  <option>Apple</option>
-                  <option>Samsung</option>
-                  <option>Xiaomi</option>
-                  <option>Google</option>
-                </select>
-              </div>
-              <!-- Filtre par prix -->
-              <div>
-                <label class="block text-lg font-semibold text-black mb-2"
-                  >Prix</label
-                >
-                <div class="flex flex-col gap-y-4">
-                  <div class="flex justify-between text-white font-medium">
-                    <span>0€</span>
-                    <span>2000€</span>
+                  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                     <!-- Filtre par marque -->
+                     <div class="text-black">
+                        <label class="block text-lg font-semibold mb-2">Brand</label>
+                        <select
+                           class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md text-white bg-gradient-to-r from-gray-700 to-gray-500 hover:bg-gray-600 transition"
+                           >
+                           <option>All brands</option>
+                           <option>Apple</option>
+                           <option>Samsung</option>
+                           <option>Xiaomi</option>
+                           <option>Google</option>
+                        </select>
+                     </div>
+                     <!-- Filtre par prix -->
+                     <div>
+                        <label class="block text-lg font-semibold text-black mb-2"
+                           >Prix</label
+                           >
+                        <div class="flex flex-col gap-y-4">
+                           <div class="flex justify-between text-black font-medium">
+                              <span>0€</span>
+                              <span>2000€</span>
+                           </div>
+                           <input
+                              type="range"
+                              min="0"
+                              max="2000"
+                              class="w-full accent-gray-700"
+                              id="phone-price-range"
+                              />
+                        </div>
+                     </div>
+                     <!-- Filtre par caractéristiques -->
+                     <div class="text-black">
+                        <label class="block text-lg font-semibold mb-2"
+                           >Phone Size</label
+                           >
+                        <select
+                           class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md text-white bg-gradient-to-r from-gray-700 to-gray-500 hover:bg-gray-600 transition"
+                           >
+                           <option>All sizes</option>
+                           <option>< 5.5"</option>
+                           <option>5.5" - 6.0"</option>
+                           <option>6.1" - 6.5"</option>
+                           <option>> 6.5"</option>
+                        </select>
+                     </div>
+                     <!-- Tri -->
+                     <div class="text-black">
+                        <label class="block text-lg font-semibold mb-2"
+                           >filter by</label
+                           >
+                        <select
+                           class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
+                           >
+                           <option>Growing price</option>
+                           <option>Lowest price</option>
+                           <option>Highest price</option>
+                           <option>Newest</option>
+                        </select>
+                     </div>
                   </div>
-                  <input
-                    type="range"
-                    min="0"
-                    max="2000"
-                    class="w-full accent-gray-700"
-                    id="phone-price-range"
-                  />
-                </div>
-              </div>
-              <!-- Filtre par caractéristiques -->
-              <div class="text-black">
-                <label class="block text-lg font-semibold mb-2"
-                  >Phone Size</label
-                >
-                <select
-                  class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md text-white bg-gradient-to-r from-gray-700 to-gray-500 hover:bg-gray-600 transition"
-                >
-                  <option>All sizes</option>
-                  <option>< 5.5"</option>
-                  <option>5.5" - 6.0"</option>
-                  <option>6.1" - 6.5"</option>
-                  <option>> 6.5"</option>
-                </select>
-              </div>
-              <!-- Tri -->
-              <div class="text-black">
-                <label class="block text-lg font-semibold mb-2"
-                  >filter by</label
-                >
-                <select
-                  class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
-                >
-                  <option>Growing price</option>
-                  <option>Lowest price</option>
-                  <option>Highest price</option>
-                  <option>Newest</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <!-- 3️⃣ Grille des Produits -->
-          <div
-            id="consoles-grid"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
-          >
-            <!-- Produit 1 -->
-            <div
-              class="card rounded-xl overflow-hidden bg-gray-800 bg-opacity-80 backdrop-blur"
-            >
-              <div class="image-container h-48">
-                <img
-                  src="assets/images/shopSection/shopHero.webp"
-                  alt="Gaming Laptop"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2 text-purple-300">
-                  Gaming Pro X1
-                </h3>
-                <p class="text-gray-300 mb-4">
-                  Puissant processeur, carte graphique RTX et écran haute
-                  fréquence pour une expérience gaming immersive.
-                </p>
-                <div class="flex items-center mb-2">
-                  <div class="text-yellow-400">⭐⭐⭐⭐⭐</div>
-                  <span class="text-gray-500 text-sm ml-2">(128 avis)</span>
-                </div>
-                <div class="flex space-x-2">
-                  <a
-                    href="product.html?id=123"
-                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md flex-1 text-center"
-                    >Voir détails</a
-                  >
+               </div>
+               <!-- 3️⃣ Grid Console Scroll -->
+               <div class="relative overflow-hidden text-black">
+                  <div id="consoles-grid" class="flex rounded-2xl space-x-4 md:space-x-8 py-6
+                     px-10 w-full transition-transform duration-500 ease-in-out" >
+                  </div>
                   <button
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-2 rounded-md transition-transform hover:scale-105"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
+                     id="prev-btn-consoles"
+                     class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+                     >
+                  <
                   </button>
-                </div>
-              </div>
+                  <button
+                     id="next-btn-consoles"
+                     class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+                     >
+                  >
+                  </button>
+               </div>
             </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <div id="footer-container"></div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (window.location.hash) {
-          setTimeout(function () {
-            let element = document.querySelector(window.location.hash);
-            if (element) {
-              element.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-          }, 300); // Attendre 300ms avant de scroller
-        }
-      });
-    </script>
-  </body>
+            <!-- Indicators -->
+            <div class="flex justify-center mt-6 space-x-2">
+               <button
+                  id="left-indecator-consoles"
+                  class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+                  ></button>
+               <button
+                  id="right-indecator-consoles"
+                  class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+                  ></button>
+            </div>
+            </div>
+         </section>
+      </main>
+      <div id="footer-container"></div>
+      <script>
+         document.addEventListener("DOMContentLoaded", function () {
+           if (window.location.hash) {
+             setTimeout(function () {
+               let element = document.querySelector(window.location.hash);
+               if (element) {
+                 element.scrollIntoView({ behavior: "smooth", block: "start" });
+               }
+             }, 300); // Attendre 300ms avant de scroller
+           }
+         });
+      </script>
+   </body>
 </html>

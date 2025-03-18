@@ -108,44 +108,128 @@ function genreateNewProductCard(data) {
   return (data.oldPrice - data.oldPrice * (data.discount / 100)).toFixed(2);
 }
 
-export function createProductPurchaseCard(product) {
+export function createProductPurchaseCard(product,category) {
+
+  const categories = [
+    "phones",
+    "headsets",
+    "consoles",
+    "smartwatches",]
+
+  const colors = [
+    "from-gray-700 to-gray-400",
+    "from-neutral-100 to-neutral-600",
+    "from-cyan-600 to-cyan-100",
+    "from-white to-gray-400",
+  ];
+
+  const bgColor = colors[categories.indexOf(category)];
+  console.log(bgColor);
+
+
+  // Déterminer la couleur du badge en fonction du discount
+  let badgeColor;
+  if (product.discount < 30) {
+    badgeColor = "bg-amber-600";
+  } else if (product.discount < 50) {
+    badgeColor = "bg-green-400";
+  } else if (product.discount == 0 || product.discount == null) {
+    badgeColor = "hidden";
+  } else {
+    badgeColor = "bg-violet-800";
+  }
+
   // Créer l'élément principal de la carte
   const card = document.createElement("div");
   card.className =
-    "flex-shrink-0 w-64 md:w-80 rounded-xl overflow-hidden bg-gradient-to-br from-gray-900 to-gray-400 bg-opacity-80 backdrop-blur hover:scale-105 transition-all duration-300 hover:translate-y-2 group";
+    `relative flex-shrink-0 w-64 md:w-80 rounded-3xl shadow-lg shadow-gray-600/50 overflow-hidden bg-gradient-to-br ${bgColor} border-2 border-gray-800 hover:shadow-xl transition-all duration-300 hover:scale-105 group animate-fadeIn`;
 
-  // Structure HTML interne
+  // Structure HTML interne avec animations et logo promotionnel
   card.innerHTML = `
-      <div class="image-container h-36 md:h-48  hover:scale-y-105">
-        <img src="${product.image}" alt="${
-    product.title
-  }" class="w-full h-full object-cover" />
+      <!-- Promotional Badge avec couleur dynamique -->
+      <div class="absolute top-2 left-2 ${badgeColor} z-20 text-white text-lg font-bold px-3 py-1 rounded-full shadow-md transform rotate-6 animate-pulse-rotated visible-always"">
+        -${product.discount ? product.discount : ""} off
       </div>
-      <div class="p-6">
-        <h3 class="text-xl font-bold mb-2 text-white">${product.title}</h3>
-        <p class="text-gray-200 font-semibold mb-4">${product.description}</p>
-        <p class="text-gray-900 text-xl md:text-3xl font-bold tracking-wide mb-4">${
-          product.price ? product.price : Math.floor(Math.random() * 1000)
-        } €</p>
-        <div class="flex items-center mb-2">
-          <div class="text-yellow-400">${"⭐".repeat(product.rating)}</div>
-        </div>
-        <div class="flex space-x-2">
+
+      <div class="h-36 md:h-48 overflow-hidden hover:scale-105 transition-transform duration-500 ease-out border-b-2 border-gray-800">
+        <img src="${product.image || "default-image.jpg"}" alt="${
+    product.title || "Product"
+  }" class="h-full w-full object-cover  duration-300" />
+      </div>
+
+      <div class="px-6 py-4 flex flex-col items-center text-center space-y-2">
+        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 animate-slideIn">
+          ${product.title || "Gaming Pro X1"}
+        </h3>
+        <p class="text-base md:text-lg text-gray-600 font-medium mb-4 animate-fadeInDelay">
+          ${product.description?.split(",")[0] || "Puissant processeur"}
+        </p>
+        <p class="text-gray-900 text-base font-bold tracking-wide bg-gray-300 px-2 py-1 rounded-lg animate-popIn">
+          From ${
+            product.price
+              ? (product.price / 12).toFixed(2)
+              : (Math.floor(Math.random() * 1000) / 12).toFixed(2)
+          } €/month or 
+          ${product.price ? product.price : Math.floor(Math.random() * 1000)} €
+        </p>
+      </div>
+      <div class="flex flex-row space-x-2 px-2 md:px-8 mb-2 ">
           <a href="${
             product.detailsUrl
-          }" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded-md flex-1 text-center">
-            Voir détails
+          }" class="bg-gradient-to-br from-blue-900 to-blue-600 text-white rounded-3xl flex-1 text-center items-center justify-center px-2 py-2 hover:scale-105">
+            See More
           </a>
-          <button class="bg-black hover:bg-gray-800 text-white px-2 py-2 rounded-md transition-transform hover:scale-105">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
+          <button class="bg-black hover:bg-gray-800 rounded-3xl text-white flex flex-row gap-x-2 justify-center w-[50%] text-center items-center px-2 py-2 transition-transform hover:scale-105">
+          <span class="text-base font-semibold">
+          Add to cart<span class="text-lg font-bold"> > </span>
+          </span>   
           </button>
-        </div> 
-      </div>
+        </div>
     `;
+
+  // Add animation keyframes via CSS
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { transform: translateX(-20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideInRight {
+      from { transform: translateX(20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideInLeft {
+      from { transform: translateX(-20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fadeInDelay {
+      0% { opacity: 0; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes pulse-rotated {
+      0%, 100% { transform: rotate(6deg) scale(1); }
+      50% { transform: rotate(6deg) scale(1.05); }
+    }
+    .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+    .animate-slideIn { animation: slideIn 0.6s ease-out; }
+    .animate-slideInRight { animation: slideInRight 0.6s ease-out; }
+    .animate-slideInLeft { animation: slideInLeft 0.6s ease-out; }
+    .animate-popIn { animation: popIn 0.6s ease-out; }
+    .animate-fadeInDelay { animation: fadeInDelay 0.8s ease-out; }
+    .animate-pulse-rotated { animation: pulse-rotated 2s infinite; }
+    
+  `;
+  document.head.appendChild(style);
 
   return card;
 }

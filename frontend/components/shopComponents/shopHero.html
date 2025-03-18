@@ -6,9 +6,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
+  <style>
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.02);
+      }
+    }
+    .animate-pulse-slow {
+      animation: pulse 7s infinite;
+    }
+  </style>
   <body>
     <section
-      class="relative bg-gradient-to-r from-gray-200 via-neutral-500 to-zinc-600 text-gray-800 rounded-xl mt-2 hover:shadow-xl hover:shadow-zinc-700 transition duration-300"
+      class="animate-pulse-slow relative bg-gradient-to-r from-gray-200 via-neutral-500 to-zinc-600 text-gray-800 rounded-xl mt-2 hover:shadow-xl hover:shadow-zinc-700 transition duration-300"
     >
       <div class="container px-8 py-16 md:py-28 relative z-10">
         <div
@@ -20,12 +34,13 @@
           <p class="text-lg md:text-xl mb-8 opacity-90">
             A wide selection of quality electronic devices for all your needs.
           </p>
-          <button
-            class="bg-neutral-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition duration-300 animate-pulse-slow"
-          >
-            Explore the categories
-            <i class="fas fa-chevron-right ml-2"></i>
-          </button>
+          <a href="shop.html#smartwatches">
+            <button
+              class="bg-neutral-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition duration-300 animate-pulse-slow"
+            >
+              Explore the categories
+              <i class="fas fa-chevron-right ml-2"></i></button
+          ></a>
         </div>
       </div>
       <div class="absolute left-1/3 inset-y-0 w-2/3 hidden lg:block">

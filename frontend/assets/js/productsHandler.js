@@ -1,7 +1,6 @@
 import { createProductPurchaseCard } from "./rendredComponents/productCard.js";
 import { productData } from "./static/stataicData.js";
 
-
 console.log("✅ productsHandler.js is loaded!");
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -13,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Générer les cartes produits
   productData.forEach((product) => {
-    const productCard = createProductPurchaseCard(product);
+    const productCard = createProductPurchaseCard(product,'smartwatches');
     smartwatchesGrid.appendChild(productCard);
   });
 

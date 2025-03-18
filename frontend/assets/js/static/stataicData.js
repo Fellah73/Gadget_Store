@@ -79,6 +79,9 @@ function getRandomImageUrl() {
     "assets/images/heroSection/headphones.webp",
     "assets/images/heroSection/smartwatch.webp",
     "assets/images/heroSection/gamingConsole.webp",
+    "assets/images/heroSection/iphoneWhite.jpg",
+    "https://smartshop.re/19822-superlarge_default/apple-iphone-16e.jpg",
+    
   ];
   const randomIndex = Math.floor(Math.random() * imageUrls.length);
   return imageUrls[randomIndex];
@@ -93,6 +96,7 @@ export const productData = [
       "Puissant processeur, carte graphique RTX et écran haute fréquence pour une expérience gaming immersive.",
     rating: 5,
     reviews: 128,
+    discount: 50,
     detailsUrl: "product.html?id=1",
   },
   {
@@ -104,7 +108,8 @@ export const productData = [
     rating: 5,
     reviews: 128,
     detailsUrl: "product.html?id=1",
-    price : 100
+    price : 100,
+    discount : 40
   },
   {
     id: 1,
@@ -115,7 +120,8 @@ export const productData = [
     rating: 5,
     reviews: 128,
     detailsUrl: "product.html?id=1",
-    price : 100
+    price : 100,
+    discount : 30
   },
   {
     id: 1,
@@ -126,7 +132,7 @@ export const productData = [
     rating: 5,
     reviews: 128,
     detailsUrl: "product.html?id=1",
-    price : 100
+    price : 100,
   },
   {
     id: 1,
@@ -137,6 +143,8 @@ export const productData = [
     rating: 5,
     reviews: 128,
     detailsUrl: "product.html?id=1",
+    price : 100,
+    discount : 20
   },
   {
     id: 1,
@@ -147,6 +155,21 @@ export const productData = [
     rating: 5,
     reviews: 128,
     detailsUrl: "product.html?id=1",
+    price : 100,
+    discount : 20
+  },
+  {
+    id: 1,
+    image: getRandomImageUrl(),
+    title: "Gaming Pro X1",
+    description:
+      "Puissant processeur, carte graphique RTX et écran haute fréquence pour une expérience gaming immersive.",
+    rating: 5,
+    reviews: 128,
+    discount: 20,
+    detailsUrl: "product.html?id=1",
+    price : 100,
+    discount : 70
   },
   {
     id: 1,
@@ -157,15 +180,7 @@ export const productData = [
     rating: 5,
     reviews: 128,
     detailsUrl: "product.html?id=1",
-  },
-  {
-    id: 1,
-    image: getRandomImageUrl(),
-    title: "Gaming Pro X1",
-    description:
-      "Puissant processeur, carte graphique RTX et écran haute fréquence pour une expérience gaming immersive.",
-    rating: 5,
-    reviews: 128,
-    detailsUrl: "product.html?id=1",
+    price : 100,
+    discount : 20
   },
 ];
