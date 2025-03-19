@@ -93,8 +93,8 @@
                <div class="flex items-center mb-6">
                   <span class="text-5xl mr-4">⌚</span>
                   <div>
-                     <h2 class="text-3xl font-bold text-gray-700">Smartwatches</h2>
-                     <p class="text-gray-600 text-xl font-semibold">
+                     <h2 class="text-3xl font-bold text-red-700">Smartwatches</h2>
+                     <p class="text-red-700 text-xl font-semibold">
                         Stay connected and track your health with our smartwatches!
                      </p>
                   </div>
@@ -191,16 +191,20 @@
                   </button>
                </div>
                <!-- Indicators -->
-               <div class="flex justify-center mt-6 space-x-2">
-                  <button
-                     id="left-indecator-smartwatches"
-                     class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
-                     ></button>
-                  <button
-                     id="right-indecator-smartwatches"
-                     class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
-                     ></button>
-               </div>
+               <div class="flex justify-between items-center mt-6">
+                <!-- Indicateurs centrés -->
+               <div class="flex justify-center space-x-2 flex-1">
+               <button id="left-indecator-smartwatches" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
+              <button id="right-indecator-smartwatches" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
+            </div>
+          
+            <!-- Bouton "Show more" aligné à droite -->
+            <button 
+              id="load-more-smartwatches"
+              class="bg-gray-500 hover:scale-105 hover:shadow-xl hover:shadow-gray-500 text-white font-bold py-2 px-4 rounded-3xl ml-auto">
+              Show more
+            </button>
+          </div>
               
        
          </section>
@@ -436,16 +440,20 @@
          </div>
          </div>
          <!-- Indicators -->
-         <div class="flex justify-center mt-6 space-x-2">
-         <button
-            id="left-indecator-phones"
-            class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
-            ></button>
-         <button
-            id="right-indecator-phones"
-            class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
-            ></button>
-         </div>
+         <div class="flex justify-between items-center mt-6">
+            <!-- Indicateurs centrés -->
+            <div class="flex justify-center space-x-2 flex-1">
+              <button id="left-indecator-phones" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
+              <button id="right-indecator-phones" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
+            </div>
+          
+            <!-- Bouton "Show more" aligné à droite -->
+            <button 
+              id="load-more-phones"
+              class="bg-gray-500 hover:scale-105 hover:shadow-xl hover:shadow-gray-500 text-white font-bold py-2 px-4 rounded-3xl ml-auto">
+              Show more
+            </button>
+          </div>
          </div>
          </section>
          <!--  Gaming Consoles section -->
@@ -552,19 +560,29 @@
                </div>
             </div>
             <!-- Indicators -->
-            <div class="flex justify-center mt-6 space-x-2">
-               <button
-                  id="left-indecator-consoles"
-                  class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
-                  ></button>
-               <button
-                  id="right-indecator-consoles"
-                  class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
-                  ></button>
+         <div class="flex justify-between items-center mt-6">
+            <!-- Indicateurs centrés -->
+            <div class="flex justify-center space-x-2 flex-1">
+              <button id="left-indecator-consoles" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
+              <button id="right-indecator-consoles" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
             </div>
+          
+            <!-- Bouton "Show more" aligné à droite -->
+            <button 
+              id="load-more-consoles"
+              class="bg-gray-500 hover:scale-105 hover:shadow-xl hover:shadow-gray-500 text-white font-bold py-2 px-4 rounded-3xl ml-auto">
+              Show more
+            </button>
+          </div>
             </div>
          </section>
       </main>
+
+     <!-- Banner -->
+
+     <div id="banners-container" class="pt-16 p-4"></div>
+
+      <!-- Footer -->
       <div id="footer-container"></div>
       <script>
          document.addEventListener("DOMContentLoaded", function () {

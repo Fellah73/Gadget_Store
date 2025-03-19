@@ -9,11 +9,30 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("page loaded");
   //smartwatches
   const consolesGrid = document.getElementById("consoles-grid");
+  const loadMoreconsolesBtn = document.getElementById("load-more-consoles");
+  let visibleProducts = 2;
 
-  // Générer les cartes produits
-  productData.forEach((product) => {
-    const productCard = createProductPurchaseCard(product,"consoles");
-    consolesGrid.appendChild(productCard);
+  function displayProducts() {
+    productData
+      .slice(visibleProducts - 2, visibleProducts)
+      .forEach((product) => {
+        const productCard = createProductPurchaseCard(product, "consoles");
+        consolesGrid.appendChild(productCard);
+      });
+
+    // Cacher le bouton si tous les produits sont affichés
+    if (visibleProducts >= productData.length) {
+      loadMoreconsolesBtn.style.display = "none";
+    }
+  }
+
+  // Charger les premiers produits
+  displayProducts();
+
+  // Gérer le clic sur "Voir plus"
+  loadMoreconsolesBtn.addEventListener("click", () => {
+    visibleProducts += 2;
+    displayProducts();
   });
 
   //scroll handler

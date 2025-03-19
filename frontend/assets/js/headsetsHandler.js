@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // handle dynamic des differents scroll dus produits
 
   console.log("page loaded");
-  //smartwatches
+
   const headsetsGrid = document.getElementById("headsets-grid");
   const loadMoreBtn = document.getElementById("load-more-headsets");
   let visibleProducts = 3;

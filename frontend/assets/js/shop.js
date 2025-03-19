@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   fetch("components/navbar.html")
     .then((response) => response.text())
@@ -72,8 +71,13 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(section);
   });
 
-
-
+  //load banner
+  fetch("components/shopComponents/shopBanner.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("banners-container").innerHTML = data;
+    })
+    .catch((error) => console.error("Error loading banner:", error));
 
   // load footer
   fetch("components/footer.html")
@@ -98,7 +102,3 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.error("Error loading footer section:", error));
 });
-
-
-
-

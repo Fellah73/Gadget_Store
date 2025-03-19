@@ -9,11 +9,32 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("page loaded");
   //smartwatches
   const phonesGrid = document.getElementById("phones-grid");
+  const loadMoreBtn = document.getElementById("load-more-phones");
+  let visibleProducts = 2;
 
-  // Générer les cartes produits
-  productData.forEach((product) => {
-    const productCard = createProductPurchaseCard(product,"phones");
-    phonesGrid.appendChild(productCard);
+  function displayProducts() {
+    productData
+      .slice(visibleProducts - 2, visibleProducts)
+      .forEach((product) => {
+        const productCard = createProductPurchaseCard(product, "phones");
+        phonesGrid.appendChild(productCard);
+      });
+
+    // Cacher le bouton si tous les produits sont affichés
+    if (visibleProducts >= productData.length) {
+      loadMoreBtn.style.display = "none";
+    }
+  }
+ 
+
+  // Charger les premiers produits
+  displayProducts();
+
+
+  // Gérer le clic sur "Voir plus"
+  loadMoreBtn.addEventListener("click", () => {
+    visibleProducts += 2;
+    displayProducts();
   });
 
   //scroll handler

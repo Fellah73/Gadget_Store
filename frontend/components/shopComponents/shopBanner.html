@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apple Watch Banner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-transparent p-2 md:p-4 border-2 border-black shadow-xl shadow-gray-500"
+  >
+    <!-- Container principal : flex en mobile, grid en md+ -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-4">
+      <!-- Premier panneau -->
+      <div class="relative w-full h-[600px]">
+        <img
+          src="/frontend/assets/images/shopSection/smartWatch.webp"
+          alt="images"
+          class="w-full h-full object-cover absolute inset-0 rounded-3xl"
+        />
+        <div
+          class="absolute top-[10%] left-[73%] w-[15%] h-full flex flex-col justify-start items-center gap-y-2 md:gap-y-8 pt-8 px-2 ml-[10%]"
+        >
+          <p
+            class="text-gray-300 font-semibold tracking-wide text-sm md:text-lg"
+          >
+            Stay connected in style with the Apple Watch SE. Track your health,
+            receive notifications, and enjoy seamless performance. Upgrade
+            it today!
+          </p>
+        </div>
+        <a class="absolute bottom-16 right-4" href="./product.html?id=12424">
+          <button
+            class="bg-blue-500 hover:scale-105 text-white text-lg font-semibold py-2 px-6 rounded-3xl"
+          >
+            Buy Now
+            <span class="ml-2 rounded-full bg-blue-700 px-3 py-1"> > </span>
+          </button>
+        </a>
+        <div
+          class="absolute inset-y-0 right-[60%] w-[40%] flex flex-col gap-y-4 py-4 mt-8 items-center h-full"
+        >
+          <p
+            class="text-white font-semibold tracking-wide text-lg md:text-3xl bg-opacity-50 px-4 py-2 rounded-lg"
+          >
+            Smart Watch
+          </p>
+          <p class="text-white font-bold tracking-wide text-3xl md:text-6xl">
+            Apple <br />
+            Watch <br />SE
+          </p>
+          <p
+            class="text-gray-200 font-semibold tracking-wide text-sm md:text-lg mt-24 ml-8"
+          >
+            Apple Watch is a line of smartwatches produced by Apple Inc. It
+            incorporates fitness tracking, health-oriented capabilities.
+          </p>
+        </div>
+      </div>
+
+      <!-- Deuxième panneau -->
+      <div class="relative w-full h-[600px]">
+        <img
+          src="/frontend/assets/images/shopSection/iphoneBanner.webp"
+          alt="images"
+          class="w-full h-full object-cover absolute inset-0 rounded-3xl"
+        />
+        <div
+          class="absolute top-[10%] right-[80%] w-[15%] h-full flex flex-col justify-start items-center gap-y-2 md:gap-y-8 pt-8 px-2 ml-[10%]"
+        >
+          <p
+            class="text-gray-300 font-semibold tracking-wide text-sm md:text-lg"
+          >
+            Experience the power of the iPhone 14 sleek design, advanced
+            cameras, and unbeatable performance. Upgrade now and redefine your
+            mobile experience!
+          </p>
+        </div>
+        <a class="absolute bottom-16 left-4" href="./product.html?id=12424">
+          <button
+            class="bg-blue-500 hover:scale-105 text-white text-lg font-semibold py-2 px-6 rounded-3xl"
+          >
+            Buy Now
+            <span class="ml-2 rounded-full bg-blue-700 px-3 py-1"> > </span>
+          </button>
+        </a>
+        <div
+          class="absolute top-2 left-[68%] w-[30%] flex flex-col gap-y-4 py-4 mt-4 items-center h-full"
+        >
+          <p
+            class="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-zinc-200 font-semibold tracking-wide text-lg md:text-3xl bg-opacity-50 px-4 py-2 rounded-lg"
+          >
+            Smart Watch
+          </p>
+          <p
+            class="text-white font-bold tracking-wide text-3xl md:text-6xl"
+          >
+            Apple <br />
+            Watch <br />SE
+          </p>
+          <p
+            class="text-gray-200 font-semibold tracking-wide text-sm md:text-lg mt-6 ml-10 w-[70%]"
+          >
+            Don’t miss out on the ultimate smartphone innovation. The iPhone 14
+            delivers speed, style, and top-tier technology. Get yours today!
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
