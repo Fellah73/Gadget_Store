@@ -142,7 +142,7 @@ export function createProductPurchaseCard(product,category) {
   // Créer l'élément principal de la carte
   const card = document.createElement("div");
   card.className =
-    `relative flex-shrink-0 w-64 md:w-80 rounded-3xl shadow-lg shadow-gray-600/50 overflow-hidden bg-gradient-to-br ${bgColor} border-2 border-gray-800 hover:shadow-xl transition-all duration-300 hover:scale-105 group animate-fadeIn`;
+    `relative flex-shrink-0 w-64 md:w-80 h-full shadow-lg shadow-gray-600/50 overflow-hidden bg-gradient-to-br ${bgColor} border-2 border-gray-800 hover:shadow-xl transition-all duration-300 hover:scale-105 group animate-fadeIn`;
 
   // Structure HTML interne avec animations et logo promotionnel
   card.innerHTML = `

@@ -79,6 +79,38 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.error("Error loading banner:", error));
 
+
+    //load smartWatch_banner
+    fetch("components/shopComponents/banners/smartWatchBanner.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("smarwatches-banner").innerHTML = data;
+    })
+    .catch((error) => console.error("Error loading banner:", error));
+
+   // load phone banner
+   fetch("components/shopComponents/banners/phoneBanner.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("phone-banner").innerHTML = data;
+    })
+    .catch((error) => console.error("Error loading banner:", error));
+
+    // load console banner
+    fetch("components/shopComponents/banners/consoleBanner.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("consoles-container").innerHTML = data;
+    })
+    .catch((error) => console.error("Error loading banner:", error));
+
+    // load headset banner
+    fetch("components/shopComponents/banners/headsetBanner.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("headsets-container").innerHTML = data;
+    })
+    .catch((error) => console.error("Error loading banner:", error));
   // load footer
   fetch("components/footer.html")
     .then((response) => response.text())
