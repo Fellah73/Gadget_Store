@@ -108,128 +108,147 @@ function genreateNewProductCard(data) {
   return (data.oldPrice - data.oldPrice * (data.discount / 100)).toFixed(2);
 }
 
-export function createProductPurchaseCard(product,category) {
-
-  const categories = [
-    "phones",
-    "headsets",
-    "consoles",
-    "smartwatches",]
-
+export function createProductPurchaseCard(product, category) {
+  // Configuration des catégories et couleurs de fond
+  const categories = ["phones", "headsets", "consoles", "smartwatches"];
   const colors = [
-    "from-gray-700 to-gray-400",
-    "from-neutral-100 to-neutral-600",
-    "from-cyan-600 to-cyan-100",
-    "from-white to-gray-400",
+    "from-blue-500 to-blue-700",
+    "from-purple-500 to-purple-700",
+    "from-blue-500 to-blue-700",
+    "from-red-500 to-red-700",
   ];
 
-  const bgColor = colors[categories.indexOf(category)];
-  console.log(bgColor);
+  // Générer un badge de réduction dynamique
+  const generateDiscountBadge = (discount) => {
+    if (!discount || discount === 0) return "";
 
+    let badgeColor = "bg-amber-600";
+    if (discount >= 30 && discount < 50) badgeColor = "bg-green-500";
+    if (discount >= 50) badgeColor = "bg-violet-800";
 
-  // Déterminer la couleur du badge en fonction du discount
-  let badgeColor;
-  if (product.discount < 30) {
-    badgeColor = "bg-amber-600";
-  } else if (product.discount < 50) {
-    badgeColor = "bg-green-400";
-  } else if (product.discount == 0 || product.discount == null) {
-    badgeColor = "hidden";
-  } else {
-    badgeColor = "bg-violet-800";
-  }
-
-  // Créer l'élément principal de la carte
-  const card = document.createElement("div");
-  card.className =
-    `relative flex-shrink-0 w-64 md:w-80 h-full shadow-lg shadow-gray-600/50 overflow-hidden bg-gradient-to-br ${bgColor} border-2 border-gray-800 hover:shadow-xl transition-all duration-300 hover:scale-105 group animate-fadeIn`;
-
-  // Structure HTML interne avec animations et logo promotionnel
-  card.innerHTML = `
-      <!-- Promotional Badge avec couleur dynamique -->
-      <div class="absolute top-2 left-2 ${badgeColor} z-20 text-white text-lg font-bold px-3 py-1 rounded-full shadow-md transform rotate-6 animate-pulse-rotated visible-always"">
-        -${product.discount ? product.discount : ""} off
+    return `
+      <div class="absolute top-2 left-2 ${badgeColor} text-white text-sm font-bold px-2 py-1 rounded-full shadow-lg z-10">
+        -${discount}%
       </div>
-
-      <div class="h-36 md:h-48 overflow-hidden hover:scale-105 transition-transform duration-500 ease-out border-b-2 border-gray-800">
-        <img src="${product.image || "default-image.jpg"}" alt="${
-    product.title || "Product"
-  }" class="h-full w-full object-cover  duration-300" />
-      </div>
-
-      <div class="px-6 py-4 flex flex-col items-center text-center space-y-2">
-        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 animate-slideIn">
-          ${product.title || "Gaming Pro X1"}
-        </h3>
-        <p class="text-base md:text-lg text-gray-600 font-medium mb-4 animate-fadeInDelay">
-          ${product.description?.split(",")[0] || "Puissant processeur"}
-        </p>
-        <p class="text-gray-900 text-base font-bold tracking-wide bg-gray-300 px-2 py-1 rounded-lg animate-popIn">
-          From ${
-            product.price
-              ? (product.price / 12).toFixed(2)
-              : (Math.floor(Math.random() * 1000) / 12).toFixed(2)
-          } €/month or 
-          ${product.price ? product.price : Math.floor(Math.random() * 1000)} €
-        </p>
-      </div>
-      <div class="flex flex-row space-x-2 px-2 md:px-8 mb-2 ">
-          <a href="${
-            product.detailsUrl
-          }" class="bg-gradient-to-br from-blue-900 to-blue-600 text-white rounded-3xl flex-1 text-center items-center justify-center px-2 py-2 hover:scale-105">
-            See More
-          </a>
-          <button class="bg-black hover:bg-gray-800 rounded-3xl text-white flex flex-row gap-x-2 justify-center w-[50%] text-center items-center px-2 py-2 transition-transform hover:scale-105">
-          <span class="text-base font-semibold">
-          Add to cart<span class="text-lg font-bold"> > </span>
-          </span>   
-          </button>
-        </div>
     `;
+  };
 
-  // Add animation keyframes via CSS
-  const style = document.createElement("style");
-  style.textContent = `
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+  // Calculer le prix après réduction
+  const calculateDiscountedPrice = (price, discount) => {
+    if (!discount) return price;
+    return (price * (1 - discount / 100)).toFixed(2);
+  };
+
+  // Générer des étoiles de notation
+  const generateRatingStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    let starsHTML = "";
+
+    for (let i = 0; i < 5; i++) {
+      if (i < fullStars) {
+        starsHTML += `<span class="text-yellow-500">★</span>`;
+      } else if (i === fullStars && halfStar) {
+        starsHTML += `<span class="text-yellow-500">½</span>`;
+      } else {
+        starsHTML += `<span class="text-gray-300">★</span>`;
+      }
     }
-    @keyframes slideIn {
-      from { transform: translateX(-20px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slideInRight {
-      from { transform: translateX(20px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slideInLeft {
-      from { transform: translateX(-20px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes popIn {
-      0% { transform: scale(0.9); opacity: 0; }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    @keyframes fadeInDelay {
-      0% { opacity: 0; }
-      50% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    @keyframes pulse-rotated {
-      0%, 100% { transform: rotate(6deg) scale(1); }
-      50% { transform: rotate(6deg) scale(1.05); }
-    }
-    .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
-    .animate-slideIn { animation: slideIn 0.6s ease-out; }
-    .animate-slideInRight { animation: slideInRight 0.6s ease-out; }
-    .animate-slideInLeft { animation: slideInLeft 0.6s ease-out; }
-    .animate-popIn { animation: popIn 0.6s ease-out; }
-    .animate-fadeInDelay { animation: fadeInDelay 0.8s ease-out; }
-    .animate-pulse-rotated { animation: pulse-rotated 2s infinite; }
-    
+    return starsHTML;
+  };
+
+  // Sélectionner le fond de couleur en fonction de la catégorie
+  const bgColor = colors[categories.indexOf(category)] || colors[0];
+
+  const rating = Math.floor(Math.random() * 5) + 1;
+  const reviews = Math.floor(Math.random() * 100) + 1;
+  const discount = Math.floor(Math.random() * 51);
+  // Créer l'élément de la carte
+  const card = document.createElement("div");
+  card.className = `
+    relative flex-shrink-0 w-64 md:w-[320px] h-[450px] 
+    bg-gradient-to-br ${bgColor} 
+    text-white rounded-2xl 
+    shadow-2xl overflow-hidden 
+    transform transition-all duration-300 
+    hover:scale-105 hover:shadow-xl
   `;
-  document.head.appendChild(style);
+
+  // Contenu HTML de la carte
+  card.innerHTML = `
+    <div class="relative h-full flex flex-col">
+      ${generateDiscountBadge(discount)}
+      
+      <div class="h-[55%] w-full overflow-hidden relative">
+        <img 
+          src="${product.image || "default-image.jpg"}" 
+          alt="${product.name}" 
+          class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+        />
+      </div>
+      
+      <div class="p-4 flex-grow flex flex-col justify-between">
+        <div>
+          <h3 class="text-xl font-bold mb-2 truncate">${product.name}</h3>
+          
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center">
+              ${generateRatingStars(rating || 0)}
+              <span class="text-sm ml-2 text-gray-200">
+                (${reviews || 0} avis)
+              </span>
+            </div>
+            
+            <span class="text-sm bg-white/20 px-2 py-1 text-center rounded-full">
+              ${category || "Product"}
+            </span>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="text-2xl font-bold">
+                ${calculateDiscountedPrice(product.price, discount)} DZD
+              </span>
+              ${
+                discount || true
+                  ? `<span class="text-sm line-through text-gray-300">
+                   ${product.price} DZD
+                 </span>`
+                  : ""
+              }
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex space-x-2">
+    <button class="
+        w-1/2 bg-white text-black 
+        py-2 rounded-lg font-semibold 
+        hover:bg-opacity-90 
+        transition-colors duration-300 
+        flex items-center justify-center
+        ">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        Add to Cart
+    </button>
+    <a href="#" class="
+        w-1/2 bg-transparent border-2 border-white text-white
+        py-2 rounded-lg font-semibold 
+        hover:bg-white hover:text-black
+        transition-colors duration-300 
+        flex items-center justify-center
+        ">
+        View Product
+    </a>
+</div>
+</div>
+</div>
+        
+         
+  `;
 
   return card;
 }
