@@ -112,10 +112,10 @@ export function createProductPurchaseCard(product, category) {
   // Configuration des catégories et couleurs de fond
   const categories = ["phones", "headsets", "consoles", "smartwatches"];
   const colors = [
+    "from-gray-700 to-gray-900",
+    "from-neutral-500 to-neutral-700",
     "from-blue-500 to-blue-700",
-    "from-purple-500 to-purple-700",
-    "from-blue-500 to-blue-700",
-    "from-red-500 to-red-700",
+    "from-gray-400 to-gray-600",
   ];
 
   // Générer un badge de réduction dynamique
@@ -166,7 +166,7 @@ export function createProductPurchaseCard(product, category) {
   // Créer l'élément de la carte
   const card = document.createElement("div");
   card.className = `
-    relative flex-shrink-0 w-64 md:w-[320px] h-[450px] 
+    relative flex-shrink-0 w-64 md:w-[320px] h-[475px] 
     bg-gradient-to-br ${bgColor} 
     text-white rounded-2xl 
     shadow-2xl overflow-hidden 

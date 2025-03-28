@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   );
   const sortByFilter = document.getElementById("consoles-sort-filter");
 
-  minPriceValue.textContent = priceRange.min;
-  maxPriceValue.textContent = priceRange.max;
+ 
 
   let allProducts = [];
   let brands = [];
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   function populateBrandFilter(brands) {
-    brandSelect.innerHTML = '<option value="">Toutes les marques</option>';
+    brandSelect.innerHTML = '<option value="">All Brands</option>';
     brands.forEach((brand) => {
       const option = document.createElement("option");
       option.value = brand;
@@ -58,7 +57,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   function updatePriceRange() {
     const maxPrice = Math.max(...allProducts.map((p) => parseFloat(p.price)));
     const minPrice = Math.min(...allProducts.map((p) => parseFloat(p.price)));
-
+    maxPriceValue.textContent = maxPrice;
+    minPriceValue.textContent = minPrice;
     priceRange.max = maxPrice;
     priceRange.min = minPrice;
     priceRange.value = maxPrice;

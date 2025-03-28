@@ -108,22 +108,20 @@
                </div>
                <!-- 2️⃣ Filtres & Tri -->
                <div
-                  class="bg-transparent backdrop:blur-sm bg-opacity-40 border-2 shadow-lg shadow-gray-400 border-gray-400 p-6 rounded-lg mb-2"
+                  class="bg-gray-200 backdrop-blur-sm bg-opacity-80 border-2 border-gray-400 shadow-xl shadow-blue-100 p-6 rounded-2xl mb-8"
                   >
-                  <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
                      <!-- Filtre par marque -->
                      <div>
                         <label class="block text-lg font-semibold text-black mb-2"
+                        
                            >Brand</label
                            >
                         <select
-                           class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
+                        id="smartwatches-brand-filter"   
+                        class="z-20 w-full p-3 border-2 border-gray-500 rounded-md bg-gray-300 font-bold text-black hover:bg-gray-400 transition"
                            >
-                           <option>All brands</option>
-                           <option>Apple</option>
-                           <option>Samsung</option>
-                           <option>Xiaomi</option>
-                           <option>Google</option>
+                           
                         </select>
                      </div>
                      <!-- Filtre par prix -->
@@ -133,66 +131,53 @@
                            >
                         <div class="flex flex-col gap-y-4">
                            <div
-                              class="flex justify-between text-black font-medium tracking-wide text-lg"
+                              class="flex justify-between text-black font-medium tracking-wide text-base"
                               >
-                              <span>0 €</span>
-                              <span>2000 €</span>
+                              <span id="smartwatches-price-min-range-value">0 </span>
+                                <p class="text-xl tracking-wide" id="smartwatches-price-range-value">current price</p>
+                               <span id="smartwatches-price-max-range-value"> 0</span>
                            </div>
                            <input
                               type="range"
                               min="0"
-                              max="2000"
+                              max="555555555"
                               class="w-full accent-black"
-                              id="phone-price-range"
+                              id="smartwatches-price-range"
                               />
                         </div>
                      </div>
-                     <!-- Filtre par caractéristiques -->
-                     <div>
-                        <label class="block text-lg font-semibold text-black mb-2"
-                           >Phone Size</label
-                           >
-                        <select
-                           class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
-                           >
-                           <option>All sizes</option>
-                           <option>< 5.5"</option>
-                           <option>5.5" - 6.0"</option>
-                           <option>6.1" - 6.5"</option>
-                           <option>> 6.5"</option>
-                        </select>
-                     </div>
+                     
+                     
                      <!-- Tri -->
                      <div>
                         <label class="block text-lg font-semibold text-black mb-2"
                            >filter by</label
                            >
                         <select
-                           class="z-20 w-full p-3 border-b-2 border-gray-500 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
+                        id="smartwatches-sort-filter"
+                           class="z-20 w-full p-3 border-2 border-gray-400 rounded-md bg-gray-300 text-black font-bold hover:bg-gray-500 transition"
                            >
-                           <option>Growing price</option>
-                           <option>Lowest price</option>
-                           <option>Highest price</option>
-                           <option>Newest</option>
+                           <option>Ascending price</option>
+                           <option>Descending price</option>
                         </select>
                      </div>
                    </div>
                   </div>
                </div>
                <!-- 3️⃣ Produits Smartwatches Scroll -->
-               <div class="relative overflow-hidden text-black">
+               <div class="relative overflow-hidden text-gray-700 font-[Poppins]">
                   <div id="smartwatches-grid" class="flex rounded-2xl space-x-4 md:space-x-8 py-6
                      px-10 w-full transition-transform duration-500 ease-in-out" >
                   </div>
                   <button
                      id="prev-btn-smartwatches"
-                     class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+                     class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-white border-gray-700 border-4 font-bold text-3xl"
                      >
                   <
                   </button>
                   <button
                      id="next-btn-smartwatches"
-                     class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+                     class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-white border-gray-700 border-4 font-bold text-3xl"
                      >
                   >
                   </button>
@@ -237,22 +222,18 @@
          </div>
          <!-- 2️⃣ Filtres & Tri -->
          <div
-            class="bg-transparent backdrop:blur-sm bg-opacity-40 border-2 shadow-lg shadow-gray-400 border-gray-400 p-6 rounded-2xl mb-8"
+            class="bg-neutral-300 backdrop-blur-sm bg-opacity-80 border-2 border-neutral-500 shadow-xl shadow-neutral-500 p-6 rounded-2xl mb-8"
             >
-         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
          <!-- Filtre par marque -->
          <div>
          <label class="block text-lg font-semibold text-black mb-2"
             >Brand</label
             >
          <select
-            class="z-20 w-full p-3 border-2 border-neutral-300 rounded-md bg-gradient-to-r from-neutral-600 to-neutral-500 text-white hover:bg-neutral-600 transition"
+           id="headsets-brand-filter"
+            class="z-20 w-full p-3 border-2 border-black  rounded-md bg-neutral-400 text-black hover:bg-neutral-500 transition"
             >
-         <option>All brands</option>
-         <option>Apple</option>
-         <option>Samsung</option>
-         <option>Xiaomi</option>
-         <option>Google</option>
          </select>
          </div>
          <!-- Filtre par prix -->
@@ -262,45 +243,31 @@
             >
          <div class="flex flex-col gap-y-4">
          <div class="flex justify-between text-black font-medium">
-         <span>0€</span>
-         <span>2000€</span>
+         <span id="headsets-price-min-range-value">0</span>
+         <p  id="headsets-price-range-value" class="text-lg" id="headset-price-range-value">current price</p>
+         <span id="headsets-price-max-range-value">2000</span>
          </div>
          <input
             type="range"
             min="0"
             max="2000"
             class="w-full accent-gray-500"
-            id="phone-price-range"
+            id="headsets-price-range"
             />
          </div>
          </div>
-         <!-- Filtre par caractéristiques -->
-         <div>
-         <label class="block text-lg font-semibold text-black mb-2"
-            >Phone Size</label
-            >
-         <select
-            class="z-20 w-full p-3 border-2 border-neutral-300 rounded-md bg-gradient-to-r from-neutral-500 to-neutral-400 text-white hover:bg-neutral-600 transition"
-            >
-         <option>All sizes</option>
-         <option>< 5.5"</option>
-         <option>5.5" - 6.0"</option>
-         <option>6.1" - 6.5"</option>
-         <option>> 6.5"</option>
-         </select>
-         </div>
+        
          <!-- Tri -->
          <div>
          <label class="block text-lg font-semibold text-black mb-2"
-            >filter by</label
+            >Filter by</label
             >
          <select
-            class="z-20 w-full p-3 border-2 border-neutral-300 rounded-md bg-gradient-to-r from-neutral-500 to-neutral-400 text-white hover:bg-neutral-600 transition"
+            id="headsets-sort-filter"
+            class="z-20 w-full p-3 border-2 border-black rounded-md bg-neutral-400 text-black hover:bg-neutral-500 transition"
             >
-         <option>Growing price</option>
-         <option>Lowest price</option>
-         <option>Highest price</option>
-         <option>Newest</option>
+         <option >Ascending Price</option>
+         <option >Descending Price</option>
          </select>
          </div>
          </div>
@@ -312,13 +279,13 @@
          </div>
          <button
             id="prev-btn-headsets"
-            class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+            class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-white text-black border-4 border-black font-bold text-3xl"
             >
          <
          </button>
          <button
             id="next-btn-headsets"
-            class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+            class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-white text-black border-4 border-black font-bold text-3xl"
             >
          >
          </button>
@@ -362,70 +329,53 @@
          </div>
          <!-- 2️⃣ Filtres & Tri -->
          <div
-            class="bg-transparent backdrop:blur-sm bg-opacity-40 p-6 rounded-lg shadow-lg mb-8 shadow-gray-400 border-2 border-gray-400"
+            class="bg-gray-300 backdrop-blur-sm bg-opacity-80 border-2 border-gray-500 shadow-xl shadow-gray-500 p-6 rounded-2xl mb-8"
             >
-         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
          <!-- Filtre par marque -->
          <div>
-         <label class="block text-lg font-semibold  text-black mb-2"
+         <label class="block text-lg font-semibold  text-gray-500 mb-2"
             >Brand</label
             >
          <select
-            class="z-20 w-full p-3  border-2 border-white rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
+         id="phones-brand-filter"
+            class="z-20 w-full p-3 border-2 border-gray-600 rounded-md bg-gray-400 text-black hover:bg-gray-500 transition"
             >
-         <option>All brands</option>
-         <option>Apple</option>
-         <option>Samsung</option>
-         <option>Xiaomi</option>
-         <option>Google</option>
+        
          </select>
          </div>
          <!-- Filtre par prix -->
          <div>
-         <label class="block text-lg font-semibold text-black mb-2"
+         <label class="block text-lg font-semibold text-gray-500 mb-2"
             >Prix</label
             >
          <div class="flex flex-col gap-y-4">
-         <div class="flex justify-between text-black font-medium">
-         <span>0€</span>
-         <span>2000€</span>
-         </div>
+         <div class="flex justify-between text-gray-500 font-medium">
+         <span id="phones-price-min-range-value">0</span>
+          <span id="phones-price-range-value" class="text-lg">current price</span>
+          <span id="phones-price-max-range-value"></span>        
+          </div>
          <input
             type="range"
             min="0"
             max="2000"
             class="w-full accent-gray-800"
-            id="phone-price-range"
+            id="phones-price-range"
             />
          </div>
          </div>
-         <!-- Filtre par caractéristiques -->
-         <div>
-         <label class="block text-lg font-semibold text-black mb-2"
-            >Phone Size</label
-            >
-         <select
-            class="z-20 w-full p-3 border-2 border-white rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
-            >
-         <option>All sizes</option>
-         <option>< 5.5"</option>
-         <option>5.5" - 6.0"</option>
-         <option>6.1" - 6.5"</option>
-         <option>> 6.5"</option>
-         </select>
-         </div>
+         
          <!-- Tri -->
          <div>
-         <label class="block text-lg font-semibold text-black mb-2"
-            >filter by</label
+         <label class="block text-lg font-semibold text-gray-500 mb-2"
+            >Filter by</label
             >
          <select
-            class="z-20 w-full p-3 border-2 border-white rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white hover:bg-gray-600 transition"
+           id="phones-sort-filter"
+            class="z-20 w-full p-3 border-2 border-gray-700 rounded-md bg-gray-400 text-black hover:bg-gray-600 transition"
             >
-         <option>Growing price</option>
-         <option>Lowest price</option>
-         <option>Highest price</option>
-         <option>Newest</option>
+         <option>Ascending Price</option>
+         <option>Descending Price</option>
          </select>
          </div>
          </div>
@@ -437,13 +387,13 @@
          </div>
          <button
             id="prev-btn-phones"
-            class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+            class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-white text-gray-800 border-4 border-black font-bold text-3xl"
             >
          <
          </button>
          <button
             id="next-btn-phones"
-            class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-gray-500 text-3xl"
+            class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-white text-gray-800 border-4 border-black font-bold text-3xl"
             >
          >
          </button>
@@ -519,7 +469,7 @@
             <input
                type="range"
                min="0"
-               max="200000"
+               max="74000000"
                class="
                   w-full 
                   appearance-none 
@@ -564,7 +514,7 @@
                   </div>
                   <button
                      id="prev-btn-consoles"
-                     class="absolute top-1/3 left-0 z-20 px-5 py-3 rounded-full bg-gray-200 text-3xl text-blue-700 border-4 border-blue-800"
+                     class="absolute top-1/3 left-0 z-20 px-5 py-3 rounded-full bg-gray-200 text-3xl text-blue-700 border-4 border-blue-800 font-bold"
                      >
                   <
                   </button>
