@@ -512,8 +512,9 @@
          <label class="block text-lg font-semibold text-blue-900 mb-2">Price Range (DZD)</label>
          <div class="flex flex-col gap-y-4">
             <div class="flex justify-between text-blue-800 font-medium">
-               <span>0 </span>
-               <span>200,000 </span>
+               <span id="console-price-min-range-value">0 </span>
+               <p class="text-lg" id="console-price-range-value">current price</p>
+               <span id="console-price-max-range-value"> </span>
             </div>
             <input
                type="range"
@@ -531,14 +532,16 @@
                   transition-opacity
                   accent-blue-700
                "
-               id="phone-price-range"
+               id="console-price-range"
             />
          </div>
       </div>
       <!-- Tri -->
       <div class="text-blue-900">
          <label class="block text-lg font-semibold mb-2">Sort By</label>
-         <select class="
+         <select 
+         id="consoles-sort-filter"
+           class="
             w-full p-3 
             border-2 border-blue-300 
             rounded-lg 
@@ -549,10 +552,7 @@
             transition-all duration-300
          ">
             <option>Ascending Price</option>
-            <option>Highest Price</option>
-            <option>Newest</option>
-            <option>Most Popular</option>
-
+            <option>Descending Price</option>
          </select>
       </div>
    </div>

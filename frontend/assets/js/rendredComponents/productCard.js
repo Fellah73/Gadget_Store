@@ -207,7 +207,7 @@ export function createProductPurchaseCard(product, category) {
           <div class="flex items-center justify-between">
             <div class="flex items-center space-x-2">
               <span class="text-2xl font-bold">
-                ${calculateDiscountedPrice(product.price, discount)} DZD
+                ${product.price} DZD
               </span>
               ${
                 discount || true
