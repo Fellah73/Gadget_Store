@@ -207,7 +207,7 @@ export function createProductPurchaseCard(product, category) {
           <div class="flex items-center justify-between">
             <div class="flex items-center space-x-2">
               <span class="text-2xl font-bold">
-                ${product.price} DZD
+                ${product.price_discounted} DZD
               </span>
               ${
                 discount || true
@@ -234,7 +234,7 @@ export function createProductPurchaseCard(product, category) {
         </svg>
         Add to Cart
     </button>
-    <a href="#" class="
+    <a href="product.html?id=${product.id}" class="
         w-1/2 bg-transparent border-2 border-white text-white
         py-2 rounded-lg font-semibold 
         hover:bg-white hover:text-black
