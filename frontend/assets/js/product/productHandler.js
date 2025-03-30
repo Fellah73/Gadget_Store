@@ -45,21 +45,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     //update price
     const priceElement = document.getElementById("product-price");
-    priceElement.textContent = `${product[0].price} DZD`;
+    priceElement.textContent = product[0].price;
 
     //update old price
-    const newPriceElement = document.getElementById("product-discount-price");
-    newPriceElement.textContent = product[0].price_discounted;
+    const newPriceElement = document.getElementById("product-price-discounted");
+    newPriceElement.textContent = `${product[0].price_discounted} DZD`;
 
     //update description
     const descriptionElement = document.getElementById("product-description");
 
-    let descriptionText;
-    for (let i = 0; i < 8; i++) {
-      descriptionText += product[0].name + " ";
-    }
 
-    descriptionElement.textContent = descriptionText;
+    descriptionElement.textContent = `Conçue pour offrir une expérience utilisateur exceptionnelle,
+     elle intègre les dernières technologies pour garantir des performances avancées.
+       Idéale pour ceux qui recherchent une qualité supérieure, la ${product[0].name} de ${product[0].brand} est 
+       un choix incontournable pour les passionnés`;
 
     //update brand
     const productBrand = document.getElementById("product-brand");
@@ -182,3 +181,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     .catch((error) => console.error("Error loading navbar:", error));
 });
+
+

@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   function updatePriceRange() {
-    const maxPrice = Math.max(...allProducts.map((p) => parseFloat(p.price_discounted)));
-    const minPrice = Math.min(...allProducts.map((p) => parseFloat(p.price_discounted)));
+    const maxPrice = Math.max(...allProducts.map((p) => (p.price_discounted)));
+    const minPrice = Math.min(...allProducts.map((p) => (p.price_discounted)));
     maxPriceValue.textContent = maxPrice;
     minPriceValue.textContent = minPrice;
     priceRange.max = maxPrice;
@@ -67,24 +67,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   function filterAndDisplayProducts() {
     const selectedBrand = brandSelect.value;
-    const selectedPrice = parseFloat(priceRange.value);
+    const selectedPrice = (priceRange.value);
     const selectedSort = sortByFilter.value;
 
     let filteredProducts = allProducts.filter((product) => {
       return (
         (!selectedBrand || product.brand === selectedBrand) &&
-        parseFloat(product.price_discounted) <= selectedPrice
+        (product.price_discounted) <= selectedPrice
       );
     });
 
     // Appliquer le tri en fonction de selectedSort
     if (selectedSort.includes("Asc")) {
       filteredProducts.sort(
-        (a, b) => parseFloat(a.price_discounted) - parseFloat(b.price_discounted)
+        (a, b) => (a.price_discounted) - (b.price_discounted)
       );
     } else {
       filteredProducts.sort(
-        (a, b) => parseFloat(b.price_discounted) - parseFloat(a.price_discounted)
+        (a, b) => (b.price_discounted) - (a.price_discounted)
       );
     }
 
@@ -164,3 +164,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   await fetchProducts();
 });
+
+
+
+
+

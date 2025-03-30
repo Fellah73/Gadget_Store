@@ -177,7 +177,7 @@ export function createProductPurchaseCard(product, category) {
   // Contenu HTML de la carte
   card.innerHTML = `
     <div class="relative h-full flex flex-col">
-      ${generateDiscountBadge(discount)}
+      ${generateDiscountBadge(product.discount)}
       
       <div class="h-[55%] w-full overflow-hidden relative">
         <img 
