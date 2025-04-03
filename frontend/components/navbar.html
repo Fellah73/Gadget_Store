@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Tailwind CSS CDN -->
-    <!-- Font Awesome for icons -->
+    <script type="module" src="../assets/js/search/search.js" defer></script>
     <link rel="stylesheet" href="../style.css" />
     <style>
       /* Custom animations */
@@ -298,15 +297,20 @@
           <!-- Right Side - Search, Cart, and Wishlist -->
           <div class="flex items-center space-x-4">
             <!-- Search -->
+
             <div class="relative hidden md:block">
               <input
+                id="search-Input"
                 type="text"
                 placeholder="Search..."
-                class="w-64 pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                class="w-80 pl-10 pr-4 py-2 text-black rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
-              <div class="absolute left-3 top-2.5 text-gray-400">
+              <button
+                id="search-btn"
+                class="absolute left-3 top-2 p-1 text-gray-400 active:rounded-full active:bg-gray-300"
+              >
                 <svg
-                  class="h-5 w-5"
+                  class="size-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -318,6 +322,14 @@
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   ></path>
                 </svg>
+              </button>
+
+              <!-- Conteneur des résultats de recherche -->
+              <div
+                id="search-results"
+                class="lg:flex-col lg:gap-y-4 p-2 absolute -left-8 mt-2 w-[400px] text-black bg-gradient-to-r from-gray-300 to-gray-100 border border-blue-500 rounded-lg shadow-lg h-80 overflow-y-auto overflow-x-hidden hidden"
+              >
+                <!-- Résultats insérés ici dynamiquement -->
               </div>
             </div>
 
