@@ -33,14 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     .catch((error) => console.error("Error loading navbar:", error));
 
-  // Load heroShop section
-  fetch("components/shopComponents/shopHero.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("heroShop-container").innerHTML = data;
-    })
-    .catch((error) => console.error("Error loading heroShop section:", error));
-
   // Load categoriesGrid section
   fetch("components/shopComponents/shopGrid.html")
     .then((response) => response.text())
@@ -71,41 +63,32 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(section);
   });
 
-  //load banner
-  fetch("components/shopComponents/shopBanner.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("banners-container").innerHTML = data;
-    })
-    .catch((error) => console.error("Error loading banner:", error));
-
-
-    //load smartWatch_banner
-    fetch("components/shopComponents/banners/smartWatchBanner.html")
+  //load smartWatch_banner
+  fetch("components/shopComponents/banners/smartWatchBanner.html")
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("smarwatches-banner").innerHTML = data;
     })
     .catch((error) => console.error("Error loading banner:", error));
 
-   // load phone banner
-   fetch("components/shopComponents/banners/phoneBanner.html")
+  // load phone banner
+  fetch("components/shopComponents/banners/phoneBanner.html")
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("phone-banner").innerHTML = data;
     })
     .catch((error) => console.error("Error loading banner:", error));
 
-    // load console banner
-    fetch("components/shopComponents/banners/consoleBanner.html")
+  // load console banner
+  fetch("components/shopComponents/banners/consoleBanner.html")
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("consoles-container").innerHTML = data;
     })
     .catch((error) => console.error("Error loading banner:", error));
 
-    // load headset banner
-    fetch("components/shopComponents/banners/headsetBanner.html")
+  // load headset banner
+  fetch("components/shopComponents/banners/headsetBanner.html")
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("headsets-container").innerHTML = data;

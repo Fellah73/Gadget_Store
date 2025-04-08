@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = event.target;
 
     if (searchInput.id !== "search-Input") {
+      console.log("Not the search input");
       return;
     }
 

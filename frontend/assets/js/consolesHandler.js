@@ -2,7 +2,6 @@ import { createProductPurchaseCard } from "./rendredComponents/productCard.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
   const consolesGrid = document.getElementById("consoles-grid");
-  const loadMoreconsolesBtn = document.getElementById("load-more-consoles");
   const brandSelect = document.getElementById("consoles-brand-filter");
   const priceRange = document.getElementById("console-price-range");
   const priceRangeValue = document.getElementById("console-price-range-value");
@@ -112,7 +111,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       const productCard = createProductPurchaseCard(product, "consoles");
       consolesGrid.appendChild(productCard);
     });
-    loadMoreconsolesBtn.style.display = products.length > 4 ? "block" : "none";
   }
 
   brandSelect.addEventListener("change", filterAndDisplayProducts);

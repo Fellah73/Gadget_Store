@@ -4,18 +4,13 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Tech Sphere - Shop</title>
-      <script
-         src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js"
-         defer
-         ></script>
       <script type="module" src="./assets/js/search/search.js" defer></script>
       <script type="module" src="./assets/js/shop.js" defer></script>
       <script type="module" src="./assets/js/productsHandler.js" defer></script>
       <script type="module" src="./assets/js/headsetsHandler.js" defer></script>
       <script type="module" src="./assets/js/phonesHandler.js" defer></script>
       <script type="module" src="./assets/js/consolesHandler.js" defer></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
-      <script src="https://cdn.tailwindcss.com"></script>
+      <script src="./assets/css/tailwind.js"></script>
       <style>
          @keyframes fadeIn {
          from {
@@ -75,19 +70,13 @@
          }
       </style>
    </head>
-   <body class="bg-gray-50">
+   <body class="bg-gradient-to-br from-gray-400 via-gray-200 to-blue-300 ">
       <!-- 1️⃣ Navigation Bar -->
       <div id="navbar-container"></div>
       <!-- 2️⃣ Hero Section -->
-      <div class="pt-16 p-4 flex flex-col gap-y-5">
-         <div id="heroShop-container" class="animate-fadeIn mt-20"></div>
+      <div class="pt-16 p-4 flex flex-col gap-y-5">   
          <div id="categoriesGrid-container"></div>
       </div>
-
-       <!-- Banner -->
-
-     <div id="banners-container"></div>
-
 
       <!-- Products Sections -->
       <main class="container mx-auto py-10 px-4">
@@ -101,8 +90,8 @@
                <div class="flex items-center mb-6">
                   <span class="text-5xl mr-4">⌚</span>
                   <div>
-                     <h2 class="text-3xl font-bold text-blue-900">Smartwatches</h2>
-                     <p class="text-blue-800 text-xl font-semibold">
+                     <h2 class="text-3xl font-bold">Smartwatches</h2>
+                     <p class="text-xl font-semibold">
                         Stay connected and track your health with our smartwatches!
                      </p>
                   </div>
@@ -191,12 +180,6 @@
               <button id="right-indecator-smartwatches" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
             </div>
           
-            <!-- Bouton "Show more" aligné à droite -->
-            <button 
-              id="load-more-smartwatches"
-              class="bg-gray-500 hover:scale-105 hover:shadow-xl hover:shadow-gray-500 text-white font-bold py-2 px-4 rounded-3xl ml-auto">
-              Show more
-            </button>
           </div>
           <div id="smarwatches-banner" class="animate-fadeIn"></div> 
        
@@ -299,13 +282,6 @@
             <button id="left-indecator-headsets" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
             <button id="right-indecator-headsets" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
           </div>
-        
-          <!-- Bouton "Show more" aligné à droite -->
-          <button 
-            id="load-more-headsets"
-            class="bg-gray-500 hover:scale-105 hover:shadow-xl hover:shadow-gray-500 text-white font-bold py-2 px-4 rounded-3xl ml-auto">
-            Show more
-          </button>
         </div>
         
          </section>
@@ -407,13 +383,7 @@
               <button id="left-indecator-phones" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
               <button id="right-indecator-phones" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
             </div>
-          
-            <!-- Bouton "Show more" aligné à droite -->
-            <button 
-              id="load-more-phones"
-              class="bg-gray-500 hover:scale-105 hover:shadow-xl hover:shadow-gray-500 text-white font-bold py-2 px-4 rounded-3xl ml-auto">
-              Show more
-            </button>
+        
           </div>
          </div>
          </section>
@@ -535,12 +505,6 @@
               <button id="right-indecator-consoles" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
             </div>
           
-            <!-- Bouton "Show more" aligné à droite -->
-            <button 
-              id="load-more-consoles"
-              class="bg-gray-500 hover:scale-105 hover:shadow-xl hover:shadow-gray-500 text-white font-bold py-2 px-4 rounded-3xl ml-auto">
-              Show more
-            </button>
           </div>
             </div>
          </section>

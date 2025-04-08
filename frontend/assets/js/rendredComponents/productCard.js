@@ -166,7 +166,7 @@ export function createProductPurchaseCard(product, category) {
   // Créer l'élément de la carte
   const card = document.createElement("div");
   card.className = `
-    relative flex-shrink-0 w-64 md:w-[320px] h-[475px] 
+    relative flex-shrink-0 w-[300px] h-[450px] md:w-[350px] h-[490px] 
     bg-gradient-to-br ${bgColor} 
     text-white rounded-2xl 
     shadow-2xl overflow-hidden 

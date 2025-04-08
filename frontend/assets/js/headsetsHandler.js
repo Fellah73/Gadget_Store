@@ -2,7 +2,7 @@ import { createProductPurchaseCard } from "./rendredComponents/productCard.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
   const headsetsGrid = document.getElementById("headsets-grid");
-  const loadMoreheadsetsBtn = document.getElementById("load-more-headsets");
+
   const brandSelect = document.getElementById("headsets-brand-filter");
   const priceRange = document.getElementById("headsets-price-range");
   const priceRangeValue = document.getElementById("headsets-price-range-value");
@@ -13,8 +13,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     "headsets-price-max-range-value"
   );
   const sortByFilter = document.getElementById("headsets-sort-filter");
-
- 
 
   let allProducts = [];
   let brands = [];
@@ -73,19 +71,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     let filteredProducts = allProducts.filter((product) => {
       return (
         (!selectedBrand || product.brand === selectedBrand) &&
-        (product.price_discounted) <= selectedPrice
+        product.price_discounted <= selectedPrice
       );
     });
 
     // Appliquer le tri en fonction de selectedSort
     if (selectedSort.includes("Asc")) {
-      filteredProducts.sort(
-        (a, b) => (a.price_discounted) - (b.price_discounted)
-      );
+      filteredProducts.sort((a, b) => a.price_discounted - b.price_discounted);
     } else {
-      filteredProducts.sort(
-        (a, b) => (b.price_discounted) - (a.price_discounted)
-      );
+      filteredProducts.sort((a, b) => b.price_discounted - a.price_discounted);
     }
 
     displayProducts(filteredProducts);
@@ -112,7 +106,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       const productCard = createProductPurchaseCard(product, "headsets");
       headsetsGrid.appendChild(productCard);
     });
-    loadMoreheadsetsBtn.style.display = products.length > 4 ? "block" : "none";
   }
 
   brandSelect.addEventListener("change", filterAndDisplayProducts);

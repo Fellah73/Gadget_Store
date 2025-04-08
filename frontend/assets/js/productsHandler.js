@@ -2,10 +2,11 @@ import { createProductPurchaseCard } from "./rendredComponents/productCard.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
   const smartWatchsGrid = document.getElementById("smartwatches-grid");
-  const loadMoresmartWatchsBtn = document.getElementById("load-more-smartwatches");
   const brandSelect = document.getElementById("smartwatches-brand-filter");
   const priceRange = document.getElementById("smartwatches-price-range");
-  const priceRangeValue = document.getElementById("smartwatches-price-range-value");
+  const priceRangeValue = document.getElementById(
+    "smartwatches-price-range-value"
+  );
   const minPriceValue = document.getElementById(
     "smartwatches-price-min-range-value"
   );
@@ -13,8 +14,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     "smartwatches-price-max-range-value"
   );
   const sortByFilter = document.getElementById("smartwatches-sort-filter");
-
-  
 
   let allProducts = [];
   let brands = [];
@@ -55,8 +54,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   function updatePriceRange() {
-    const maxPrice = Math.max(...allProducts.map((p) => (p.price_discounted)));
-    const minPrice = Math.min(...allProducts.map((p) => (p.price_discounted)));
+    const maxPrice = Math.max(...allProducts.map((p) => p.price_discounted));
+    const minPrice = Math.min(...allProducts.map((p) => p.price_discounted));
     maxPriceValue.textContent = maxPrice;
     minPriceValue.textContent = minPrice;
     priceRange.max = maxPrice;
@@ -67,25 +66,21 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   function filterAndDisplayProducts() {
     const selectedBrand = brandSelect.value;
-    const selectedPrice = (priceRange.value);
+    const selectedPrice = priceRange.value;
     const selectedSort = sortByFilter.value;
 
     let filteredProducts = allProducts.filter((product) => {
       return (
         (!selectedBrand || product.brand === selectedBrand) &&
-        (product.price_discounted) <= selectedPrice
+        product.price_discounted <= selectedPrice
       );
     });
 
     // Appliquer le tri en fonction de selectedSort
     if (selectedSort.includes("Asc")) {
-      filteredProducts.sort(
-        (a, b) => (a.price_discounted) - (b.price_discounted)
-      );
+      filteredProducts.sort((a, b) => a.price_discounted - b.price_discounted);
     } else {
-      filteredProducts.sort(
-        (a, b) => (b.price_discounted) - (a.price_discounted)
-      );
+      filteredProducts.sort((a, b) => b.price_discounted - a.price_discounted);
     }
 
     displayProducts(filteredProducts);
@@ -104,7 +99,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         category_id: "Aucun produit",
       };
 
-      smartWatchsGrid.appendChild(createProductPurchaseCard(product, "smartwatches"));
+      smartWatchsGrid.appendChild(
+        createProductPurchaseCard(product, "smartwatches")
+      );
       return;
     }
 
@@ -112,7 +109,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       const productCard = createProductPurchaseCard(product, "smartwatches");
       smartWatchsGrid.appendChild(productCard);
     });
-    loadMoresmartWatchsBtn.style.display = products.length > 4 ? "block" : "none";
   }
 
   brandSelect.addEventListener("change", filterAndDisplayProducts);
@@ -144,7 +140,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     right_Indicator_smartWatchs.style.backgroundColor = "black";
     left_Indicator_smartWatchs.style.backgroundColor = "white";
 
-    if (scrollAmount > smartWatchsGrid.scrollWidth - smartWatchsGrid.clientWidth) {
+    if (
+      scrollAmount >
+      smartWatchsGrid.scrollWidth - smartWatchsGrid.clientWidth
+    ) {
       scrollAmount = smartWatchsGrid.scrollWidth - smartWatchsGrid.clientWidth;
     }
     smartWatchsGrid.style.transform = `translateX(-${scrollAmount}px)`;
