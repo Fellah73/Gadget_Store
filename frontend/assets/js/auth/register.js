@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("user");
+
+  if (token) {
+    window.location.href = "shop.html";
+  }
+
   fetch("components/navbar.html")
     .then((response) => response.text())
     .then((data) => {
@@ -66,12 +72,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       );
 
-      console.log("Response status: ", response.status);
       const data = await response.json();
 
       if (data.success) {
         console.log("Registration successful: ", data?.user);
-        
+
+        // update the local storage with the user data
+        localStorage.setItem("user", `${data?.user.email}`);
+
+        window.location.href = "shop.html";
       } else {
         SubmiterrorMessage.textContent = data.message;
       }
@@ -176,8 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
       emailInput.value,
       passwordInput.value
     );
-
-   
   });
 });
 

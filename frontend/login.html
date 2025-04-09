@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+r<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Registration</title>
     <script src="./assets/css/tailwind.js"></script>
-    <script src="./assets/js/auth/register.js"></script>
+    <script src="./assets/js/auth/login.js"></script>
     <script src="./assets/js/isAuth.js"></script>
     <script src="./assets/js/search/search.js"></script>
   </head>
@@ -37,28 +37,8 @@
             <h2
               class="text-2xl tracking-wide font-bold text-center text-gray-800 mb-6"
             >
-              Create an Account
+             Login to your account
             </h2>
-          </div>
-
-          <div class="mb-2 pr-8">
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="fullName"
-            >
-              Full Name
-            </label>
-            <input
-              class="bg-gray-200 shadow appearance-none border rounded w-full py-2 px-3 text-base text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              id="name"
-              type="text"
-              placeholder="Fellah Mohammed"
-              required
-            />
-            <p
-              id="name-error"
-              class="text-indigo-700 font-bold tracking-wide text-sm mt-2"
-            ></p>
           </div>
 
           <div class="mb-2 pr-8">
@@ -101,26 +81,6 @@
             ></p>
           </div>
 
-          <div class="mb-2 pr-8">
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="password"
-            >
-              Confirm Password
-            </label>
-            <input
-              class="bg-gray-200 shadow appearance-none border rounded w-full py-2 px-3 text-base text-gray-700 mb-1 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              id="confirm-password"
-              type="password"
-              placeholder="••••••••"
-              required
-            />
-            <p
-              id="confirm-password-error"
-              class="text-indigo-700 text-sm mt-2 tracking-wide font-bold"
-            ></p>
-          </div>
-
           <div class="flex flex-col gap-y-2 items-center pr-8">
             <p
               id="register-error"
@@ -129,18 +89,18 @@
 
             <button
               id="register-button"
-              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200  active:bg-blue-800 active:shadow-lg "
               type="submit"
             >
-              Register
+              Login
             </button>
           </div>
 
           <div class="text-center mt-6">
             <p class="text-base font-semibold text-gray-600">
-              Already have an account ?
+              Don't have an account ?
               <a
-                href="login.html"
+                href="register.html"
                 class="tracking-wide text-blue-700 hover:text-blue-700 ml-2"
                 >Sign in</a
               >
