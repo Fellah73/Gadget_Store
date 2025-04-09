@@ -7,6 +7,9 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods:POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Origin: http://127.0.0.1:5501"); // Pas "*"
+
 
 require_once "db.php";  // Importer la connexion
 
@@ -24,12 +27,12 @@ if (empty($name || $email || $password)) {
         'success' => false,
         'message' => 'Please fill in all required fields.'
     ], JSON_PRETTY_PRINT);
-    die();
+    exit;
 }
 try {
 
     // Check if email already exists
-    $stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
     $stmt->execute([$email]);
     $userExists = (bool)$stmt->fetchColumn();
 
@@ -39,42 +42,43 @@ try {
             'success' => false,
             'message' => 'Email address is already registered change it'
         ], JSON_PRETTY_PRINT);
-        die();
+        exit;
     } else {
         // Hash the password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Insert new user
-        $stmt = $db->prepare("INSERT INTO users (name, email, password, createdAt) VALUES (?, ?, ?, NOW())");
+        $stmt = $pdo->prepare("INSERT INTO users (name, email, password, createdAt) VALUES (?, ?, ?, NOW())");
         $result = $stmt->execute([$name, $email, $hashedPassword]);
 
         if ($result) {
+
+            // Définir le cookie auth_token avec l'email (⚠️ juste à titre de test, pas sécurisé en production)
+            setcookie("auth_token", $email, [
+                "expires" => time() + 180,
+                "path" => "/",
+                "secure" => false,         // mettre à true en production (HTTPS)
+                "httponly" => true,        // pour empêcher JS d'y accéder
+                "samesite" => "Lax"        // compatible avec navigation normale
+            ]);
 
             echo json_encode([
                 'success' => true,
                 'message' => 'Registration successful!',
                 'user' => [
-                    'id' => $db->lastInsertId(),
+                    'id' => $pdo->lastInsertId(),
                     'name' => $name,
                     'email' => $email
                 ]
             ], JSON_PRETTY_PRINT);
-            die();
-
-
-
-            // Optional: Create session for auto-login
-            //session_start();
-            //$_SESSION['user_id'] = $db->lastInsertId();
-            //$_SESSION['user_name'] = $name;
-            //$_SESSION['user_email'] = $email;
+            exit;
         } else {
             // Registration failed by the database
             echo json_encode([
                 'success' => false,
                 'message' => 'Registration failed. Please try again.'
             ], JSON_PRETTY_PRINT);
-            die();
+            exit;
         }
     }
 } catch (PDOException $e) {
@@ -83,5 +87,5 @@ try {
         'success' => false,
         'message' => 'Database error: ' . $e->getMessage()
     ], JSON_PRETTY_PRINT);
-    die();
+    exit;
 }
