@@ -62,11 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
             email: email,
             password: password,
           }),
+          credentials: "include",
         }
       );
+
+      console.log("Response status: ", response.status);
       const data = await response.json();
+
       if (data.success) {
         console.log("Registration successful: ", data?.user);
+        
       } else {
         SubmiterrorMessage.textContent = data.message;
       }
