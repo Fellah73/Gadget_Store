@@ -114,7 +114,7 @@ export function createProductPurchaseCard(product, category) {
   const colors = [
     "from-gray-700 to-gray-900",
     "from-neutral-500 to-neutral-700",
-    "from-blue-500 to-blue-700",
+    "from-blue-700 to-blue-900",
     "from-gray-400 to-gray-600",
   ];
 
@@ -220,10 +220,10 @@ export function createProductPurchaseCard(product, category) {
           </div>
         </div>
         <div class="mt-4 flex space-x-2">
-    <button class="
+    <button id="buy" class="
         w-1/2 bg-white text-black 
         py-2 rounded-lg font-semibold 
-        hover:bg-opacity-90 
+        hover:bg-transparent hover:text-white hover:border-white hover:border-2 hover:rounded-lg
         transition-colors duration-300 
         flex items-center justify-center
         ">

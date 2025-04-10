@@ -100,6 +100,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     products.forEach((product) => {
       const productCard = createProductPurchaseCard(product, "phones");
+      const buyButton = productCard.querySelector("button");
+
+      buyButton.addEventListener("click", async () => {
+        console.log("buying process ....");
+        await addToCart(product);
+      });
       phonesGrid.appendChild(productCard);
     });
   }
@@ -153,3 +159,74 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   await fetchProducts();
 });
+
+const addToCart = async (product) => {
+  if (!product) return;
+
+  const user = localStorage.getItem("user");
+  const isAuth = user == "null" ? false : true;
+
+  if (!isAuth) {
+    const popUp = document.getElementById("phones-popup");
+
+    popUp.textContent = `Login or Register to add to cart 🛒`;
+    popUp.style.display = "block";
+
+    setTimeout(() => {
+      popUp.style.display = "none";
+    }, 5000);
+    return;
+  }
+
+  await addToCartSend(product, user);
+};
+
+const addToCartSend = async (product, id) => {
+  try {
+    const response = await fetch(
+      "http://localhost/gadgetstoreapi/cart/addToCart.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          product_id: product.id,
+          quantity: 1,
+          price: product.price_discounted,
+          user_id: id,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      const popUp = document.getElementById("phones-popup");
+      if (data.message.includes("Quantité")) {
+        popUp.textContent = `${product.name} quantite updated 🎉`;
+      } else {
+        popUp.textContent = `${product.name} added to cart 🎉`;
+      }
+
+      setTimeout(() => {
+        popUp.style.display = "block";
+      }, 1000);
+
+      setTimeout(() => {
+        popUp.style.display = "none";
+      }, 5000);
+
+      return;
+    }
+
+    if (!data.success) {
+      console.log(data.message);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+

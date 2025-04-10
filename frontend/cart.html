@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart - Gadget Store</title>
+    <script src="./assets/css/tailwind.js"></script>
+    <script src="./assets/js/isAuth.js"></script>
+    <script src="./assets/js/command/cart.js"></script>
+    <script src="./assets/js/search/search.js"></script>
+    <style>
+      #cart-header div {
+        border: 1px solid rgb(107 114 128);
+        height: 100%;
+        width: 100%;
+      }
+      #item-container div {
+        border: 1px solid rgb(107 114 128);
+        height: 100%;
+        width: 100%;
+      }
+    #cart-items > div:nth-child(odd) {
+      background-color: white;
+    }
+    #cart-items > div:nth-child(even) {
+      background-color: rgb(229 231 235);
+    }
+    </style>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Navbar Container - Will be loaded dynamically -->
+    <div id="navbar-container"></div>
+
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-2xl w-full text-center font-bold text-gray-800 my-16">
+        Your Shopping Cart
+      </h1>
+
+      <div
+        class="text-lg rounded-t-xl border-2 border-gray-500 shadow-md overflow-hidden"
+      >
+        <!-- Cart Header -->
+        <div
+          id="cart-header"
+          class="hidden md:grid md:grid-cols-12 bg-neutral-300 text-gray-700 text-base tracking-wide font-semibold"
+        >
+          <div class="col-span-1 border border-gray-500"></div>
+          <div class="col-span-2"></div>
+          <div class="col-span-4 p-4">
+            <h2 class="font-bold">Product</h2>
+          </div>
+          <div class="col-span-2 p-4">
+            <h2 class="font-bold">Price</h2>
+          </div>
+          <div class="col-span-2 p-4">
+            <h2 class="font-bold">Quantity</h2>
+          </div>
+          <div class="col-span-1 p-4">
+            <h2 class="font-bold text-right">Subtotal</h2>
+          </div>
+        </div>
+
+        <!-- Cart Items -->
+        <div id="cart-items">
+          <!-- Item 1 -->
+          <div
+            id="item-container"
+            class="flex flex-col md:grid md:grid-cols-12 items-center border-b border-gray-200"
+          >
+            <div class="col-span-1 p-4 flex items-center justify-center">
+              <button
+                class="px-2 py-1 text-red-600 rounded-full hover:text-white hover:bg-red-600 font-bold text-3xl"
+              >
+                &times;
+              </button>
+            </div>
+            <div class="hidden md:block col-span-2 p-4">
+              <img
+                src="https://fr.nixon.com/cdn/shop/files/A972-5266-view1.png?v=1727886060"
+                alt="Chrome Watch"
+                class="w-24 h-24 object-contain"
+              />
+            </div>
+            <div
+              class="col-span-4 p-4 flex flex-col justify-center items-end md:items-start"
+            >
+              <h3 class="font-bold text-gray-800">Chrome Watch</h3>
+              <p class="text-gray-500 text-sm">SKU: SKU_1198</p>
+            </div>
+            <div
+              class="p-4 text-right md:col-span-2 md:flex md:items-center md:justify-center text-gray-800 font-semibold"
+            >
+              $399
+            </div>
+            <div
+              class="col-span-2 p-4 flex justify-start items-center md:justify-center md:items-center"
+            >
+              <button
+                class="size-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 text-xl text-center font-bold"
+              >
+                -
+              </button>
+              <input
+                type="text"
+                value="1"
+                class="mx-2 w-16 p-2 text-center border border-gray-300 rounded-2xl"
+              />
+              <button
+                class="size-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 text-xl text-center font-bold"
+              >
+                +
+              </button>
+            </div>
+            <div
+              class="p-4 text-right md:flex md:col-span-1 md:items-center md:justify-center text-gray-800 font-semibold"
+            >
+              $798
+            </div>
+          </div>
+          <!-- Item 1 -->
+          <div
+            id="item-container"
+            class="flex flex-col md:grid md:grid-cols-12 items-center border-b border-gray-200"
+          >
+            <div class="col-span-1 p-4 flex items-center justify-center">
+              <button
+                class="px-2 py-1 text-red-600 rounded-full hover:text-white hover:bg-red-600 font-bold text-3xl"
+              >
+                &times;
+              </button>
+            </div>
+            <div class="hidden md:block col-span-2 p-4">
+              <img
+                src="https://fr.nixon.com/cdn/shop/files/A972-5266-view1.png?v=1727886060"
+                alt="Chrome Watch"
+                class="w-24 h-24 object-contain"
+              />
+            </div>
+            <div
+              class="col-span-4 p-4 flex flex-col justify-center items-end md:items-start"
+            >
+              <h3 class="font-bold text-gray-800">Chrome Watch</h3>
+              <p class="text-gray-500 text-sm">SKU: SKU_1198</p>
+            </div>
+            <div
+              class="p-4 text-right md:col-span-2 md:flex md:items-center md:justify-center text-gray-800 font-semibold"
+            >
+              $399
+            </div>
+            <div
+              class="col-span-2 p-4 flex justify-start items-center md:justify-center md:items-center"
+            >
+              <button
+                class="size-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 text-xl text-center font-bold"
+              >
+                -
+              </button>
+              <input
+                type="text"
+                value="1"
+                class="mx-2 w-16 p-2 text-center border border-gray-300 rounded-2xl"
+              />
+              <button
+                class="size-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 text-xl text-center font-bold"
+              >
+                +
+              </button>
+            </div>
+            <div
+              class="p-4 text-right md:flex md:col-span-1 md:items-center md:justify-center text-gray-800 font-semibold"
+            >
+              $798
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cart Footer -->
+      <div
+        class="p-4 flex justify-between items-center border-t border-gray-200"
+      >
+        <button
+          class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition"
+        >
+          Continue shopping
+        </button>
+      </div>
+    </div>
+
+    <!-- Cart Summary -->
+    <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">Cart Summary</h2>
+
+      <div class="flex justify-between py-2 border-b border-gray-200">
+        <span class="text-gray-600">Subtotal</span>
+        <span class="font-semibold">$6,694</span>
+      </div>
+
+      <div class="flex justify-between py-2 border-b border-gray-200">
+        <span class="text-gray-600">Shipping</span>
+        <span class="font-semibold">$50</span>
+      </div>
+
+      <div class="flex justify-between py-2 border-b border-gray-200">
+        <span class="text-gray-600">Tax</span>
+        <span class="font-semibold">$669.40</span>
+      </div>
+
+      <div class="flex justify-between py-4 mt-2">
+        <span class="text-lg font-bold text-gray-800">Total</span>
+        <span class="text-lg font-bold text-blue-600">$7,413.40</span>
+      </div>
+
+      <button
+        class="w-full bg-blue-500 text-white py-3 rounded-md font-semibold mt-4 hover:bg-blue-600 transition"
+      >
+        Proceed to Checkout
+      </button>
+    </div>
+
+    <!-- Notification popup for messages -->
+    <div
+      id="cart-popup"
+      class="hidden fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-md shadow-lg"
+    >
+      Product removed from cart
+    </div>
+
+
+  </body>
+</html>

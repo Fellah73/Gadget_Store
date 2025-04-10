@@ -1,4 +1,31 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  // load navbar
+  fetch("components/navbar.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("navbar-container").innerHTML = data;
+
+      // Re-attacher les événements après le chargement du navbar
+      const mobileMenuButton = document.querySelector(
+        '[aria-controls="mobile-menu"]'
+      );
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
+
+      // Mettre à jour l'état du menu actif
+      const currentNavbar = document.getElementById("home");
+      if (currentNavbar) {
+        currentNavbar.style.color = "rgb(59, 130, 246)";
+        currentNavbar.style.borderBottomColor = "rgb(59, 130, 246)";
+      }
+    })
+    .catch((error) => console.error("Error loading navbar:", error));
+
   const params = new URLSearchParams(window.location.search);
   const productId = params.get("id");
   let product = null;
@@ -53,7 +80,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     //update description
     const descriptionElement = document.getElementById("product-description");
-
 
     descriptionElement.textContent = `Conçue pour offrir une expérience utilisateur exceptionnelle,
      elle intègre les dernières technologies pour garantir des performances avancées.
@@ -122,7 +148,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const inreaseBtn = document.getElementById("incremente-qte");
   const decreaseBtn = document.getElementById("decremente-qte");
-
+  const addToCartButton = document.getElementById("add-to-cart");
   // get the product
   await fetchProducts();
 
@@ -154,32 +180,80 @@ document.addEventListener("DOMContentLoaded", async () => {
   inreaseBtn.addEventListener("click", increaseQuantity);
   decreaseBtn.addEventListener("click", decreaseQuantity);
 
-  // load navbar
-  fetch("components/navbar.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("navbar-container").innerHTML = data;
+  if (addToCartButton && product) {
+    addToCartButton.addEventListener("click", async () => {
+      await addToCart(product, quantity);
 
-      // Re-attacher les événements après le chargement du navbar
-      const mobileMenuButton = document.querySelector(
-        '[aria-controls="mobile-menu"]'
-      );
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      if (mobileMenuButton) {
-        mobileMenuButton.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-        });
-      }
-
-      // Mettre à jour l'état du menu actif
-      const currentNavbar = document.getElementById("home");
-      if (currentNavbar) {
-        currentNavbar.style.color = "rgb(59, 130, 246)";
-        currentNavbar.style.borderBottomColor = "rgb(59, 130, 246)";
-      }
-    })
-    .catch((error) => console.error("Error loading navbar:", error));
+      quantity = 1;
+      quantityInput.textContent = quantity;
+    });
+  }
 });
 
+const addToCart = async (product, quantity) => {
+  if (!product) return;
 
+  const user = localStorage.getItem("user");
+  const isAuth = user == "null" ? false : true;
+
+  if (!isAuth) {
+    const popUp = document.getElementById("login-popup");
+
+    popUp.textContent = `Login or Register to add to cart 🛒`;
+    popUp.style.display = "block";
+
+    setTimeout(() => {
+      popUp.style.display = "none";
+    }, 5000);
+    return;
+  }
+
+  await addToCartSend(product, quantity, user);
+};
+
+const addToCartSend = async (product, quantity, id) => {
+  try {
+    const response = await fetch(
+      "http://localhost/gadgetstoreapi/cart/addToCart.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          product_id: product[0].id,
+          quantity: quantity,
+          price: product[0].price_discounted,
+          user_id: id,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      const popUp = document.getElementById("login-popup");
+      if (data.message.includes("Quantité")) {
+        popUp.textContent = `${product[0].name} quantite updated 🎉`;
+      } else {
+        popUp.textContent = `${product[0].name} added to cart 🎉`;
+      }
+
+      setTimeout(() => {
+        popUp.style.display = "block";
+      }, 1000);
+
+      setTimeout(() => {
+        popUp.style.display = "none";
+      }, 5000);
+
+      return;
+    }
+
+    if (!data.success) {
+      console.error(data.message);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};

@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Login successful: ", data?.user);
 
         // update the local storage with the user data
-        localStorage.setItem("user", `${data?.user.email}`);
-        const expirationInMinutes = 5; // durée de session
+        localStorage.setItem("user", `${data?.user.id}`);
+        const expirationInMinutes = 10; // durée de session
         const expirationTime =
           new Date().getTime() + expirationInMinutes * 60 * 1000;
 

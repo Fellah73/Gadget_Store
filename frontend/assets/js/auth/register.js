@@ -78,10 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Registration successful: ", data?.user);
 
         // update the local storage with the user data
-        localStorage.setItem("user", `${data?.user.email}`);
+        localStorage.setItem("user", `${data?.user.id}`);
 
         //set the session time
-        const expirationInMinutes = 5; // durée de session
+        const expirationInMinutes = 10; // durée de session
         const expirationTime =
           new Date().getTime() + expirationInMinutes * 60 * 1000;
 

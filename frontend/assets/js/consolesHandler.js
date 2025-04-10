@@ -13,8 +13,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   );
   const sortByFilter = document.getElementById("consoles-sort-filter");
 
- 
-
   let allProducts = [];
   let brands = [];
 
@@ -54,8 +52,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   function updatePriceRange() {
-    const maxPrice = Math.max(...allProducts.map((p) => (p.price_discounted)));
-    const minPrice = Math.min(...allProducts.map((p) => (p.price_discounted)));
+    const maxPrice = Math.max(...allProducts.map((p) => p.price_discounted));
+    const minPrice = Math.min(...allProducts.map((p) => p.price_discounted));
     maxPriceValue.textContent = maxPrice;
     minPriceValue.textContent = minPrice;
     priceRange.max = maxPrice;
@@ -66,25 +64,21 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   function filterAndDisplayProducts() {
     const selectedBrand = brandSelect.value;
-    const selectedPrice = (priceRange.value);
+    const selectedPrice = priceRange.value;
     const selectedSort = sortByFilter.value;
 
     let filteredProducts = allProducts.filter((product) => {
       return (
         (!selectedBrand || product.brand === selectedBrand) &&
-        (product.price_discounted) <= selectedPrice
+        product.price_discounted <= selectedPrice
       );
     });
 
     // Appliquer le tri en fonction de selectedSort
     if (selectedSort.includes("Asc")) {
-      filteredProducts.sort(
-        (a, b) => (a.price_discounted) - (b.price_discounted)
-      );
+      filteredProducts.sort((a, b) => a.price_discounted - b.price_discounted);
     } else {
-      filteredProducts.sort(
-        (a, b) => (b.price_discounted) - (a.price_discounted)
-      );
+      filteredProducts.sort((a, b) => b.price_discounted - a.price_discounted);
     }
 
     displayProducts(filteredProducts);
@@ -109,6 +103,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     products.forEach((product) => {
       const productCard = createProductPurchaseCard(product, "consoles");
+      const buyButton = productCard.querySelector("button");
+
+      buyButton.addEventListener("click", async () => {
+        console.log("buying process ....");
+        await addToCart(product);
+      });
       consolesGrid.appendChild(productCard);
     });
   }
@@ -162,3 +162,71 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   await fetchProducts();
 });
+
+const addToCart = async (product) => {
+  if (!product) return;
+
+  const user = localStorage.getItem("user");
+  const isAuth = user == "null" ? false : true;
+
+  if (!isAuth) {
+    const popUp = document.getElementById("consoles-popup");
+
+    popUp.textContent = `Login or Register to add to cart 🛒`;
+    popUp.style.display = "block";
+
+    setTimeout(() => {
+      popUp.style.display = "none";
+    }, 5000);
+    return;
+  }
+
+  await addToCartSend(product, user);
+};
+
+const addToCartSend = async (product, id) => {
+  try {
+    const response = await fetch(
+      "http://localhost/gadgetstoreapi/cart/addToCart.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          product_id: product.id,
+          quantity: 1,
+          price: product.price_discounted,
+          user_id: id,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      const popUp = document.getElementById("consoles-popup");
+      if (data.message.includes("Quantité")) {
+        popUp.textContent = `${product.name} quantite updated 🎉`;
+      } else {
+        popUp.textContent = `${product.name} added to cart 🎉`;
+      }
+
+      setTimeout(() => {
+        popUp.style.display = "block";
+      }, 1000);
+
+      setTimeout(() => {
+        popUp.style.display = "none";
+      }, 5000);
+
+      return;
+    }
+
+    if (!data.success) {
+      console.log(data.message);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
