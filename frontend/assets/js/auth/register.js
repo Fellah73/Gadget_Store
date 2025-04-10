@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("user");
 
-  if (token) {
+  if (token!=='null') {
     window.location.href = "shop.html";
   }
 
@@ -79,6 +79,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // update the local storage with the user data
         localStorage.setItem("user", `${data?.user.email}`);
+
+        //set the session time
+        const expirationInMinutes = 5; // durée de session
+        const expirationTime =
+          new Date().getTime() + expirationInMinutes * 60 * 1000;
+
+        // update the local storage with the user data
+        localStorage.setItem("session_expiration", expirationTime.toString());
 
         window.location.href = "shop.html";
       } else {
