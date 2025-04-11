@@ -29,7 +29,7 @@
     </style>
   </head>
 
-  <body class="bg-gray-50">
+  <body class="bg-gray-50 pb-8">
     <div id="navbar-container"></div>
 
     <div class="w-[93%] mx-auto py-8">
@@ -73,10 +73,60 @@
       <div class="p-4 flex justify-end items-center border-t border-gray-200">
         <a
           href="shop.html"
-          class="bg-blue-900 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition"
+          class="bg-blue-500 text-white font-bold tracking-wide text-lg px-8 py-2 rounded-full hover:bg-blue-800 transition"
         >
-          Continue shopping
+          continue shopping
         </a>
+      </div>
+    </div>
+
+    <!-- Cart Bill -->
+    <div
+      class="w-full md:w-[40%] md:ml-auto md:mr-12 flex flex-col gap-y-4 items-start justify-start p-8 border border-gray-400 rounded-[50px] h-[360px]"
+    >
+      <h1
+        id="cart-total"
+        class="text-left text-blue-950 text-lg md:text-xl font-bold tracking-wide"
+      >
+        Cart total
+      </h1>
+      <div class="w-full h-[1px] bg-gray-400 my-2" />
+
+      <div
+        class="w-full flex flex-col gap-y-4 justify-start items-center border border-gray-400 bg-gray-50 rounded-lg my-4"
+      >
+        <div class="flex flex-row w-full justify-between pr-[30%] p-4">
+          <span
+            id="cart-subtotal"
+            class="text-lg text-blue-800 font-extrabold tracking-wide"
+            >Subtotal</span
+          >
+          <span
+            id="cart-subtotal-value"
+            class="text-lg text-blue-950 font-bold tracking-wide"
+            >14 DZD</span
+          >
+        </div>
+        <div
+          class="flex flex-row w-full justify-between pr-[30%] border-gray-400 border-t p-4"
+        >
+          <span
+            id="cart-subtotal"
+            class="text-xl text-blue-800 font-extrabold tracking-wide"
+            >Total</span
+          >
+          <span
+            id="cart-total-value"
+            class="text-xl text-blue-950 font-bold tracking-wide"
+            >7878 DZD</span
+          >
+        </div>
+      </div>
+      <div class="w-full flex flex-row p-4 justify-end">
+        <button class="px-5 py-2 bg-blue-500 hover:bg-blue-800 text-white text-lg font-bold tracking-wide rounded-full">
+          Proceed to checkout
+        </button>
+
       </div>
     </div>
   </body>

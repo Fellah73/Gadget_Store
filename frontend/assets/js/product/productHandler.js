@@ -235,9 +235,11 @@ const addToCartSend = async (product, quantity, id, productId) => {
       const popUp = document.getElementById("login-popup");
       if (data.message.includes("Quantité")) {
         popUp.textContent = `${product.name} quantite updated 🎉`;
+        
       } else {
         popUp.textContent = `${product.name} added to cart 🎉`;
       }
+      document.getElementById('cart-items-number').textContent = parseInt(document.getElementById('cart-items-number').textContent) + 1
 
       setTimeout(() => {
         popUp.style.display = "block";

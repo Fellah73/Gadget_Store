@@ -208,6 +208,8 @@ const addToCartSend = async (product, id) => {
       } else {
         popUp.textContent = `${product.name} added to cart 🎉`;
       }
+      document.getElementById("cart-items-number").textContent =
+        parseInt(document.getElementById("cart-items-number").textContent) + 1;
 
       setTimeout(() => {
         popUp.style.display = "block";
@@ -227,6 +229,3 @@ const addToCartSend = async (product, id) => {
     console.log(err);
   }
 };
-
-
-

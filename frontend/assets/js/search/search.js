@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   console.log("search.js loaded");
 
@@ -89,10 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
       await searchResults(searchInput.value); // ✅ Attendre la réponse avant d'effacer l'input
       displayResults(results);
     });
-    
   });
-
-  ;
 });
 
 const generateCategEmoji = (category) => {
@@ -154,3 +150,38 @@ const createProductCard = (result) => {
   return card;
 };
 
+
+// update cart items count
+document.addEventListener("DOMContentLoaded", async () => {
+  const userId = localStorage.getItem("user");
+
+  const updateCartCount = async (userId) => {
+    if (userId == "null") return;
+
+    try {
+      const response = await fetch(
+        `http://localhost/gadgetstoreapi/cart/getCart.php?user_id=${userId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        document.querySelector("#cart-items-number").textContent =
+          data.cart_items.length;
+      } else {
+        document.querySelector("#cart-items-number").textContent = "0";
+        console.log(data.message);
+      }
+    } catch (error) {
+      console.error("Error fetching cart items:", error);
+    }
+  };
+
+  await updateCartCount(userId);
+});
