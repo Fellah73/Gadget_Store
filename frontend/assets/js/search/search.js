@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("search.js loaded");
 
@@ -73,14 +74,13 @@ document.addEventListener("DOMContentLoaded", () => {
       await searchResults(searchInput.value);
       displayResults(results);
     };
-  
+
     //rechreche dynamique
     if (searchInput.value.length >= 4) {
       startSearching();
     } else {
       searchResultsContainer.style.display = "none";
     }
-
 
     // recherche par le button
     const searchButton = document.getElementById("search-btn");
@@ -89,7 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
       await searchResults(searchInput.value); // ✅ Attendre la réponse avant d'effacer l'input
       displayResults(results);
     });
+    
   });
+
+  ;
 });
 
 const generateCategEmoji = (category) => {
@@ -150,3 +153,4 @@ const createProductCard = (result) => {
 
   return card;
 };
+

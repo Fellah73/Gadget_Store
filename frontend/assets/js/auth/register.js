@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("user", `${data?.user.id}`);
 
         //set the session time
-        const expirationInMinutes = 10; // durée de session
+        const expirationInMinutes = 30; // durée de session
         const expirationTime =
           new Date().getTime() + expirationInMinutes * 60 * 1000;
 

@@ -180,9 +180,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   inreaseBtn.addEventListener("click", increaseQuantity);
   decreaseBtn.addEventListener("click", decreaseQuantity);
 
-  if (addToCartButton && product) {
+  if (addToCartButton && product[0] && productId) {
     addToCartButton.addEventListener("click", async () => {
-      await addToCart(product, quantity);
+      await addToCart(product[0], quantity,productId);
 
       quantity = 1;
       quantityInput.textContent = quantity;
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-const addToCart = async (product, quantity) => {
+const addToCart = async (product, quantity, productId) => {
   if (!product) return;
 
   const user = localStorage.getItem("user");
@@ -208,10 +208,10 @@ const addToCart = async (product, quantity) => {
     return;
   }
 
-  await addToCartSend(product, quantity, user);
+  await addToCartSend(product, quantity, user, productId);
 };
 
-const addToCartSend = async (product, quantity, id) => {
+const addToCartSend = async (product, quantity, id, productId) => {
   try {
     const response = await fetch(
       "http://localhost/gadgetstoreapi/cart/addToCart.php",
@@ -221,9 +221,9 @@ const addToCartSend = async (product, quantity, id) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          product_id: product[0].id,
+          product_id: productId,
           quantity: quantity,
-          price: product[0].price_discounted,
+          price: product.price_discounted,
           user_id: id,
         }),
       }
@@ -234,9 +234,9 @@ const addToCartSend = async (product, quantity, id) => {
     if (data.success) {
       const popUp = document.getElementById("login-popup");
       if (data.message.includes("Quantité")) {
-        popUp.textContent = `${product[0].name} quantite updated 🎉`;
+        popUp.textContent = `${product.name} quantite updated 🎉`;
       } else {
-        popUp.textContent = `${product[0].name} added to cart 🎉`;
+        popUp.textContent = `${product.name} added to cart 🎉`;
       }
 
       setTimeout(() => {
