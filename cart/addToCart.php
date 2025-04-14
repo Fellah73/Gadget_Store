@@ -41,6 +41,19 @@ if ($user_id <= 0 || $product_id <= 0 || $quantity <= 0 || $price <= 0) {
 
 try {
 
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
+    $stmt->execute([$product_id]);
+    $product = $stmt->fetch(PDO::FETCH_ASSOC); // Corrected variable name and fetch method
+
+    if ($product['qte'] == 0) { // Corrected variable name
+
+        echo json_encode([
+            "success" => false,
+            "message" => "Produit en rupture de stock",
+        ], JSON_PRETTY_PRINT);
+        exit;
+    }
+
     $stmt = $pdo->prepare("SELECT id, quantity FROM cart_items WHERE user_id = ? AND product_id = ?");
     $stmt->execute([$user_id, $product_id]);
     $existing = $stmt->fetch();
@@ -63,7 +76,7 @@ try {
     } else {
         // Insertion d'un nouvel item
         $insertStmt = $pdo->prepare("INSERT INTO cart_items (user_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
-        $insertStmt->execute([$user_id, $product_id, $quantity, $price*$quantity]);
+        $insertStmt->execute([$user_id, $product_id, $quantity, $price * $quantity]);
 
         echo json_encode([
             "success" => true,
