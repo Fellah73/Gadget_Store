@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (addToCartButton && product[0] && productId) {
     addToCartButton.addEventListener("click", async () => {
-      await addToCart(product[0], quantity,productId);
+      await addToCart(product[0], quantity, productId);
 
       quantity = 1;
       quantityInput.textContent = quantity;
@@ -235,11 +235,11 @@ const addToCartSend = async (product, quantity, id, productId) => {
       const popUp = document.getElementById("login-popup");
       if (data.message.includes("Quantité")) {
         popUp.textContent = `${product.name} quantite updated 🎉`;
-        
       } else {
         popUp.textContent = `${product.name} added to cart 🎉`;
       }
-      document.getElementById('cart-items-number').textContent = parseInt(document.getElementById('cart-items-number').textContent) + 1
+      document.getElementById("cart-items-number").textContent =
+        parseInt(document.getElementById("cart-items-number").textContent) + 1;
 
       setTimeout(() => {
         popUp.style.display = "block";
@@ -253,7 +253,20 @@ const addToCartSend = async (product, quantity, id, productId) => {
     }
 
     if (!data.success) {
+      if (data.message.includes("rupture de stock")) {
+        const popUp = document.getElementById("login-popup");
+        popUp.textContent = `Produit en rupture de stock ❌`;
+        popUp.style.backgroundColor = "rgb(156, 63, 48)";
+        setTimeout(() => {
+          popUp.style.display = "block";
+        }, 1000);
+
+        setTimeout(() => {
+          popUp.style.display = "none";
+        }, 5000);
+      }
       console.error(data.message);
+      return;
     }
   } catch (err) {
     console.error(err);

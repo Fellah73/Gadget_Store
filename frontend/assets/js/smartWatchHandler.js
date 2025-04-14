@@ -219,7 +219,8 @@ const addToCartSend = async (product, id) => {
       } else {
         popUp.textContent = `${product.name} added to cart 🎉`;
       }
-        document.getElementById('cart-items-number').textContent = parseInt(document.getElementById('cart-items-number').textContent) + 1
+      document.getElementById("cart-items-number").textContent =
+        parseInt(document.getElementById("cart-items-number").textContent) + 1;
       setTimeout(() => {
         popUp.style.display = "block";
       }, 1000);
@@ -232,7 +233,20 @@ const addToCartSend = async (product, id) => {
     }
 
     if (!data.success) {
-      console.log(data.message);
+      if (data.message.includes("rupture de stock")) {
+        const popUp = document.getElementById("smartwatches-popup");
+        popUp.textContent = `Produit en rupture de stock ❌`;
+        popUp.style.backgroundColor = "rgb(156, 63, 48)";
+        setTimeout(() => {
+          popUp.style.display = "block";
+        }, 1000);
+
+        setTimeout(() => {
+          popUp.style.display = "none";
+        }, 5000);
+      }
+      console.error(data.message);
+      return;
     }
   } catch (err) {
     console.log(err);

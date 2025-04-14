@@ -7,7 +7,7 @@
     <script src="./assets/css/tailwind.js"></script>
     <script src="./assets/js/isAuth.js"></script>
     <script type="module" defer src="./assets/js/search/search.js"></script>
-    <script src="./assets/js/command/cart.js"></script>
+    <script type="module" src="./assets/js/command/cart.js"></script>
 
     <style>
       #cart-header div {
@@ -25,6 +25,26 @@
       }
       #cart-items > div:nth-child(even) {
         background-color: rgb(229 231 235);
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .slider-controls button:focus {
+        outline: none;
+      }
+      .discount-badge {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -80,54 +100,200 @@
       </div>
     </div>
 
-    <!-- Cart Bill -->
-    <div
-      class="w-full md:w-[40%] md:ml-auto md:mr-12 flex flex-col gap-y-4 items-start justify-start p-8 border border-gray-400 rounded-[50px] h-[360px]"
-    >
-      <h1
-        id="cart-total"
-        class="text-left text-blue-950 text-lg md:text-xl font-bold tracking-wide"
-      >
-        Cart total
-      </h1>
-      <div class="w-full h-[1px] bg-gray-400 my-2" />
-
+    <div class="grid grid-cols-1 md:grid-cols-3 p-8 md:gap-x-4 w-[98%] mx-auto">
       <div
-        class="w-full flex flex-col gap-y-4 justify-start items-center border border-gray-400 bg-gray-50 rounded-lg my-4"
+        class="md:col-span-2 h-[500px] md:h-[430px] w-full px-4 py-6 border border-gray-400 rounded-[50px]"
       >
-        <div class="flex flex-row w-full justify-between pr-[30%] p-4">
-          <span
-            id="cart-subtotal"
-            class="text-lg text-blue-800 font-extrabold tracking-wide"
-            >Subtotal</span
-          >
-          <span
-            id="cart-subtotal-value"
-            class="text-lg text-blue-950 font-bold tracking-wide"
-            >14 DZD</span
-          >
-        </div>
-        <div
-          class="flex flex-row w-full justify-between pr-[30%] border-gray-400 border-t p-4"
-        >
-          <span
-            id="cart-subtotal"
-            class="text-xl text-blue-800 font-extrabold tracking-wide"
-            >Total</span
-          >
-          <span
-            id="cart-total-value"
-            class="text-xl text-blue-950 font-bold tracking-wide"
-            >7878 DZD</span
-          >
+        <div class="w-full">
+          <div class="relative">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-2">
+                <h2 class="ml-4 text-2xl text-blue-800 tracking-wider font-bold">
+                Our Recommendations 
+                </h2>
+
+              <!-- Slider Controls -->
+              <div class="slider-controls flex space-x-2">
+                <button
+                  id="prev-btn"
+                  class="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2 focus:ring-2 focus:ring-blue-400"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+                <button
+                  id="next-btn"
+                  class="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2 focus:ring-2 focus:ring-blue-400"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Product Slider -->
+            <div class="relative overflow-hidden">
+              <div
+                id="product-slider"
+                class="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth gap-4 pb-6"
+              >
+                <div
+                  class="hover:scale-95 hover:shadow-2xl hover:shadow-gray-600 flex-shrink-0 h-80 w-64 snap-start bg-white shadow-md overflow-hidden border border-gray-500 rounded-[30px] transition-transform duration-300"
+                >
+                  <div class="product-card p-4 w-full relative">
+                    <!-- Discount Badge -->
+                    <div class="absolute top-2 left-2">
+                      <div class="discount-badge bg-blue-500">7%</div>
+                    </div>
+                    <!-- Action Icons -->
+                    <div class="absolute top-1 right-2 flex flex-col space-y-4">
+                      <button
+                        class="p-2 rounded-full bg-gray-100 hover:bg-gray-200"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="size-6 text-gray-600"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <!-- Product Image -->
+                    <div class="flex justify-center items-center py-2">
+                      <img
+                        src="https://sabrtaksit.dz/wp-content/uploads/2023/03/1-10.jpg"
+                        alt="Silver Laptop"
+                        class="h-48 object-contain"
+                      />
+                    </div>
+
+                    <!-- Product Info -->
+                    <div
+                      class="mt-1 w-full flex flex-col items-center justify-center"
+                    >
+                      <h3
+                        class="text-xl md:text-2xl truncate font-bold text-blue-900"
+                      >
+                        Silver Laptop
+                      </h3>
+
+                      <!-- Pricing -->
+                      <div class="mt-2 flex items-center gap-x-6">
+                        <span class="text-gray-400 line-through mr-2"
+                          >$2,999</span
+                        >
+                        <span class="text-xl font-bold">$2,799</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="w-full flex flex-row p-4 justify-end">
-        <button class="px-5 py-2 bg-blue-500 hover:bg-blue-800 text-white text-lg font-bold tracking-wide rounded-full">
-          Proceed to checkout
-        </button>
 
+      <!-- Cart Bill -->
+      <div
+        class="w-full flex flex-col md:col-span-1 gap-y-4 items-center justify-start p-8 border border-gray-400 rounded-[50px] h-[430px]"
+      >
+        <h1
+          id="cart-total"
+          class="text-left text-blue-950 text-lg md:text-xl font-bold tracking-wide mt-8"
+        >
+          Cart total
+        </h1>
+        <div class="w-full h-[1px] bg-gray-400 my-2" />
+
+        <div
+          class="w-full flex flex-col gap-y-4 justify-start items-center border border-gray-400 bg-gray-50 rounded-lg my-4"
+        >
+          <div class="flex flex-row w-full justify-between pr-[30%] p-4">
+            <span
+              id="cart-subtotal"
+              class="text-lg text-blue-800 font-extrabold tracking-wide"
+              >Subtotal</span
+            >
+            <span
+              id="cart-subtotal-value"
+              class="ml-4 text-lg text-gray-600 font-bold tracking-wide"
+              >0 DZD</span
+            >
+          </div>
+          <div
+            class="flex flex-row w-full justify-between pr-[30%] border-gray-400 border-t p-4"
+          >
+            <span
+              id="cart-subtotal"
+              class="text-xl text-blue-800 font-extrabold tracking-wide"
+              >Total</span
+            >
+            <span
+              id="cart-total-value"
+              class="ml-8 text-xl text-blue-950 font-bold tracking-wide"
+              >0 DZD</span
+            >
+          </div>
+        </div>
+        <div class="w-full flex flex-row p-4 justify-end">
+          <button
+            class="px-5 py-2 bg-blue-500 hover:bg-blue-800 text-white text-lg font-bold tracking-wide rounded-full"
+          >
+            Proceed to checkout
+          </button>
+        </div>
       </div>
     </div>
   </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const slider = document.getElementById("product-slider");
+      const prevBtn = document.getElementById("prev-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const cardWidth = 288; // Width of card (w-72) + gap (gap-4)
+
+      // Next button click event
+      nextBtn.addEventListener("click", function () {
+        slider.scrollBy({ left: cardWidth * 2, behavior: "smooth" });
+      });
+
+      // Previous button click event
+      prevBtn.addEventListener("click", function () {
+        slider.scrollBy({ left: -cardWidth * 2, behavior: "smooth" });
+      });
+    });
+  </script>
 </html>

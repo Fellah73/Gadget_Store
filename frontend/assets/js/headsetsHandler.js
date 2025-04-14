@@ -225,7 +225,21 @@ const addToCartSend = async (product, id) => {
     }
 
     if (!data.success) {
-      console.log(data.message);
+      if (data.message.includes("rupture de stock")) {
+        const popUp = document.getElementById("headsets-popup");
+        popUp.textContent = `Produit en rupture de stock ❌`;
+        popUp.style.backgroundColor = "rgb(156, 63, 48)";
+        setTimeout(() => {
+          popUp.style.display = "block";
+        }, 1000);
+
+        setTimeout(() => {
+          popUp.style.display = "none";
+        }, 5000);
+      }
+      console.error(data.message);
+      return;
+      
     }
   } catch (err) {
     console.log(err);

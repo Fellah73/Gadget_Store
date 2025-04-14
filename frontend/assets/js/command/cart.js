@@ -1,3 +1,5 @@
+import { recommendationCard } from "../rendredComponents/productCard.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("user");
 
@@ -195,7 +197,51 @@ document.addEventListener("DOMContentLoaded", async () => {
       document.getElementById("cart-total-value").textContent = `0 DZD`;
     }
   };
+
+  let recommendationItems = null
+  const fetchRecommendation = async (userID) => {
+    try {
+      const response = await fetch(
+        `http://localhost/gadgetstoreapi/recommendation/getRecommendation.php?limit=${cartItems.length*6}&discount=20&user_id=${userID}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json()
+       if(data.success){
+          console.log(data.message)
+         recommendationItems=data.products;
+       }else{
+        console.log(data.message)
+       }      
+     
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const productSlider= document.getElementById('product-slider');
+  const displayRecommendation =async () => {
+    await fetchRecommendation(localStorage.getItem("user"))
+
+    if(!recommendationItems){
+      console.error('no recommendation items');
+      return
+    }
+
+    productSlider.innerHTML="";
+
+    recommendationItems.forEach((item)=>{
+       const card = recommendationCard(item); 
+       productSlider.append(card);
+    })
+  };
+
   await displayCartItems();
+  await displayRecommendation()
 });
 
 function createCartItem(cardItem) {

@@ -252,3 +252,51 @@ export function createProductPurchaseCard(product, category) {
 
   return card;
 }
+
+export const recommendationCard = (product) => {
+  // Create the card container
+  const card = document.createElement("div");
+  card.className =
+    "hover:scale-95 hover:shadow-2xl hover:shadow-gray-600 flex-shrink-0 h-96 md:h-80 w-64 snap-start bg-white shadow-md overflow-hidden border border-gray-500 rounded-[30px] transition-transform duration-300";
+
+  // Create the product card content
+  // Determine dynamic background color based on discount value
+  const getDiscountBgColor = (discount) => {
+    if (discount >= 50) return "bg-red-500";
+    if (discount >= 30) return "bg-orange-400";
+    if (discount > 0) return "bg-green-400";
+    return "bg-gray-300";
+  };
+
+  card.innerHTML = `
+     <div class="product-card p-4 w-full relative">
+       <!-- Discount Badge -->
+       <div class="absolute top-2 left-2">
+         <div class="size-12 rounded-full flex items-center justify-center text-white font-bold ${getDiscountBgColor(product.discount)}">${product.discount}%</div>
+       </div>
+       <!-- Action Icons -->
+       <div class="absolute top-1 right-2 flex flex-col space-y-4">
+         <a href="product.html?id=${product.id}" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+           <svg xmlns="http://www.w3.org/2000/svg" class="size-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+           </svg>
+         </a>
+       </div>
+       
+       <div class="flex justify-center items-center py-2">
+         <img src="${product.image}" alt="${product.name}" class="h-48 object-contain" />
+       </div>
+       
+       <div class="mt-8 md:mt-1 w-full flex flex-col items-start justify-center p-2">
+         <h3 class="text-2xl md:text-xl truncate font-bold text-blue-900 ">${product.name}</h3>
+       
+         <div class="mt-2 flex items-center gap-x-6">
+           <span class="text-gray-400 line-through mr-2 text-xl md:text-base">${product.price}</span>
+           <span class="text-2xl md:text-xl font-bold">${product.price_discounted}<span class="text-base ml-1">DZD</span></span>
+         </div>
+       </div>
+     </div>
+   `;
+
+  return card;
+};
