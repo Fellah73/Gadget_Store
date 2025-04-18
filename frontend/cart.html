@@ -100,7 +100,35 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 p-8 md:gap-x-4 w-[98%] mx-auto">
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 p-8 md:gap-x-4 gap-y-4 md:gap-y-8 w-[98%] mx-auto"
+    >
+      <div
+        id="stock-warnings-container"
+        class="hidden w-full col-span-full bg-white shadow-md rounded-t-2xl border-2 border-red-500 overflow-x-hidden overflow-y-auto md:overflow-y-hidden md:overflow-x-auto"
+      >
+        <div
+          class="bg-gradient-to-r from-red-300 to-red-100 w-full flex items-center justify-center px-6 py-4"
+        >
+          <h2 class="text-xl tracking-wider font-extrabold text-red-800">
+            Stock Availability Warnings
+          </h2>
+        </div>
+
+        <!-- Warning items grid -->
+        <div
+          id="stock-warnings-grid"
+          class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-red-500 border-2 border-red-500"
+        ></div>
+
+        <!-- Footer -->
+        <div class="bg-red-100 px-6 py-3 w-full flex justify-center">
+          <p class="text-base font-semibold text-gray-600">
+            These products have limited availability. Maximum quantity per order
+            is displayed.
+          </p>
+        </div>
+      </div>
       <div
         class="md:col-span-2 h-[500px] md:h-[430px] w-full px-4 py-6 border border-gray-400 rounded-[50px]"
       >
@@ -108,9 +136,9 @@
           <div class="relative">
             <!-- Header -->
             <div class="flex justify-between items-center mb-2">
-                <h2 class="ml-4 text-2xl text-blue-800 tracking-wider font-bold">
-                Our Recommendations 
-                </h2>
+              <h2 class="ml-4 text-2xl text-blue-800 tracking-wider font-bold">
+                Our Recommendations
+              </h2>
 
               <!-- Slider Controls -->
               <div class="slider-controls flex space-x-2">
@@ -270,6 +298,7 @@
         </div>
         <div class="w-full flex flex-row p-4 justify-end">
           <button
+            id="checkout-btn"
             class="px-5 py-2 bg-blue-500 hover:bg-blue-800 text-white text-lg font-bold tracking-wide rounded-full"
           >
             Proceed to checkout

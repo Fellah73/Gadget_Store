@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       }
 
-      // Update active navbar item
+      // Update active navbar items
       const cartNavItem = document.getElementById("cart");
       if (cartNavItem) {
         cartNavItem.style.color = "rgb(59, 130, 246)";
@@ -198,11 +198,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
-  let recommendationItems = null
+  let recommendationItems = null;
   const fetchRecommendation = async (userID) => {
     try {
       const response = await fetch(
-        `http://localhost/gadgetstoreapi/recommendation/getRecommendation.php?limit=${cartItems.length*6}&discount=20&user_id=${userID}`,
+        `http://localhost/gadgetstoreapi/recommendation/getRecommendation.php?limit=${
+          cartItems.length * 6
+        }&discount=20&user_id=${userID}`,
         {
           method: "GET",
           headers: {
@@ -211,37 +213,91 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       );
 
-      const data = await response.json()
-       if(data.success){
-          console.log(data.message)
-         recommendationItems=data.products;
-       }else{
-        console.log(data.message)
-       }      
-     
+      const data = await response.json();
+      if (data.success) {
+        console.log(data.message);
+        recommendationItems = data.products;
+      } else {
+        console.log(data.message);
+      }
     } catch (error) {
       console.log(error);
     }
   };
-  const productSlider= document.getElementById('product-slider');
-  const displayRecommendation =async () => {
-    await fetchRecommendation(localStorage.getItem("user"))
+  const productSlider = document.getElementById("product-slider");
+  const displayRecommendation = async () => {
+    await fetchRecommendation(localStorage.getItem("user"));
 
-    if(!recommendationItems){
-      console.error('no recommendation items');
-      return
+    if (!recommendationItems) {
+      console.error("no recommendation items");
+      return;
     }
 
-    productSlider.innerHTML="";
+    productSlider.innerHTML = "";
 
-    recommendationItems.forEach((item)=>{
-       const card = recommendationCard(item); 
-       productSlider.append(card);
-    })
+    recommendationItems.forEach((item) => {
+      const card = recommendationCard(item);
+      productSlider.append(card);
+    });
   };
 
   await displayCartItems();
-  await displayRecommendation()
+  await displayRecommendation();
+
+  const stockWarningsContainer = document.getElementById(
+    "stock-warnings-container"
+  );
+  const stockWarningsGrid = document.getElementById("stock-warnings-grid");
+
+  const checkoutBtn = document.getElementById("checkout-btn");
+
+  let stockWarnings = null;
+  const getStockWarnings = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost/gadgetstoreapi/order/checkStockAvailability.php?user_id=${localStorage.getItem(
+          "user"
+        )}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        stockWarnings = null;
+        localStorage.setItem("canProceedToCheckout", "true");
+        window.location.href = "checkout.html";
+      } else {
+        stockWarnings = data.products;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const displayStockWarningsGrid = () => {
+    if (!stockWarnings) {
+      stockWarningsGrid.innerHTML = "";
+      stockWarningsContainer.style.display = "none";
+      return;
+    }
+    stockWarningsGrid.innerHTML = "";
+    stockWarnings.forEach((item) => {
+      const stockWarningCard = createWarningCard(item);
+      stockWarningsGrid.appendChild(stockWarningCard);
+    });
+    stockWarningsContainer.style.display = "block";
+  };
+
+  checkoutBtn.addEventListener("click", async () => {
+    await getStockWarnings();
+    displayStockWarningsGrid();
+  });
 });
 
 function createCartItem(cardItem) {
@@ -323,4 +379,39 @@ const categEmoji = (category) => {
     default:
       return "🛍️";
   }
+};
+
+const createWarningCard = (item) => {
+  const card = document.createElement("div");
+  card.className =
+    "flex flex-col items-center justify-start px-6 py-4 hover:bg-gray-50 transition-colors";
+
+  card.innerHTML = `
+    <div class="mb-3 w-full">
+      <h3 class="font-medium text-base text-center max-w-[80%] truncate text-gray-800">${item.product_name}</h3>
+    </div>
+    <div class="flex items-center">
+      <div
+        class="bg-red-200 text-red-800 text-sm font-medium px-5 py-2 rounded-full flex items-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 mr-1"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>Max: ${item.max_units} units</span>
+      </div>
+    </div>
+  `;
+
+  return card;
 };
