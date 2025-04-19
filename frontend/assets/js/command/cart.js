@@ -295,6 +295,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   checkoutBtn.addEventListener("click", async () => {
+    if (cartItems.length == 0) {
+      return;
+    }
     await getStockWarnings();
     displayStockWarningsGrid();
   });
