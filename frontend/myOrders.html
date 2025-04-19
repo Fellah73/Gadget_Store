@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="./assets/css/tailwind.js"></script>
+    <script type="module" src="assets/js/search/search.js" defer></script>
+    <script type="module" src="assets/js/isAuth.js" defer></script>
+    <script type="module" src="assets/js/command/myOrders.js" defer></script>
+
+    <title>My Orders</title>
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <div id="navbar-container"></div>
+    <div class="min-h-screen w-full flex flex-col pt-24 px-8 md:px-24">
+      <!-- Page Header -->
+      <header class="mb-10 w-full py-4 px-8 flex items-center justify-between">
+        <div class="flex flex-col gap-y-2">
+          <h1 id="username" class="text-3xl tracking-wide font-bold text-black">
+            Akram
+          </h1>
+          <p class="text-gray-700 mt-2 text-xl md:text-2xl">Here are all your orders</p>
+        </div>
+       <div class="hidden sm:flex sm:flex-col gap-y-2">
+        <div class="flex flex-row justify-end gap-x-4 text-2xl md:text-3xl text-gray-600">
+          You've <span id="orders-count">0</span> Orders 📦
+        </div>
+        <div class="flex flex-row justify-end px-4 gap-x-4 text-xl md:text-2xl text-gray-700 tracking-wide">
+           Total 💰 : <span id="total-spent">0</span>
+        </div>
+       </div> 
+        
+      </header>
+
+      <!-- Orders Grid -->
+      <div
+        id="orders-container"
+        class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6 p-1"
+      ></div>
+    </div>
+  </body>
+</html>
