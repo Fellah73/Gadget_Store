@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         popUpMessage.style.display = "flex";
         
         setTimeout(() => {
-          window.location.href = "/frontend/shop.html";
+          window.location.href = "/frontend/myOrders.html";
         }, 4000);
 
         

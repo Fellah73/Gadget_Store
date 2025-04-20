@@ -176,7 +176,43 @@ document.addEventListener("DOMContentLoaded", async () => {
           data.cart_items.length;
       } else {
         document.querySelector("#cart-items-number").textContent = "0";
-        console.log(data.message);
+        
+      }
+    } catch (error) {
+      console.error("Error fetching cart items:", error);
+    }
+  };
+
+  await updateCartCount(userId);
+});
+
+
+// update orders count
+document.addEventListener("DOMContentLoaded", async () => {
+  const userId = localStorage.getItem("user");
+
+  const updateCartCount = async (userId) => {
+    if (userId == "null") return;
+
+    try {
+      const response = await fetch(
+        `http://localhost/gadgetstoreapi/order/getUserOrders.php?user_id=${userId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        document.querySelector("#order-count").textContent =
+          data.length;
+      } else {
+        document.querySelector("#order-count").textContent = "0";
+        
       }
     } catch (error) {
       console.error("Error fetching cart items:", error);

@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const orderCount = document.getElementById("orders-count");
   const user = document.getElementById("username");
   const orders_container = document.getElementById("orders-container");
-  const totalSpent = document.getElementById("total-spent");    
+  const totalSpent = document.getElementById("total-spent");
 
   let orders = null;
 
@@ -54,10 +54,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const data = await response.json();
       if (data.success) {
-        orders = data.orders;
-        orderCount.textContent = orders.length;
+        if (!data.orders) {
+          orders = null;
+        }
+        orders = data.orders ? data.orders : null;
+        orderCount.textContent = orders ? orders.length : 0;
         user.textContent = data.user;
-        let total = data.orders.reduce((total, order) => total + parseFloat(order.total), 0);
+        let total = !data.orders
+          ? 0
+          : data.orders.reduce(
+              (total, order) => total + parseFloat(order.total),
+              0
+            );
         totalSpent.textContent = `${total.toFixed(2)} DZD`;
       } else {
         console.log(data.message);
@@ -67,12 +75,42 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
+  const cancelOrder = async (orderId) => {
+    try {
+      const response = await fetch(
+        `http://localhost/gadgetstoreapi/order/cancelOrder.php?order_id=${orderId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+      if (data.success) {
+        console.log(data.message);
+      } else {
+        console.log(data.message);
+      }
+    } catch (error) {
+      console.error("Error canceling order:", error);
+    }
+  };
+
   const displayOrders = async () => {
     await fetchOrders();
     orders_container.innerHTML = "";
+    if (!orders) return;
     orders.forEach((order, key) => {
       const card = createOrderCard(key + 1, order);
       orders_container.appendChild(card);
+
+      const cancelOrderButton = card.querySelector("#cancel-order");
+      cancelOrderButton.addEventListener("click", async () => {
+        await cancelOrder(order.id);
+        await displayOrders();
+      });
     });
   };
 
@@ -80,6 +118,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 const createOrderCard = (key, order) => {
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "processing":
+        return "bg-blue-100 text-blue-700 border border-blue-900";
+      case "delivered":
+        return "bg-green-50 text-green-700 border border-green-900";
+      case "cancelled":
+        return "bg-red-50 text-red-700 border border-red-900";
+      default:
+        return "bg-yellow-50 text-yellow-700 border border-yellow-900";
+    }
+  };
   // Créer le conteneur principal de la carte
   const card = document.createElement("div");
   card.className =
@@ -91,12 +141,14 @@ const createOrderCard = (key, order) => {
       <div class="flex justify-between items-center px-2">
         <div class="flex flex-col gap-y-2">
           <h3 class="font-semibold text-lg text-blue-800">Order #${key}</h3>
-          <p class="text-sm tracking-wide text-gray-600">Placed on ${
-            formatOrderDate(order.created_at)
-          }</p>
+          <p class="text-sm tracking-wide text-gray-600">Placed on ${formatOrderDate(
+            order.created_at
+          )}</p>
         </div>
-        <span class="bg-green-50 text-green-700 border border-green-900 text-base px-4 py-3 rounded-full font-medium tracking-wide">
-          Delivered
+        <span class="${getStatusColor(
+          order.status
+        )} text-base px-4 py-3 rounded-full font-medium tracking-wide">
+          ${order.status}
         </span>
       </div>
     </div>
@@ -118,11 +170,19 @@ const createOrderCard = (key, order) => {
               .map(
                 (item) => `
               <tr class="grid grid-cols-10 md:grid-cols-12 divide-x divide-gray-300 border border-gray-400">
-                <td class="py-2 col-span-5 px-2 text-left truncate text-base">${item.name}</td>
-                <td class="py-2 col-span-1 text-3xl hidden md:block">${generateCategEmoji(item.category_id)}</td>
-                <td class="py-2 col-span-1 hidden md:block text-lg text-gray-600">${item.quantity}</td>
+                <td class="py-2 col-span-5 px-2 text-left truncate text-base">${
+                  item.name
+                }</td>
+                <td class="py-2 col-span-1 text-3xl hidden md:block">${generateCategEmoji(
+                  item.category_id
+                )}</td>
+                <td class="py-2 col-span-1 hidden md:block text-lg text-gray-600">${
+                  item.quantity
+                }</td>
                 <td class="py-2 col-span-2">${item.price}</td>
-                <td class="py-2 col-span-3 px-3 text-right">${item.subtotal}</td>
+                <td class="py-2 col-span-3 px-3 text-right">${
+                  item.subtotal
+                }</td>
               </tr>
             `
               )
@@ -137,7 +197,9 @@ const createOrderCard = (key, order) => {
           <span class="font-bold text-blue-900">${order.total} DZD</span>
         </div>
         <div class="mt-4">
-          <button class="w-full bg-amber-600 hover:bg-amber-700 transition-colors duration-200 text-white rounded-lg px-4 py-2 text-lg font-bold tracking-wider">
+          <button id="cancel-order" class="${
+            order.status === "processing" ? "" : "hidden"
+          } w-full bg-amber-600 hover:bg-amber-700 transition-colors duration-200 text-white rounded-lg px-4 py-2 text-lg font-bold tracking-wider">
             Cancel Order
           </button>
         </div>
@@ -148,32 +210,30 @@ const createOrderCard = (key, order) => {
   return card;
 };
 
-
 const generateCategEmoji = (category) => {
-    switch (category) {
-      case 1:
-        return "📱";
-      case 2:
-        return "🎮";
-      case 4:
-        return "⌚";
-      case 3:
-        return "🎧";
-      default:
-        return "🛍️";
-    }
+  switch (category) {
+    case 1:
+      return "📱";
+    case 2:
+      return "🎮";
+    case 4:
+      return "⌚";
+    case 3:
+      return "🎧";
+    default:
+      return "🛍️";
+  }
+};
+
+const formatOrderDate = (dateString) => {
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   };
 
-  const formatOrderDate = (dateString) => {
-    const options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    };
-  
-    const date = new Date(dateString.replace(" ", "T"));
-    return date.toLocaleString("en-GB", options).replace(",", " at");
-  }
-  
+  const date = new Date(dateString.replace(" ", "T"));
+  return date.toLocaleString("en-GB", options).replace(",", " at");
+};

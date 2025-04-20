@@ -5,29 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech Sphere -Home</title>
 
-    <!-- Tailwind CSS CDN -->
     <script type="module" src="assets/js/home.js" defer></script>
     <script type="module" src="assets/js/search/search.js" defer></script>
     <script type="module" src="assets/js/isAuth.js" defer></script>
     <script src="./assets/css/tailwind.js"></script>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <style>
     #container {
       background-image: url("assets/images/backgroundImage.webp");
-      background-size: cover; /* Ajuste l'image pour couvrir tout l'écran */
-      background-position: center; /* Centre l'image */
-      background-repeat: no-repeat; /* Empêche la répétition de l'image */
-      background-attachment: fixed; /* Fixe l'image pour qu'elle ne bouge pas au scroll */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
   </style>
 
   <body class="font-sans" id="container">
-    <!-- Navigation Bar -->
     <div id="navbar-container"></div>
 
-    <!-- Add padding to body content so it appears below the fixed navbar -->
     <div class="pt-16 p-4 flex flex-col gap-y-5">
       <div id="hero-container"></div>
       <div id="categoriesGrid-container"></div>
@@ -36,7 +32,5 @@
       <div id="testimonials-container"></div>
     </div>
     <div id="footer-container"></div>
-
-    <!-- JavaScript for mobile menu toggle -->
   </body>
 </html>

@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkAuthLink = () => {
     const authLink = document.getElementById("register");
     const authLink2 = document.getElementById("login");
+    const cartLink = document.getElementById("cart-link");
+    const ordersLink = document.getElementById("order-link");
 
     if (authLink) {
       const token = localStorage.getItem("user");
@@ -13,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // si session pas encore expiré
       if (expiration_session > now && expiration_session !== "null") {
         authLink.textContent = "Logout";
+        cartLink.style.display = "block";
+        ordersLink.style.display = "block";
 
         authLink.onclick = () => {
           localStorage.setItem("user", "null");
@@ -28,6 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         authLink.textContent = "Register";
         authLink.href = "register.html";
+
+        cartLink.style.display = "none";
+        ordersLink.style.display = "none";
 
         if (authLink2) {
           authLink2.style.display = "block";

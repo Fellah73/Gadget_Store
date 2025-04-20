@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const data = await response.json();
 
       if (data.success) {
-        console.log(data.product);
+        
         product = data.product;
       } else {
         console.error("Erreur API :", data.message);

@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       } else {
         titleContainer.textContent = `${data.user} your cart is empty 🛒`;
         tableContainer.style.display = "none";
-        console.log(data.message);
+        
       }
     } catch (error) {
       console.error("Error fetching cart items:", error);
@@ -127,10 +127,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   const displayCartItems = async () => {
-    console.log("cart items refetshed");
+    
     await fetchCartItems(localStorage.getItem("user"));
     if (!cartItems) {
-      console.log("cartItems not found");
+      
       return;
     }
     cartContainer.innerHTML = "";
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const response = await fetch(
         `http://localhost/gadgetstoreapi/recommendation/getRecommendation.php?limit=${
-          cartItems.length * 6
+         cartItems ? cartItems.length * 6 : 30
         }&discount=20&user_id=${userID}`,
         {
           method: "GET",
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const data = await response.json();
       if (data.success) {
-        console.log(data.message);
+        
         recommendationItems = data.products;
       } else {
         console.log(data.message);
