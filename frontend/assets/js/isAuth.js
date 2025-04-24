@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const authLink2 = document.getElementById("login");
     const cartLink = document.getElementById("cart-link");
     const ordersLink = document.getElementById("order-link");
+    const dashboardLink = document.getElementById("dashboard-link");
 
     if (authLink) {
       const token = localStorage.getItem("user");
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         authLink.textContent = "Logout";
         cartLink.style.display = "block";
         ordersLink.style.display = "block";
+        dashboardLink.style.display = "block";
 
         authLink.onclick = () => {
           localStorage.setItem("user", "null");
@@ -35,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         cartLink.style.display = "none";
         ordersLink.style.display = "none";
+        dashboardLink.style.display = "none";
 
         if (authLink2) {
           authLink2.style.display = "block";

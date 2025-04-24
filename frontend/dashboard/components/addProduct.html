@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Add New Product</title>
+
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Page Title -->
+        <div class="mb-6">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Add New Product</h1>
+            <p class="text-gray-500">Create a new product for your inventory</p>
+        </div>
+
+        <!-- Product Form Card -->
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+            <div class="px-5 py-4 border-b border-gray-100">
+                <h2 class="font-bold text-gray-800">Product Information</h2>
+            </div>
+            
+            <form class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Left Column -->
+                    <div class="space-y-6">
+                        <!-- Product Name -->
+                        <div class="flex flex-col gap-y-2">
+                            <label for="productName" class="text-sm font-medium text-gray-700">Product Name</label>
+                            <input type="text" id="productName" name="productName" placeholder="Product Name" required
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        </div>
+
+                        <!-- Price & Discount Row -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex flex-col gap-y-2">
+                                <label for="price" class="text-sm font-medium text-gray-700">Price (DZD)</label>
+                                <input type="number" id="price" name="price" min="0" step="1000" required placeholder="1000"
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                            </div>
+                            <div class="flex flex-col gap-y-2">
+                                <label for="discount" class="text-sm font-medium text-gray-700">Discount (%)</label>
+                                <input type="number" id="discount" name="discount" step="5" min="0" max="100" placeholder="0"
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <!-- Stock & Category Row -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex flex-col gap-y-2">
+                                <label for="stock" class="text-sm font-medium text-gray-700">Stock Quantity</label>
+                                <input type="number" id="stock" name="stock" min="0" placeholder="0" required
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                            </div>
+                            <div class="flex flex-col gap-y-2">
+                                <label for="category" class="text-sm font-medium text-gray-700">Category</label>
+                                <select id="category" name="category" required
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                                    <option value="1">Phones</option>
+                                    <option value="3">Headsets</option>
+                                    <option value="4">SmartWatch</option>
+                                    <option value="2">Gaming</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Brand -->
+                        <div class="flex flex-col gap-y-2">
+                            <label for="brand" class="text-sm font-medium text-gray-700">Brand</label>
+                            <input type="text" id="brand" name="brand" placeholder="Apple" required
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        </div>
+                        
+                        <!-- Description -->
+                        <div class="flex flex-col gap-y-2">
+                            <label for="description" class="text-sm font-medium text-gray-700">Description</label>
+                            <textarea id="description" name="description" rows="5" placeholder="This product is very good...." required
+                                class="w-full h-20 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="space-y-6">
+                        <!-- Image URL -->
+                        <div class="flex flex-col gap-y-2">
+                            <label for="imageUrl" class="text-sm font-medium text-gray-700">Image URL</label>
+                            <input type="url" id="imageUrl" name="imageUrl" placeholder="https://example.com/image.jpg"
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        </div>
+
+                        <!-- Image Preview -->
+                        <div class="flex flex-col gap-y-2">
+                            <p class="text-sm font-medium text-gray-700">Image Preview</p>
+                            <div class="border border-dashed border-gray-300 h-40 md:h-72 rounded-lg flex items-center justify-center bg-gray-50">
+                                <img id="preview" 
+                                    src="https://img.freepik.com/premium-vector/vector-illustration-about-concept-no-items-found-no-results-found_675567-6665.jpg"
+                                    alt="Product image preview"
+                                    class="max-h-full hidden">
+                                <span id="placeholder" class="text-gray-400">Image preview will appear here</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Form Actions -->
+                        <div class="pt-2 w-full flex items-end justify-end space-x-4 ">
+                            <button type="button" class="px-6 py-2 border border-transparent bg-amber-600 hover:bg-amber-500 hover:transition hover:duration-300 rounded-md shadow-sm text-lg tracking-wide font-medium text-white 0 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            Reset
+                            </button>
+                            <button type="submit" class="px-6 py-2 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-gradient-to-l from-blue-900 to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            Add Product
+                            </button>
+                         </div>
+                       
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

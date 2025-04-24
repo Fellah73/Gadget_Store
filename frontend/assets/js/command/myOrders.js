@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 const createOrderCard = (key, order) => {
   const getStatusColor = (status) => {
     switch (status) {
-      case "processing":
+      case "shipped":
         return "bg-blue-100 text-blue-700 border border-blue-900";
       case "delivered":
         return "bg-green-50 text-green-700 border border-green-900";

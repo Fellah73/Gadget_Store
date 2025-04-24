@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce Admin Dashboard</title>
+    <script src="./assets/css/tailwind.js"></script>
+    <script src="./dashboard/js/dashboard.js"></script>
+    <script defer src="./dashboard/js/addProduct.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      section {
+        min-height: 100vh;
+        padding-top: 20px;
+      }
+
+      .fixed-sidebar {
+        position: fixed;
+        height: 100vh;
+      }
+      #sidebar-menu a {
+        display: flex;
+        justify-content: start;
+        gap: 1.2rem; /* gap-x-5 equivalent */
+      }
+
+      .main-content {
+        margin-left: 16rem; /* 64px from w-64 sidebar */
+      }
+
+      @media (max-width: 768px) {
+        .main-content {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Main Container -->
+    <div class="flex flex-row gap-x-5">
+      <!-- Sidebar (fixed on desktop) -->
+      <aside
+        id="sidebar"
+        class="fixed-sidebar bg-white w-64 shadow-md hidden md:items-center md:justify-center md:flex z-10"
+      >
+        <nav class="h-[90%] my-auto">
+          <div class="w-full flex flex-row justify-between gap-x-4 p-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="70"
+              height="70"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#1e40af"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="7" y="2" width="10" height="20" rx="2" ry="2" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
+            </svg>
+            <h1 class="text-xl trc font-bold text-blue-800">
+              Tech Sphere Dashboard
+            </h1>
+          </div>
+          <ul id="sidebar-menu">
+            <li class="px-5 py-3 hover:bg-gray-100">
+              <a href="#total-dashboard" class="flex items-center">
+                <i class="fas fa-tachometer-alt w-6"></i>
+                <span>Dashboard </span>
+              </a>
+            </li>
+            <li class="px-5 py-3 hover:bg-gray-100">
+              <a href="#total-products" class="flex items-center">
+                <i class="fas fa-box w-6"></i>
+                <span>Products</span>
+              </a>
+            </li>
+            <li class="px-5 py-3 hover:bg-gray-100">
+              <a href="#add-product" class="flex items-center">
+                <i class="fas fa-add w-6"></i>
+                <span>Add Product</span>
+              </a>
+            </li>
+            <li class="px-5 py-3 hover:bg-gray-100">
+              <a href="#orders" class="flex items-center">
+                <i class="fas fa-shopping-cart w-6"></i>
+                <span>Orders</span>
+              </a>
+            </li>
+            <li class="px-5 py-3 hover:bg-gray-100 pointer-events-none">
+              <a href="#users" class="flex items-center">
+                <i class="fas fa-users w-6"></i>
+                <span>Users</span>
+                <span class="animate-spin">⌛</span>
+              </a>
+            </li>
+            <li class="px-5 py-3 hover:bg-gray-100 pointer-events-none">
+              <a href="#sales" class="flex items-center">
+                <i class="fas fa-dollar-sign w-6"></i>
+                <span>Sales</span>
+                <span class="animate-spin">⌛</span>
+              </a>
+            </li>
+            <li class="px-5 py-3 hover:bg-gray-100 pointer-events-none">
+              <a href="#settings" class="flex items-center">
+                <i class="fas fa-cog w-6"></i>
+                <span>Settings</span>
+                <span class="animate-spin">⌛</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content Container -->
+      <div class="md:ml-[20%] w-[80%] md:main-content">
+        <!-- Dashboard Section -->
+        <section
+          id="total-dashboard"
+          class="container mx-auto py-16 px-4"
+        ></section>
+
+        <!-- Products Section -->
+        <section
+          id="total-products"
+          class="container mx-auto pt-16 px-4"
+        ></section>
+        <section id="add-product"></section>
+
+        <!-- Orders Section -->
+        <section id="orders" class="container mx-auto py-16 px-4"></section>
+      </div>
+    </div>
+  </body>
+</html>
