@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
         authLink.textContent = "Logout";
         cartLink.style.display = "block";
         ordersLink.style.display = "block";
-        dashboardLink.style.display = "block";
 
         authLink.onclick = () => {
           localStorage.setItem("user", "null");
@@ -37,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         cartLink.style.display = "none";
         ordersLink.style.display = "none";
-        dashboardLink.style.display = "none";
 
         if (authLink2) {
           authLink2.style.display = "block";
@@ -51,4 +49,42 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const intervalId = setInterval(checkAuthLink, 100);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("getting user role");
+  setTimeout(async () => {
+    const dashboardLink = document.getElementById("dashboard-link");
+    const getUserRole = async () => {
+      const user = localStorage.getItem("user");
+      if (user == "null") return;
+      try {
+        const response = await fetch(
+          `http://localhost/gadgetstoreapi/auth/getUserRole.php?user_id=${user}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const data = await response.json();
+        if (data.success) {
+          const role = data.role;
+          if (role === "admin") {
+            dashboardLink.style.display = "block";
+            //dashboardLink.href = "dashboard.html";
+          }else{
+            dashboardLink.style.display = "none";
+          }
+        } else {
+          console.log(data.message);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    await getUserRole();
+  }, 1000);
 });

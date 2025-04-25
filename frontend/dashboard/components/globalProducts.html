@@ -6,270 +6,88 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="mb-6">
+    <div class="flex flex-col gap-y-2 md:gap-y-4">
       <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Products</h1>
-      <p class="text-gray-500">Manage your product inventory and categories.</p>
+      <p class="text-gray-500">
+        You can view and update the quantity of the stock products
+      </p>
     </div>
 
     <!-- Action Bar -->
     <div
-      class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4"
+      class="flex flex-col md:flex-row md:items-center justify-between my-6 gap-4"
     >
       <div class="flex items-center">
-        <div class="relative">
-          <input
-            type="text"
-            placeholder="Search products..."
-            class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-          />
-          <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
-        </div>
         <div class="ml-4">
           <select
-            class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+            id="category-filter"
+            class="border border-gray-300 rounded-lg w-40 md:w-64 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
           >
-            <option>All Categories</option>
-            <option>Electronics</option>
-            <option>Clothing</option>
-            <option>Home & Garden</option>
-            <option>Sports & Outdoors</option>
+            <option value="1">Phones</option>
+            <option value="3">Headsets</option>
+            <option value="4">SmartWatch</option>
+            <option value="2">Gaming</option>
           </select>
         </div>
       </div>
-      <button
-        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
-      >
-        <i class="fas fa-plus mr-2"></i> Add New Product
-      </button>
     </div>
 
     <!-- Products Table -->
     <div class="bg-white rounded-lg shadow overflow-hidden">
-      <div class="overflow-x-auto">
+      <div class="overflow-y-auto max-h-96">
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
-            <tr>
+            <tr class="text-sm">
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 text-left  font-medium text-gray-500 uppercase tracking-wider"
               >
                 Product
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 text-left  font-medium text-gray-500 uppercase tracking-wider"
               >
                 Category
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 text-left  font-medium text-gray-500 uppercase tracking-wider"
               >
                 Stock
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 text-left  font-medium text-gray-500 uppercase tracking-wider"
               >
                 Price
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 text-right font-medium text-gray-500 uppercase tracking-wider"
               >
-                Status
-              </th>
-              <th
-                scope="col"
-                class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                Actions
+                Increment quantity
               </th>
             </tr>
           </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center">
-                  <div class="h-10 w-10 bg-gray-200 rounded-md"></div>
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
-                      Wireless Earbuds Pro
-                    </div>
-                    <div class="text-sm text-gray-500">SKU: PR-5689</div>
-                  </div>
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">Electronics</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">124</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">$129.99</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <span
-                  class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                >
-                  Active
-                </span>
-              </td>
-              <td
-                class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-              >
-                <a href="#" class="text-blue-600 hover:text-blue-900 mr-3"
-                  >Edit</a
-                >
-                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center">
-                  <div class="h-10 w-10 bg-gray-200 rounded-md"></div>
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
-                      Smart Watch X3
-                    </div>
-                    <div class="text-sm text-gray-500">SKU: PR-5690</div>
-                  </div>
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">Electronics</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">85</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">$199.99</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <span
-                  class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                >
-                  Active
-                </span>
-              </td>
-              <td
-                class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-              >
-                <a href="#" class="text-blue-600 hover:text-blue-900 mr-3"
-                  >Edit</a
-                >
-                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center">
-                  <div class="h-10 w-10 bg-gray-200 rounded-md"></div>
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
-                      Ultra HD Camera
-                    </div>
-                    <div class="text-sm text-gray-500">SKU: PR-5691</div>
-                  </div>
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">Electronics</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">42</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">$349.99</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <span
-                  class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                >
-                  Active
-                </span>
-              </td>
-              <td
-                class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-              >
-                <a href="#" class="text-blue-600 hover:text-blue-900 mr-3"
-                  >Edit</a
-                >
-                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center">
-                  <div class="h-10 w-10 bg-gray-200 rounded-md"></div>
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
-                      Premium Backpack
-                    </div>
-                    <div class="text-sm text-gray-500">SKU: PR-5692</div>
-                  </div>
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">Fashion</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">58</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">$79.99</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <span
-                  class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                >
-                  Active
-                </span>
-              </td>
-              <td
-                class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-              >
-                <a href="#" class="text-blue-600 hover:text-blue-900 mr-3"
-                  >Edit</a
-                >
-                <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
-              </td>
-            </tr>
-          </tbody>
+          <tbody
+            id="stock-products-container"
+            class="bg-white divide-y divide-gray-200"
+          ></tbody>
         </table>
       </div>
       <div
         class="px-5 py-4 bg-white border-t flex flex-col sm:flex-row items-center justify-between"
       >
-        <div class="text-sm text-gray-500 mb-4 sm:mb-0">
-          Showing 1 to 4 of 24 entries
-        </div>
+        <div
+          id="stock-items-count"
+          class="text-lg tracking-wide text-black mb-4 sm:mb-0"
+        ></div>
         <div class="flex">
-          <a
+          <span
             href="#"
-            class="px-3 py-1 rounded-md mx-1 bg-gray-200 text-gray-600 hover:bg-gray-300"
-            >Previous</a
-          >
-          <a
-            href="#"
-            class="px-3 py-1 rounded-md mx-1 bg-blue-600 text-white hover:bg-blue-700"
-            >1</a
-          >
-          <a
-            href="#"
-            class="px-3 py-1 rounded-md mx-1 bg-gray-200 text-gray-600 hover:bg-gray-300"
-            >2</a
-          >
-          <a
-            href="#"
-            class="px-3 py-1 rounded-md mx-1 bg-gray-200 text-gray-600 hover:bg-gray-300"
-            >3</a
-          >
-          <a
-            href="#"
-            class="px-3 py-1 rounded-md mx-1 bg-gray-200 text-gray-600 hover:bg-gray-300"
-            >Next</a
+            class="px-4 py-2 rounded-md text-bold text-lg tracking-wide mx-1 bg-gradient-to-r from-blue-900 to-blue-700 text-white"
+            ><span id="stock-items-qte"></span> items available in stock</span
           >
         </div>
       </div>

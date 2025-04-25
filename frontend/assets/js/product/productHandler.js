@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     //update description
     const descriptionElement = document.getElementById("product-description");
 
-    descriptionElement.textContent = `Conçue pour offrir une expérience utilisateur exceptionnelle,
+    descriptionElement.textContent =product[0].description ? product[0].description : `Conçue pour offrir une expérience utilisateur exceptionnelle,
      elle intègre les dernières technologies pour garantir des performances avancées.
        Idéale pour ceux qui recherchent une qualité supérieure, la ${product[0].name} de ${product[0].brand} est 
        un choix incontournable pour les passionnés`;

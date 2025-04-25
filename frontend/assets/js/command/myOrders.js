@@ -179,7 +179,7 @@ const createOrderCard = (key, order) => {
                 <td class="py-2 col-span-1 hidden md:block text-lg text-gray-600">${
                   item.quantity
                 }</td>
-                <td class="py-2 col-span-2">${item.price}</td>
+                <td class="py-2 col-span-2">${item.price_discounted}</td>
                 <td class="py-2 col-span-3 px-3 text-right">${
                   item.subtotal
                 }</td>

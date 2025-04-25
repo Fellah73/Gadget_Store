@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E-commerce Admin Dashboard</title>
+    <title>Admin Dashboard</title>
     <script src="./assets/css/tailwind.js"></script>
     <script src="./dashboard/js/dashboard.js"></script>
+    <script src="./dashboard/js/updateStock.js"></script>
     <script defer src="./dashboard/js/addProduct.js"></script>
     <link
       rel="stylesheet"
@@ -30,32 +31,24 @@
         justify-content: start;
         gap: 1.2rem; /* gap-x-5 equivalent */
       }
-
-      .main-content {
-        margin-left: 16rem; /* 64px from w-64 sidebar */
-      }
-
-      @media (max-width: 768px) {
-        .main-content {
-          margin-left: 0;
-        }
-      }
     </style>
   </head>
   <body class="bg-gray-50">
-    <!-- Main Container -->
     <div class="flex flex-row gap-x-5">
-      <!-- Sidebar (fixed on desktop) -->
+      <!-- Vertical Sidebar (Desktop) -->
       <aside
         id="sidebar"
-        class="fixed-sidebar bg-white w-64 shadow-md hidden md:items-center md:justify-center md:flex z-10"
+        class="fixed-sidebar bg-white w-64 shadow-md hidden md:flex flex-col z-10"
       >
-        <nav class="h-[90%] my-auto">
-          <div class="w-full flex flex-row justify-between gap-x-4 p-2">
+        <nav class="h-full py-6">
+          <a
+            href="index.html"
+            class="w-full flex items-center justify-between px-5 mb-6"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="70"
-              height="70"
+              width="40"
+              height="40"
               viewBox="0 0 24 24"
               fill="none"
               stroke="#1e40af"
@@ -66,62 +59,289 @@
               <rect x="7" y="2" width="10" height="20" rx="2" ry="2" />
               <line x1="12" y1="18" x2="12.01" y2="18" />
             </svg>
-            <h1 class="text-xl trc font-bold text-blue-800">
-              Tech Sphere Dashboard
-            </h1>
+            <h1 class="text-xl font-bold text-blue-800">Tech Dashboard</h1>
+          </a>
+
+          <div class="px-5">
+            <hr class="border-gray-200 mb-6" />
           </div>
-          <ul id="sidebar-menu">
-            <li class="px-5 py-3 hover:bg-gray-100">
-              <a href="#total-dashboard" class="flex items-center">
-                <i class="fas fa-tachometer-alt w-6"></i>
-                <span>Dashboard </span>
+
+          <ul id="sidebar-menu" class="space-y-1">
+            <li class="px-3">
+              <a
+                href="#total-dashboard"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
+              >
+                <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                <span>Dashboard</span>
               </a>
             </li>
-            <li class="px-5 py-3 hover:bg-gray-100">
-              <a href="#total-products" class="flex items-center">
-                <i class="fas fa-box w-6"></i>
-                <span>Products</span>
+            <li class="px-3">
+              <a
+                href="#stock"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
+              >
+                <i class="fas fa-box w-5 text-center"></i>
+                <span>Stock</span>
               </a>
             </li>
-            <li class="px-5 py-3 hover:bg-gray-100">
-              <a href="#add-product" class="flex items-center">
-                <i class="fas fa-add w-6"></i>
+            <li class="px-3">
+              <a
+                href="#add-product"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
+              >
+                <i class="fas fa-plus-circle w-5 text-center"></i>
                 <span>Add Product</span>
               </a>
             </li>
-            <li class="px-5 py-3 hover:bg-gray-100">
-              <a href="#orders" class="flex items-center">
-                <i class="fas fa-shopping-cart w-6"></i>
+            <li class="px-3">
+              <a
+                href="#orders"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
+              >
+                <i class="fas fa-shopping-cart w-5 text-center"></i>
                 <span>Orders</span>
               </a>
             </li>
-            <li class="px-5 py-3 hover:bg-gray-100 pointer-events-none">
-              <a href="#users" class="flex items-center">
-                <i class="fas fa-users w-6"></i>
+            <li class="px-3">
+              <a
+                href="#users"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg text-gray-400 cursor-not-allowed"
+              >
+                <i class="fas fa-users w-5 text-center"></i>
                 <span>Users</span>
-                <span class="animate-spin">⌛</span>
+                <span
+                  class="text-xs ml-auto bg-gray-200 text-gray-500 py-1 px-2 rounded"
+                  >Soon</span
+                >
               </a>
             </li>
-            <li class="px-5 py-3 hover:bg-gray-100 pointer-events-none">
-              <a href="#sales" class="flex items-center">
-                <i class="fas fa-dollar-sign w-6"></i>
+            <li class="px-3">
+              <a
+                href="#sales"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg text-gray-400 cursor-not-allowed"
+              >
+                <i class="fas fa-dollar-sign w-5 text-center"></i>
                 <span>Sales</span>
-                <span class="animate-spin">⌛</span>
+                <span
+                  class="text-xs ml-auto bg-gray-200 text-gray-500 py-1 px-2 rounded"
+                  >Soon</span
+                >
               </a>
             </li>
-            <li class="px-5 py-3 hover:bg-gray-100 pointer-events-none">
-              <a href="#settings" class="flex items-center">
-                <i class="fas fa-cog w-6"></i>
+            <li class="px-3">
+              <a
+                href="#settings"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg text-gray-400 cursor-not-allowed"
+              >
+                <i class="fas fa-cog w-5 text-center"></i>
                 <span>Settings</span>
-                <span class="animate-spin">⌛</span>
+                <span
+                  class="text-xs ml-auto bg-gray-200 text-gray-500 py-1 px-2 rounded"
+                  >Soon</span
+                >
               </a>
             </li>
           </ul>
         </nav>
+
+        <!-- User Profile at Bottom -->
+        <div class="mt-auto px-5 py-4 border-t border-gray-200">
+          <div class="flex items-center">
+            <div class="ml-3">
+              <p class="text-lg font-medium text-gray-800">Admin User</p>
+              <span
+                id="admin-name"
+                class="text-base text-gray-700 hover:text-blue-600"
+              ></span>
+            </div>
+            <a
+              href="shop.html"
+              class="ml-auto text-gray-400 hover:text-gray-600"
+            >
+              <i class="fas fa-sign-out-alt"></i>
+            </a>
+          </div>
+        </div>
       </aside>
 
+      <!-- Mobile Navigation Bar -->
+      <nav
+        id="mobile-nav"
+        class="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-gray-200 z-10"
+      >
+        <div class="flex justify-around">
+          <a
+            href="#total-dashboard"
+            class="flex flex-col items-center justify-center py-3 w-full text-gray-600 hover:text-blue-600"
+          >
+            <i class="fas fa-tachometer-alt text-lg"></i>
+            <span class="text-xs mt-1">Dashboard</span>
+          </a>
+          <a
+            href="#stock"
+            class="flex flex-col items-center justify-center py-3 w-full text-gray-600 hover:text-blue-600"
+          >
+            <i class="fas fa-box text-lg"></i>
+            <span class="text-xs mt-1">Stock</span>
+          </a>
+          <a
+            href="#add-product"
+            class="flex flex-col items-center justify-center py-3 w-full text-blue-600 relative"
+          >
+            <div
+              class="bg-blue-600 rounded-full h-12 w-12 flex items-center justify-center text-white absolute -top-6"
+            >
+              <i class="fas fa-plus text-lg"></i>
+            </div>
+            <span class="text-xs mt-6">Add</span>
+          </a>
+          <a
+            href="#orders"
+            class="flex flex-col items-center justify-center py-3 w-full text-gray-600 hover:text-blue-600"
+          >
+            <i class="fas fa-shopping-cart text-lg"></i>
+            <span class="text-xs mt-1">Orders</span>
+          </a>
+          <a
+            href="#"
+            class="flex flex-col items-center justify-center py-3 w-full text-gray-600 hover:text-blue-600"
+          >
+            <i class="fas fa-bars text-lg"></i>
+            <span class="text-xs mt-1">More</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Mobile Header -->
+      <header
+        class="md:hidden bg-white border-b border-gray-200 fixed top-0 inset-x-0 z-10"
+      >
+        <div class="flex items-center justify-between px-4 py-3">
+          <div class="flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#1e40af"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mr-2"
+            >
+              <rect x="7" y="2" width="10" height="20" rx="2" ry="2" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
+            </svg>
+            <h1 class="text-lg font-bold text-blue-800">Tech Dashboard</h1>
+          </div>
+        </div>
+      </header>
+
+      <!-- Mobile Menu Overlay (Hidden by default) -->
+      <div
+        id="mobile-menu-overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden"
+      >
+        <div
+          class="bg-white h-full w-64 shadow-lg transform transition-transform"
+        >
+          <div
+            class="p-4 border-b border-gray-200 flex items-center justify-between"
+          >
+            <h2 class="text-lg font-medium text-gray-800">Dashboard Menu</h2>
+            <button
+              id="close-mobile-menu"
+              class="text-gray-500 hover:text-gray-700"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <nav class="p-4">
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#total-dashboard"
+                  class="block px-3 py-2 rounded-md hover:bg-gray-100"
+                >
+                  <i class="fas fa-tachometer-alt w-5 inline-block"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#stock"
+                  class="block px-3 py-2 rounded-md hover:bg-gray-100"
+                >
+                  <i class="fas fa-box w-5 inline-block"></i>
+                  <span>Stock</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#add-product"
+                  class="block px-3 py-2 rounded-md hover:bg-gray-100"
+                >
+                  <i class="fas fa-plus-circle w-5 inline-block"></i>
+                  <span>Add Product</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#orders"
+                  class="block px-3 py-2 rounded-md hover:bg-gray-100"
+                >
+                  <i class="fas fa-shopping-cart w-5 inline-block"></i>
+                  <span>Orders</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#users"
+                  class="block px-3 py-2 rounded-md text-gray-400 cursor-not-allowed"
+                >
+                  <i class="fas fa-users w-5 inline-block"></i>
+                  <span>Users</span>
+                  <span
+                    class="text-xs ml-2 bg-gray-200 text-gray-500 py-0.5 px-1.5 rounded"
+                    >Soon</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#sales"
+                  class="block px-3 py-2 rounded-md text-gray-400 cursor-not-allowed"
+                >
+                  <i class="fas fa-dollar-sign w-5 inline-block"></i>
+                  <span>Sales</span>
+                  <span
+                    class="text-xs ml-2 bg-gray-200 text-gray-500 py-0.5 px-1.5 rounded"
+                    >Soon</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#settings"
+                  class="block px-3 py-2 rounded-md text-gray-400 cursor-not-allowed"
+                >
+                  <i class="fas fa-cog w-5 inline-block"></i>
+                  <span>Settings</span>
+                  <span
+                    class="text-xs ml-2 bg-gray-200 text-gray-500 py-0.5 px-1.5 rounded"
+                    >Soon</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
       <!-- Main Content Container -->
-      <div class="md:ml-[20%] w-[80%] md:main-content">
+      <div class="w-[90%] md:w-[85%] md:ml-[18%] mx-auto">
         <!-- Dashboard Section -->
         <section
           id="total-dashboard"
@@ -130,7 +350,7 @@
 
         <!-- Products Section -->
         <section
-          id="total-products"
+          id="stock"
           class="container mx-auto pt-16 px-4"
         ></section>
         <section id="add-product"></section>
@@ -141,3 +361,34 @@
     </div>
   </body>
 </html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const moreButton = document.querySelector("#mobile-nav a:last-child");
+    const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+    const closeButton = document.getElementById("close-mobile-menu");
+
+    moreButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      mobileMenuOverlay.classList.remove("hidden");
+      mobileMenuOverlay
+        .querySelector(".bg-white")
+        .classList.add("translate-x-0");
+      mobileMenuOverlay
+        .querySelector(".bg-white")
+        .classList.remove("-translate-x-full");
+    });
+
+    closeButton.addEventListener("click", function () {
+      mobileMenuOverlay
+        .querySelector(".bg-white")
+        .classList.remove("translate-x-0");
+      mobileMenuOverlay
+        .querySelector(".bg-white")
+        .classList.add("-translate-x-full");
+      setTimeout(() => {
+        mobileMenuOverlay.classList.add("hidden");
+      }, 300);
+    });
+  });
+</script>
