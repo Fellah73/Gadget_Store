@@ -6,8 +6,11 @@
     <title>Admin Dashboard</title>
     <script src="./assets/css/tailwind.js"></script>
     <script src="./dashboard/js/dashboard.js"></script>
+    <script src="./dashboard/js/overview.js"></script>
     <script src="./dashboard/js/updateStock.js"></script>
     <script defer src="./dashboard/js/addProduct.js"></script>
+    <script src="./dashboard/js/totalOrders.js"></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -69,11 +72,11 @@
           <ul id="sidebar-menu" class="space-y-1">
             <li class="px-3">
               <a
-                href="#total-dashboard"
+                href="#overview"
                 class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
               >
                 <i class="fas fa-tachometer-alt w-5 text-center"></i>
-                <span>Dashboard</span>
+                <span>Overview</span>
               </a>
             </li>
             <li class="px-3">
@@ -172,11 +175,11 @@
       >
         <div class="flex justify-around">
           <a
-            href="#total-dashboard"
+            href="#overview"
             class="flex flex-col items-center justify-center py-3 w-full text-gray-600 hover:text-blue-600"
           >
             <i class="fas fa-tachometer-alt text-lg"></i>
-            <span class="text-xs mt-1">Dashboard</span>
+            <span class="text-xs mt-1">Overview</span>
           </a>
           <a
             href="#stock"
@@ -262,11 +265,11 @@
             <ul class="space-y-2">
               <li>
                 <a
-                  href="#total-dashboard"
+                  href="#overview"
                   class="block px-3 py-2 rounded-md hover:bg-gray-100"
                 >
                   <i class="fas fa-tachometer-alt w-5 inline-block"></i>
-                  <span>Dashboard</span>
+                  <span>Overview</span>
                 </a>
               </li>
               <li>
@@ -344,15 +347,12 @@
       <div class="w-[90%] md:w-[85%] md:ml-[18%] mx-auto">
         <!-- Dashboard Section -->
         <section
-          id="total-dashboard"
+          id="overview"
           class="container mx-auto py-16 px-4"
         ></section>
 
         <!-- Products Section -->
-        <section
-          id="stock"
-          class="container mx-auto pt-16 px-4"
-        ></section>
+        <section id="stock" class="container mx-auto pt-16 px-4"></section>
         <section id="add-product"></section>
 
         <!-- Orders Section -->

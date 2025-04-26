@@ -56,9 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         );
         const data = await response.json();
-        if (data.success) {
-          console.log(`data after updating item`, data.message);
-        } else {
+        if (!data.success) {
           console.error(data.message ?? data.error);
         }
       } catch (error) {

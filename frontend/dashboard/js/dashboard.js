@@ -37,9 +37,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   console.log("dashboard.js loaded");
 
-  const totlalDashboard = document.getElementById("total-dashboard");
+  const totlalDashboard = document.getElementById("overview");
 
-  fetch("dashboard/components/globalDashboard.html")
+  fetch("dashboard/components/dashboardOverview.html")
     .then((response) => response.text())
     .then((data) => {
       totlalDashboard.innerHTML = data;
