@@ -9,6 +9,7 @@ require_once "db.php";
 
 // Sécurisation des données
 $user_id = intval($_GET['user_id']);
+$all = isset($_GET["all"]) ? $_GET["all"] : "false";
 
 if (empty($user_id) || $user_id <= 0) {
     echo json_encode([
@@ -25,7 +26,48 @@ try {
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $user = $stmt->fetch();
 
-    $stmt = $pdo->prepare("SELECT id,total,created_at,status FROM orders WHERE user_id = ? and status != 'cancelled'");
+    if (!$user) {
+        echo json_encode([
+            "success" => false,
+            "message" => "User not found",
+        ], JSON_PRETTY_PRINT);
+        exit;
+    }
+
+    if (!empty($all) && $all === "true") {
+
+        // get all the orders
+        $stmt = $pdo->prepare("SELECT * FROM orders");
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $all_orders = $stmt->fetchAll();
+
+        $stm = $pdo->prepare("SELECT * FROM cancelled_orders");
+        $stm->execute();
+        $stm->setFetchMode(PDO::FETCH_ASSOC);
+        $all_orders = array_merge($all_orders, $stm->fetchAll());
+
+        if (empty($all_orders)) {
+            echo json_encode([
+                "success" => false,
+                "message" => "no orders found",
+            ], JSON_PRETTY_PRINT);
+            exit;
+        }
+
+        // return all the orders
+        echo json_encode([
+            "success" => true,
+            "message" => "All orders",
+            "length" => count($all_orders),
+            "orders" => $all_orders
+        ], JSON_PRETTY_PRINT);
+        exit;
+    }
+
+
+
+    $stmt = $pdo->prepare("SELECT id,total,created_at,status,shipped_at FROM orders WHERE user_id = ? and status != 'cancelled'");
     $stmt->execute([$user_id]);
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $orders = $stmt->fetchAll();
@@ -41,25 +83,18 @@ try {
         exit;
     }
 
-    // update order status
+    // update order status to delivered
+
     foreach ($orders as $order) {
-        $order_date = new DateTime($order["created_at"]);
         $current_date = new DateTime();
-        if ($order_date->diff($current_date)->days <  7) {
-            $stmt = $pdo->prepare("UPDATE orders SET status = 'processing' WHERE id = ?");
-            $stmt->execute([$order["id"]]);
-        }else if($order_date->diff($current_date)->days <  14 && $order_date->diff($current_date)->days >=  7){
-            $stmt = $pdo->prepare("UPDATE orders SET status = 'shipped' WHERE id = ?");
-            $stmt->execute([$order["id"]]);
-        }else if($order_date->diff($current_date)->days >=  14){
-            $stmt = $pdo->prepare("UPDATE orders SET status = 'delivered' WHERE id = ?");
-            $stmt->execute([$order["id"]]);
+        if ($order['status'] == 'shipped') {
+            $shipped_date = new DateTime($order["shipped_at"]);
+            if ($shipped_date->diff($current_date)->days >=  2) {
+                $stmt = $pdo->prepare("UPDATE orders SET status = 'delivered' WHERE id = ?");
+                $stmt->execute([$order["id"]]);
+            }
         }
     }
-
-
-
-
 
     $order_data = [];
     foreach ($orders as $order) {
@@ -68,7 +103,6 @@ try {
         $stmt->execute([$order["id"]]);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $order_items = $stmt->fetchAll();
-
         $order_details["items"] = $order_items;
         $order_data[] = $order_details;
     }
