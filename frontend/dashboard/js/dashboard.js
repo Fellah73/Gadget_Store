@@ -70,6 +70,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       orderSection.innerHTML = data;
     })
     .catch((error) => console.error("Error loading navbar:", error));
+
+  const userSection = document.getElementById("users");
+  fetch("dashboard/components/users.html")
+    .then((response) => response.text())
+    .then((data) => {
+      userSection.innerHTML = data;
+    })
+    .catch((error) => console.error("Error loading navbar:", error));
 });
 
 document.addEventListener("DOMContentLoaded", () => {

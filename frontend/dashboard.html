@@ -10,6 +10,7 @@
     <script src="./dashboard/js/updateStock.js"></script>
     <script defer src="./dashboard/js/addProduct.js"></script>
     <script src="./dashboard/js/totalOrders.js"></script>
+    <script src="./dashboard/js/users.js"></script>
 
     <link
       rel="stylesheet"
@@ -109,14 +110,10 @@
             <li class="px-3">
               <a
                 href="#users"
-                class="flex items-center gap-x-3 px-2 py-3 rounded-lg text-gray-400 cursor-not-allowed"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
               >
                 <i class="fas fa-users w-5 text-center"></i>
                 <span>Users</span>
-                <span
-                  class="text-xs ml-auto bg-gray-200 text-gray-500 py-1 px-2 rounded"
-                  >Soon</span
-                >
               </a>
             </li>
             <li class="px-3">
@@ -302,14 +299,10 @@
               <li>
                 <a
                   href="#users"
-                  class="block px-3 py-2 rounded-md text-gray-400 cursor-not-allowed"
+                  class="block px-3 py-2 rounded-md hover:bg-gray-200"
                 >
                   <i class="fas fa-users w-5 inline-block"></i>
                   <span>Users</span>
-                  <span
-                    class="text-xs ml-2 bg-gray-200 text-gray-500 py-0.5 px-1.5 rounded"
-                    >Soon</span
-                  >
                 </a>
               </li>
               <li>
@@ -346,10 +339,7 @@
       <!-- Main Content Container -->
       <div class="w-[90%] md:w-[85%] md:ml-[18%] mx-auto">
         <!-- Dashboard Section -->
-        <section
-          id="overview"
-          class="container mx-auto py-16 px-4"
-        ></section>
+        <section id="overview" class="container mx-auto py-16 px-4"></section>
 
         <!-- Products Section -->
         <section id="stock" class="container mx-auto pt-16 px-4"></section>
@@ -357,6 +347,9 @@
 
         <!-- Orders Section -->
         <section id="orders" class="container mx-auto py-16 px-4"></section>
+
+        <!-- Users Section -->
+        <section id="users" class="container mx-auto py-16 px-4"></section>
       </div>
     </div>
   </body>

@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await response.json();
         if (data.success) {
           const role = data.role;
-          if (role === "admin") {
+          if (role != "user") {
             dashboardLink.style.display = "block";
             //dashboardLink.href = "dashboard.html";
           }else{

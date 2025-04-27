@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users Management - Admin Dashboard</title>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header Section -->
+    <div class="mb-8 flex flex-row justify-between px-8">
+      <div class="flex flex-col">
+        <h1 class="text-2xl md:text-3xl font-bold text-black">Manage Users</h1>
+        <p class="text-gray-600 tracking-wider">
+          View Manage and Promote admin users
+        </p>
+      </div>
+      <p id="is-founder" class="hidden text-red-700 border-2 items-center justify-center bg-red-200 border-red-700 rounded-3xl py-3 px-5 text-lg md:text-2xl tracking-wider">Founder</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 md:pr-48">
+      <div class="bg-white rounded-lg shadow p-5 border-l-4 border-gray-500">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-gray-500 text-base font-bold">Total Users</p>
+            <h2
+              id="all-users-span"
+              class="text-2xl font-bold text-gray-800"
+            ></h2>
+          </div>
+          <div class="rounded-full bg-gray-200 p-3 text-gray-500">
+            <i class="fas fa-users"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-5 border-l-4 border-blue-800">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-blue-900 text-base font-bold">Super Admins</p>
+            <h2 id="total-admins" class="text-2xl font-bold text-blue-800"></h2>
+          </div>
+          <div class="rounded-full bg-blue-200 p-3 text-blue-500">
+            <i class="fas fa-user-shield"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col md:flex-row justify-end items-end md:items-center mb-6 gap-4 px-8"
+    >
+      <div class="flex flex-wrap gap-2">
+        <select
+          id="users-role-filter"
+          class="border border-gray-400 rounded-lg w-52 text-center tracking-wider px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+        >
+          <option selected>All Roles</option>
+          <option>Admin</option>
+          <option>Stock Manager</option>
+        </select>
+      </div>
+    </div>
+
+    <div
+      class="bg-white rounded-lg shadow overflow-hidden mb-8 hidden sm:block"
+    >
+      <div class="table-container">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-gray-100 border-b border-gray-200">
+              <th class="text-left py-3 px-4 text-gray-700 font-semibold">
+                Name
+              </th>
+              <th class="text-left py-3 px-4 text-gray-700 font-semibold">
+                Email
+              </th>
+              <th class="text-left py-3 px-4 text-gray-700 font-semibold">
+                Role
+              </th>
+              <th class="text-left py-3 px-4 text-gray-700 font-semibold">
+                Registration Date
+              </th>
+              <th class="text-left py-3 px-4 text-gray-700 font-semibold">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody id="users-container"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
