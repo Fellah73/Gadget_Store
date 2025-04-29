@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       const data = await response.json();
 
       if (data.success) {
-        
         product = data.product;
       } else {
         console.error("Erreur API :", data.message);
@@ -81,10 +80,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     //update description
     const descriptionElement = document.getElementById("product-description");
 
-    descriptionElement.textContent =product[0].description ? product[0].description : `Conçue pour offrir une expérience utilisateur exceptionnelle,
-     elle intègre les dernières technologies pour garantir des performances avancées.
-       Idéale pour ceux qui recherchent une qualité supérieure, la ${product[0].name} de ${product[0].brand} est 
-       un choix incontournable pour les passionnés`;
+    descriptionElement.textContent = product[0].description
+      ? product[0].description
+      : `Designed to offer an exceptional user experience,
+    It incorporates the latest technologies to guarantee advanced performance.
+    Ideal for those looking for superior quality, the ${product[0].name} of ${product[0].brand} is
+    An essential choice for enthusiasts`;
 
     //update brand
     const productBrand = document.getElementById("product-brand");
@@ -110,6 +111,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       extraInfoElement.appendChild(infoElementKey);
       extraInfoElement.appendChild(infoElementValue);
     });
+
+    const footerElement = document.getElementById("footer-container");
+    fetch("components/footer.html")
+      .then((response) => response.text())
+      .then((data) => {
+        footerElement.innerHTML = data;
+      })
+      .catch((error) => console.error("Error loading footer:", error));
   };
 
   const generateCategEmoji = (category) => {

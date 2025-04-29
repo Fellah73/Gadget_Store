@@ -34,9 +34,9 @@
     <title>Document</title>
   </head>
   <body>
-    <nav class="bg-white shadow-md fixed w-full z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
+    <nav class="bg-gradient-to-r from-gray-50/90 to-blue-700/20 shadow-md shadow-blue-900/50 fixed w-full z-50">
+      <div class="mx-auto px-4 md:px-20">
+        <div class="flex justify-between h-16">
           <!-- Logo -->
           <div class="flex-shrink-0 flex items-center">
             <a href="./index.html" class="flex items-center">
@@ -57,31 +57,31 @@
 
               <div class="ml-2 font-bold">
                 <span class="text-xl text-gray-800">Tech</span>
-                <span class="text-xl text-blue-600">Sphere</span>
+                <span class="text-xl text-blue-800">Sphere</span>
               </div>
             </a>
           </div>
 
           <!-- Navigation Links - Desktop -->
-          <div class="hidden md:flex items-center space-x-8">
+          <div class="hidden md:flex items-center space-x-8 text-base">
             <a
               id="home"
               href="./index.html"
-              class="text-gray-700 hover:text-blue-500 border-b-2 px-3 py-2 rounded-md font-medium transition duration-150"
+              class="text-gray-900 hover:text-blue-800 border-black border-b-2 px-3 py-2 rounded-md font-medium transition duration-150"
               >Home</a
             >
 
             <a
               id="shop"
               href="./shop.html"
-              class="text-gray-700 hover:text-blue-500 border-b-2 px-3 py-2 rounded-md font-medium"
+              class="text-gray-900 hover:text-blue-800 border-black border-b-2 px-3 py-2 rounded-md font-medium transition duration-150"
               >Shop</a
             >
 
             <!-- Categories Dropdown -->
             <div class="relative group">
               <button
-                class="flex items-center text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md font-medium transition duration-150"
+                class="flex items-center text-black border-black px-3 py-2 rounded-md font-medium transition duration-150"
               >
                 Categories
                 <svg
@@ -101,7 +101,7 @@
 
               <!-- Dropdown Menu -->
               <div
-                class="absolute left-0 mt-2 w-screen md:max-w-xl lg:max-w-4xl bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-x-1/4 origin-top scale-95 group-hover:scale-100 z-50 overflow-hidden"
+                class="absolute left-0 mt-2 w-screen md:max-w-xl lg:max-w-4xl bg-gradient-to-br from-gray-50/90 to-blue-700/20 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-x-1/4 origin-top scale-95 group-hover:scale-100 z-50 overflow-hidden"
               >
                 <div
                   class="w-[95%] md:grid md:grid-cols-2 mx-auto md:gap-4 py-5 lg:flex lg:flex-row lg:gap-x-4 px-4"
@@ -131,12 +131,12 @@
                       </svg>
                     </div>
                     <h3
-                      class="font-bold text-center text-gray-800 text-lg mb-2"
+                      class="font-bold text-center text-gray-600 text-lg mb-2"
                     >
                       Smart Watches
                     </h3>
                     <p
-                      class="text-gray-700 text-base font-semibold text-center mb-4"
+                      class="text-gray-700 text-base font-bold tracking-wide text-center mb-4"
                     >
                       Wearable tech for every lifestyle
                     </p>
@@ -175,7 +175,7 @@
                       Headphones
                     </h3>
                     <p
-                      class="text-neutral-800 text-base font-semibold text-center mb-4"
+                      class="text-neutral-800 text-base font-bold tracking-wide text-center mb-4"
                     >
                       Premium audio experience
                     </p>
@@ -218,7 +218,7 @@
                       Smartphones
                     </h3>
                     <p
-                      class="text-white text-base font-semibold text-center mb-4"
+                      class="text-white text-base font-bold tracking-wide text-center mb-4"
                     >
                       Latest mobile technology
                     </p>
@@ -231,7 +231,7 @@
 
                   <!-- Gaming Consoles -->
                   <div
-                    class="lg:max-w-[22%] category-card bg-gradient-to-tl from-blue-400 to-blue-300 p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-blue-200"
+                    class="lg:max-w-[22%] category-card bg-gradient-to-br from-blue-700 to-blue-500 p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-blue-200"
                   >
                     <div
                       class="category-icon bg-blue-500 text-white p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
@@ -254,38 +254,33 @@
                         <path d="M16 12V5l-4 4-4-4v7"></path>
                       </svg>
                     </div>
-                    <h3
-                      class="font-bold text-center text-gray-800 text-lg mb-2"
-                    >
+                    <h3 class="font-bold text-center text-white text-lg mb-2">
                       Gaming Consoles
                     </h3>
                     <p
-                      class="text-black text-base font-semibold text-center mb-4"
+                      class="text-gray-100 text-base font-bold tracking-wide text-center mb-4"
                     >
                       Explore next-gen gaming systems
                     </p>
                     <a
                       href="./shop.html#consoles"
-                      class="shop-btn block bg-blue-500 hover:bg-blue-600 text-white font-bold text-center py-2 px-4 rounded-lg transition-all w-full"
+                      class="shop-btn block bg-gradient-to-r from-blue-900 to-blue-600 border-blue-800 border hover:bg-blue-600 text-white font-bold text-center py-2 px-4 rounded-lg transition-all w-full"
                       >Shop Now</a
                     >
                   </div>
                 </div>
 
                 <!-- Featured category banner -->
-                <div class="bg-gray-100 p-4">
+                <div class="bg-gray-200/70 p-4">
                   <div
                     class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center"
                   >
-                    <p class="text-gray-700 font-medium">
+                    <p class="text-black tracking-wide font-medium">
                       Featured Collection:
-                      <span class="text-blue-600 font-bold"
-                        >New Arrivals 2025</span
-                      >
                     </p>
                     <a
                       href="shop.html"
-                      class="text-blue-600 hover:text-blue-800 font-medium"
+                      class="text-blue-600 hover:text-blue-800 text-xl font-medium"
                       >View All →</a
                     >
                   </div>
@@ -303,11 +298,11 @@
                 id="search-Input"
                 type="text"
                 placeholder="Search..."
-                class="w-80 pl-10 pr-4 py-2 text-black rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                class="w-80 pl-10 pr-4 py-2 bg-blue-100 text-blue-900 tracking-wider placeholder:text-blue-900 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
               <button
                 id="search-btn"
-                class="absolute left-3 top-2 p-1 text-gray-400 active:rounded-full active:bg-gray-300"
+                class="absolute left-3 top-2 p-1 text-blue-800 active:rounded-full active:bg-gray-300"
               >
                 <svg
                   class="size-5"
@@ -327,7 +322,7 @@
               <!-- Conteneur des résultats de recherche -->
               <div
                 id="search-results"
-                class="lg:flex-col lg:gap-y-4 p-2 absolute -left-8 mt-2 w-[400px] text-black bg-gradient-to-r from-gray-300 to-gray-100 border border-blue-500 rounded-lg shadow-lg h-80 overflow-y-auto overflow-x-hidden hidden"
+                class="lg:flex-col lg:gap-y-4 p-2 absolute -left-8 mt-2 w-[400px] text-black bg-gradient-to-r from-blue-300 to-blue-50 border border-blue-500 rounded-lg shadow-lg h-80 overflow-y-auto overflow-x-hidden hidden"
               >
                 <!-- Résultats insérés ici dynamiquement -->
               </div>
@@ -371,13 +366,13 @@
               <a
                 id="register"
                 href="#"
-                class="ml-8 bg-blue-600 tracking-wider text-white px-4 py-2 rounded-md hover:bg-blue-900 transition duration-150"
+                class="ml-8 bg-gradient-to-r from-blue-900 to-blue-700 tracking-wider font-semibold text-white px-4 py-2 rounded-md hover:bg-blue-900 transition duration-150"
               >
               </a>
               <a
                 id="login"
                 href="#"
-                class="bg-blue-900 text-white tracking-wider px-4 py-2 rounded-md hover:bg-blue-600 transition duration-150"
+                class="bg-gradient-to-l from-blue-700 to-blue-500 text-white tracking-wider font-semibold px-4 py-2 rounded-md hover:bg-blue-600 transition duration-150"
               >
               </a>
             </div>

@@ -32,6 +32,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     .catch((error) => console.error("Error loading navbar:", error));
 
+  // Load footer component
+  fetch("components/footer.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("footer-container").innerHTML = data;
+    })
+    .catch((error) => console.error("Error loading footer:", error));
+
   // handle orders
   const orderCount = document.getElementById("orders-count");
   const user = document.getElementById("username");

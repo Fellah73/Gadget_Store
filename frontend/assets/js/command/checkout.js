@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.location.href = "login.html";
 
   // enter the page only after chcking the items carts
-  if(localStorage.getItem("canProceedToCheckout") == "false"){
+  if (localStorage.getItem("canProceedToCheckout") == "false") {
     window.location.href = "cart.html";
   }
 
@@ -37,6 +37,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
 
     .catch((error) => console.error("Error loading navbar:", error));
+
+  // Load footer component
+  fetch("components/footer.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("footer-container").innerHTML = data;
+    })
+    .catch((error) => console.error("Error loading footer:", error));
 
   let cartItems = null;
   const fetchOrderItems = async (userId) => {
@@ -230,13 +238,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         // add a small pop up message
         const popUpMessage = document.getElementById("order-success");
         popUpMessage.style.display = "flex";
-        
+
         setTimeout(() => {
           window.location.href = "/frontend/myOrders.html";
         }, 4000);
-
-        
-
       } else {
         console.log(data.message);
         {

@@ -2,7 +2,7 @@ export function createProductCard(data) {
   // Créer un élément div pour la carte produit
   const card = document.createElement("div");
   card.className =
-    "flex-shrink-0 w-64 md:w-72 bg-neutral-100 rounded-2xl shadow-md hover:shadow-gray-700 hover:shadow-xl transition-all duration-300 group animate-fade-in";
+    "flex-shrink-0 w-64 md:w-72 bg-gradient-to-br from-gray-300 to-gray-50 rounded-2xl transition-transform duration-300 hover:-translate-y-4";
   card.style.animationDelay = "0.1s";
 
   // Remplir la carte avec le contenu HTML
@@ -16,23 +16,13 @@ export function createProductCard(data) {
             </div>
 
             <!-- Product Image -->
-            <div class="h-full bg-neutral-300 flex px-5 transition-transform duration-500 group-hover:scale-125">
+            <div class="h-full bg-neutral-300 flex px-5 scale-125">
                 <img src="${data.image}" alt="${
     data.name
-  }" class="h-full object-contain group-hover:animate-float" />
+  }" class="h-full object-contain" />
             </div>
 
-            <!-- Add to cart overlay -->
-            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <button class="w-full py-2 bg-white text-black font-semibold rounded-lg hover:bg-gray-400 hover:text-white transition-colors duration-300 flex items-center justify-center space-x-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black hover:text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
-                        <path d="M1 1h4l2 11h14l2-7H5"></path>
-                    </svg>
-                    <span>Ajouter au panier</span>
-                </button>
-            </div>
+            
         </div>
 
         <div class="p-5">

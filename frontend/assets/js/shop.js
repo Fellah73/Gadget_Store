@@ -19,15 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
       // Mettre à jour l'état du menu actif
       const currentNavbarLink = document.getElementById("shop");
       if (currentNavbarLink) {
-        currentNavbarLink.style.color = "rgb(59, 130, 246)";
-        currentNavbarLink.style.borderBottomColor = "rgb(147 197 253)";
+        currentNavbarLink.style.color = "rgb(30 64 175)";
+        currentNavbarLink.style.borderBottomColor = "rgb(30 64 175)";
       }
 
       // Update the mobile nav link
       const mobileNavbarLink = document.getElementById("mobile-shop-link");
       if (mobileNavbarLink) {
-        mobileNavbarLink.style.color = "rgb(59, 130, 246)";
-        mobileNavbarLink.style.backgroundColor = "rgb(249 250 251)";
+        mobileNavbarLink.style.color = "rgb(30 64 175)";
+        mobileNavbarLink.style.backgroundColor = "rgb(30 64 175)";
       }
     })
 

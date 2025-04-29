@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Mettre à jour l'état du menu actif
       const currentNavbar = document.getElementById("home");
       if (currentNavbar) {
-        currentNavbar.style.color = "rgb(59, 130, 246)";
-        currentNavbar.style.borderBottomColor = "rgb(59, 130, 246)";
+        currentNavbar.style.color = "rgb(30 64 175)";
+        currentNavbar.style.borderBottomColor = "rgb(30 64 175)";
       }
     })
     .catch((error) => console.error("Error loading navbar:", error));
@@ -44,21 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error loading hero section:", error));
   }
 
-  // Then load the categoriesGrid section
-  fetch("components/categoriesGrid.html")
-    .then((response) => response.text())
-    .then((data) => {
-      // Replace the existing content with the categoriesGrid section
-      const mainContent = document.getElementById("categoriesGrid-container");
-      if (mainContent) {
-        mainContent.innerHTML = data;
-      } else {
-        console.error("Main content container not found");
-      }
-    })
-    .catch((error) =>
-      console.error("Error loading categoriesGrid section:", error)
-    );
+  
 
   // Then load the bestSellers section
   fetch("components/homeComponents/bestSellers.html")

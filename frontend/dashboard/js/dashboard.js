@@ -1,9 +1,21 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  const userRole = document.getElementById("user-role");
+
+  const overviewsLinks = document.querySelectorAll("a[href='#overview']");
+  const overviewDiv = document.getElementById("overview");
+
+  const ordersLinks = document.querySelectorAll("a[href='#orders']");
+  const ordersDiv = document.getElementById("orders");
+
+  const usersLinks = document.querySelectorAll("a[href='#users']");
+  const usersDiv = document.getElementById("users");
+
   const token = localStorage.getItem("user");
 
   if (token == "null") {
     window.location.href = "index.html";
   }
+  let role;
 
   const getUserRole = async () => {
     if (token == "null") return;
@@ -19,12 +31,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
       const data = await response.json();
       if (data.success) {
-        const role = data.role;
-        if (role === "user") {
-          window.location.href = "shop.html";
-        } else {
+        role = data.role;
+        if (role != "user") {
           document.getElementById("admin-name").textContent = `${data.name} 👨🏻‍💻`;
         }
+        role = data.role;
       } else {
         console.log(data.message);
       }
@@ -35,16 +46,48 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await getUserRole();
 
+  if (role == "user") {
+    window.location.href = "shop.html";
+  }
+
+  userRole.textContent = role
+    .replace("_", " ")
+    .replace(/^./, (char) => char.toUpperCase());
   console.log("dashboard.js loaded");
+
+  // handle a tags
+  if (role == "stock_manager") {
+    // hide the overview link and div
+    overviewsLinks.forEach((overview) => {
+      overview.style.display = "none";
+    });
+    overviewDiv.style.display = "none";
+
+    // hide the orders link and div
+    ordersLinks.forEach((order) => {
+      order.style.display = "none";
+    });
+    ordersDiv.style.display = "none";
+  }
+
+  if (role != "super_admin") {
+    usersLinks.forEach((user) => {
+      user.style.display = "none";
+    });
+    usersDiv.style.display = "none";
+  }
 
   const totlalDashboard = document.getElementById("overview");
 
-  fetch("dashboard/components/dashboardOverview.html")
-    .then((response) => response.text())
-    .then((data) => {
-      totlalDashboard.innerHTML = data;
-    })
-    .catch((error) => console.error("Error loading navbar:", error));
+  // only admin can see the dashboard overview
+  if (role == "super_admin" || role == "admin") {
+    fetch("dashboard/components/dashboardOverview.html")
+      .then((response) => response.text())
+      .then((data) => {
+        totlalDashboard.innerHTML = data;
+      })
+      .catch((error) => console.error("Error loading navbar:", error));
+  }
 
   const totalProduct = document.getElementById("stock");
 
@@ -64,20 +107,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     .catch((error) => console.error("Error loading navbar:", error));
 
   const orderSection = document.getElementById("orders");
-  fetch("dashboard/components/orders.html")
-    .then((response) => response.text())
-    .then((data) => {
-      orderSection.innerHTML = data;
-    })
-    .catch((error) => console.error("Error loading navbar:", error));
+
+  // only admin can see the orders section
+  if (role == "admin" || role == "super_admin") {
+    fetch("dashboard/components/orders.html")
+      .then((response) => response.text())
+      .then((data) => {
+        orderSection.innerHTML = data;
+      })
+      .catch((error) => console.error("Error loading navbar:", error));
+  }
 
   const userSection = document.getElementById("users");
-  fetch("dashboard/components/users.html")
-    .then((response) => response.text())
-    .then((data) => {
-      userSection.innerHTML = data;
-    })
-    .catch((error) => console.error("Error loading navbar:", error));
+
+  // only super admin can see the users section
+  if (role == "super_admin") {
+    fetch("dashboard/components/users.html")
+      .then((response) => response.text())
+      .then((data) => {
+        userSection.innerHTML = data;
+      })
+      .catch((error) => console.error("Error loading navbar:", error));
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {

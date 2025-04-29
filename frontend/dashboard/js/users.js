@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
           user.role ===
           (selectRole.value == "All Roles"
             ? user.role
+            : selectRole.value == "Admin"
+            ? "super_admin" || "admin"
             : selectRole.value.toLowerCase().replace(" ", "_"))
       );
       await displayUsers();
@@ -119,7 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <td class="py-3 px-4">
          <div class="flex gap-2 font-bold tracking-wide">
            <button id="promote"
-             class="bg-blue-700 hover:bg-blue-900 hover:transition-colors hover:duration-300 text-white px-4 py-2 rounded-lg text-base"
+             class="${
+               user.role === "super_admin" && "hidden"
+             } bg-blue-700 hover:bg-blue-900 hover:transition-colors hover:duration-300 text-white px-4 py-2 rounded-lg text-base"
            >
              Promote
            </button>

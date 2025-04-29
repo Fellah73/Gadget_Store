@@ -70,40 +70,137 @@
       body {
         min-height: 100vh;
       }
+
+      /* Mobile sidebar toggle animation */
+      .sidebar-transition {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .sidebar-open {
+        transform: translateX(0);
+      }
+
+      .sidebar-closed {
+        transform: translateX(-100%);
+      }
     </style>
   </head>
-  <body>
-    <header
-      class="w-full py-4 text-center backdrop-blur bg-opacity-70 fixed top-0 z-10"
+  <body class="flex">
+    <!-- Mobile Toggle Button -->
+    <div
+      class="fixed top-4 left-4 z-50 md:hidden bg-blue-600 p-2 rounded-full shadow-lg cursor-pointer"
+      x-data="{ sidebarOpen: false }"
+      @click="sidebarOpen = !sidebarOpen"
+      x-on:click.away="sidebarOpen = false"
     >
-      <h1 class="text-4xl font-bold mb-6">Our Tech Categories</h1>
-      <div
-        class="grid grid-cols-2 gap-y-4 md:flex md:flex-row tracking-wider justify-center items-center gap-x-4 md:gap-x-10 px-5 text-lg text-neutral-300 font-semibold"
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 text-white"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
       >
-        <a
-          href="#smartwatches"
-          class="px-5 md:px-10 py-4 text-white bg-gray-500 rounded-full hover:bg-gray-700 transition-all button-glow"
-          >Smartwatches</a
-        >
-        <a
-          href="#headsets"
-          class="px-5 md:px-10 py-4 text-white bg-neutral-500 rounded-full hover:bg-neutral-700 transition-all button-glow"
-          >Headsets</a
-        >
-        <a
-          href="#phones"
-          class="px-5 md:px-10 py-4 text-white bg-gray-600 rounded-full hover:bg-gray-500 transition-all button-glow"
-          >Phones</a
-        >
-        <a
-          href="#consoles"
-          class="px-5 md:px-10 py-4 text-white bg-blue-800 rounded-full hover:bg-blue-600 transition-all button-glow"
-          >Gaming Consoles</a
-        >
-      </div>
-    </header>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        />
+      </svg>
+    </div>
 
-    
+    <!-- Desktop Sidebar - always visible on larger screens -->
+    <aside
+      class="hidden md:flex w-24 h-screen shadow-md shadow-blue-900/50 justify-center  bg-gradient-to-b from-gray-50/90 to-blue-700/20 bg-opacity-95 backdrop-blur fixed left-0 top-0 z-60"
+    >
+      <div
+        class="  h-[70%] my-auto"
+      >
+        <div class="px-4 size-full items-center justify-center flex flex-col gap-y-20">
+          <a
+            href="#smartwatches"
+            class=" hover:scale-125 transition-all duration-300  flex items-center justify-center"
+          >
+            <svg
+              class="size-14 mr-2 text-blue-950"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="7"></circle>
+              <polyline points="12 9 12 12 13.5 13.5"></polyline>
+              <path
+                d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="#headsets"
+            class="hover:scale-125 transition-all duration-300 flex items-center justify-center"
+          >
+            <svg
+              class="size-14 mr-2 text-blue-950"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path
+                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="#phones"
+            class="hover:scale-125 transition-all duration-300  flex items-center justify-center"
+          >
+            <svg
+              class="size-14 mr-2 text-blue-950"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12" y2="18"></line>
+            </svg>
+          </a>
+          <a
+            href="#consoles"
+            class="hover:scale-125 transition-all duration-300  flex items-center justify-center"
+          >
+            <svg
+              class="size-14 mr-2 text-blue-950"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="6" y1="11" x2="10" y2="11"></line>
+              <line x1="8" y1="9" x2="8" y2="13"></line>
+              <line x1="15" y1="12" x2="15.01" y2="12"></line>
+              <line x1="18" y1="10" x2="18.01" y2="10"></line>
+              <path
+                d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.544-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.152A4 4 0 0 0 17.32 5z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </aside>
   </body>
 </html>
-

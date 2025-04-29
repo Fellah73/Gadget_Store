@@ -34,6 +34,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     .catch((error) => console.error("Error loading navbar:", error));
 
+  // Load footer component
+  fetch("components/footer.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("footer-container").innerHTML = data;
+    })
+    .catch((error) => console.error("Error loading footer:", error));
+
   const cartContainer = document.getElementById("cart-items");
   const titleContainer = document.getElementById("cart-title");
   const tableContainer = document.getElementById("cart-table");
@@ -59,7 +67,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       } else {
         titleContainer.textContent = `${data.user} your cart is empty 🛒`;
         tableContainer.style.display = "none";
-        
       }
     } catch (error) {
       console.error("Error fetching cart items:", error);
@@ -127,10 +134,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   const displayCartItems = async () => {
-    
     await fetchCartItems(localStorage.getItem("user"));
     if (!cartItems) {
-      
       return;
     }
     cartContainer.innerHTML = "";
@@ -203,7 +208,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const response = await fetch(
         `http://localhost/gadgetstoreapi/recommendation/getRecommendation.php?limit=${
-         cartItems ? cartItems.length * 6 : 30
+          cartItems ? cartItems.length * 6 : 30
         }&discount=20&user_id=${userID}`,
         {
           method: "GET",
@@ -215,7 +220,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const data = await response.json();
       if (data.success) {
-        
         recommendationItems = data.products;
       } else {
         console.log(data.message);
