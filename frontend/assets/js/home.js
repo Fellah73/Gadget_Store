@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       document.getElementById("navbar-container").innerHTML = data;
 
-      // Re-attacher les événements après le chargement du navbar
       const mobileMenuButton = document.querySelector(
         '[aria-controls="mobile-menu"]'
       );
@@ -19,21 +18,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
 
-      // Mettre à jour l'état du menu actif
       const currentNavbar = document.getElementById("home");
       if (currentNavbar) {
         currentNavbar.style.color = "rgb(30 64 175)";
         currentNavbar.style.borderBottomColor = "rgb(30 64 175)";
       }
+
+      const mobileNavbarLink = document.getElementById("mobile-home-link");
+      if (mobileNavbarLink) {
+        mobileNavbarLink.style.color = "rgb(30 64 175)";
+        mobileNavbarLink.style.backgroundColor = "white";
+      }
     })
     .catch((error) => console.error("Error loading navbar:", error));
 
   {
-    // Then load the hero section
     fetch("components/hero.html")
       .then((response) => response.text())
       .then((data) => {
-        // Replace the existing content with the hero section
         const mainContent = document.getElementById("hero-container");
         if (mainContent) {
           mainContent.innerHTML = data;
@@ -44,32 +46,28 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error loading hero section:", error));
   }
 
-  
-
-  // Then load the bestSellers section
   fetch("components/homeComponents/bestSellers.html")
     .then((response) => response.text())
     .then((data) => {
-      // Replace the existing content with the bestSellers section
       const mainContent = document.getElementById("bestSellers-container");
       if (mainContent) {
         mainContent.innerHTML = data;
 
         console.log("Best Sellers loaded");
-        // Simple carousel logic
+
         const container = document.getElementById("products-container");
         const prevBtn = document.getElementById("prev-btn");
         const nextBtn = document.getElementById("next-btn");
         const leftIndicator = document.getElementById("indicator-to-left");
         const rightIndicator = document.getElementById("indicator-to-right");
         let scrollAmount = 0;
-        const cardWidth = 300; // Width of card + margin
+        const cardWidth = 300;
 
         nextBtn.addEventListener("click", () => {
           scrollAmount += cardWidth;
           leftIndicator.style.backgroundColor = "white";
           rightIndicator.style.backgroundColor = "rgb(120 113 108)";
-          // Prevent scrolling too far
+
           if (scrollAmount > container.scrollWidth - container.clientWidth) {
             scrollAmount = container.scrollWidth - container.clientWidth;
           }
@@ -80,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
           scrollAmount -= cardWidth;
           rightIndicator.style.backgroundColor = "white";
           leftIndicator.style.backgroundColor = "rgb(120 113 108)";
-          // Prevent scrolling too far in reverse
+
           if (scrollAmount < 0) {
             scrollAmount = 0;
             leftIndicator.style.backgroundColor = "white";
@@ -98,11 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Main content container not found");
       }
 
-      // fetch the benefits section
       fetch("components/homeComponents/benefits.html")
         .then((response) => response.text())
         .then((data) => {
-          // Replace the existing content with the benefits section
           const mainContent = document.getElementById("benefits-container");
           if (mainContent) {
             mainContent.innerHTML = data;
@@ -118,11 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error loading bestSellers section:", error)
     );
 
-  // load the testimonials section
   fetch("components/homeComponents/testimonials.html")
     .then((response) => response.text())
     .then((data) => {
-      // Replace the existing content with the testimonials section
       const mainContent = document.getElementById("testimonials-container");
       if (mainContent) {
         mainContent.innerHTML = data;
@@ -134,11 +128,9 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error loading testimonials section:", error)
     );
 
-  //load footer
   fetch("components/footer.html")
     .then((response) => response.text())
     .then((data) => {
-      // Replace the existing content with the footer section
       const mainContent = document.getElementById("footer-container");
       if (mainContent) {
         mainContent.innerHTML = data;

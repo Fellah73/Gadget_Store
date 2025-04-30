@@ -1,547 +1,985 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Tech Sphere - Shop</title>
-      <script type="module" src="./assets/js/search/search.js" defer></script>
-      <script type="module" src="./assets/js/isAuth.js" defer></script>
-      <script type="module" src="./assets/js/shop.js" defer></script>
-      <script type="module" src="./assets/js/smartWatchHandler.js" defer></script>
-      <script type="module" src="./assets/js/headsetsHandler.js" defer></script>
-      <script type="module" src="./assets/js/phonesHandler.js" defer></script>
-      <script type="module" src="./assets/js/consolesHandler.js" defer></script>
-      <script src="./assets/css/tailwind.js"></script>
-      <style>
-         @keyframes fadeIn {
-         from {
-         opacity: 0;
-         transform: translateY(20px);
-         }
-         to {
-         opacity: 1;
-         transform: translateY(0);
-         }
-         }
-         .hidden-animate-fadeIn {
-         opacity: 0; /* On cache les sections par défaut */
-         }
-         .animate-fadeIn {
-         animation: fadeIn 0.5s ease-out forwards;
-         }
-         @keyframes pulse {
-         0%,
-         100% {
-         transform: scale(1);
-         }
-         50% {
-         transform: scale(1.05);
-         }
-         }
-         .animate-pulse-slow {
-         animation: pulse 3s infinite;
-         }
-         @keyframes slideInRight {
-         from {
-         transform: translateX(50px);
-         opacity: 0;
-         }
-         to {
-         transform: translateX(0);
-         opacity: 1;
-         }
-         }
-         .animate-slide-in {
-         animation: slideInRight 0.5s ease-out forwards;
-         }
-         .delay-100 {
-         animation-delay: 0.1s;
-         }
-         .delay-200 {
-         animation-delay: 0.2s;
-         }
-         .delay-300 {
-         animation-delay: 0.3s;
-         }
-         .delay-400 {
-         animation-delay: 0.4s;
-         }
-         .delay-500 {
-         animation-delay: 0.5s;
-         }
-      </style>
-   </head>
-   <body class="bg-gradient-to-br from-gray-400 via-gray-200 to-blue-300 ">
-      <!-- 1️⃣ Navigation Bar -->
-      <div id="navbar-container"></div>
-      <!-- 2️⃣ Hero Section -->
-      <div class="pt-16 p-4 flex flex-col gap-y-5">   
-         <div id="categoriesGrid-container"></div>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Sphere - Shop</title>
+    <script type="module" src="./assets/js/search/search.js" defer></script>
+    <script type="module" src="./assets/js/isAuth.js" defer></script>
+    <script type="module" src="./assets/js/shop.js" defer></script>
+    <script type="module" src="./assets/js/smartWatchHandler.js" defer></script>
+    <script type="module" src="./assets/js/headsetsHandler.js" defer></script>
+    <script type="module" src="./assets/js/phonesHandler.js" defer></script>
+    <script type="module" src="./assets/js/consolesHandler.js" defer></script>
+    <script src="./assets/css/tailwind.js"></script>
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hidden-animate-fadeIn {
+        opacity: 0;
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+      .animate-pulse-slow {
+        animation: pulse 3s infinite;
+      }
+      @keyframes slideInRight {
+        from {
+          transform: translateX(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      .animate-slide-in {
+        animation: slideInRight 0.5s ease-out forwards;
+      }
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+    </style>
+  </head>
+  <body class="bg-gradient-to-br from-blue-950/95 to-blue-900/80 text-white">
+    <!-- Navigation Bar -->
+    <div id="navbar-container"></div>
 
-       
+    <!-- Hero Section -->
+    <div class="pt-16 p-4 flex flex-col gap-y-5">
+      <div id="categoriesGrid-container"></div>
+    </div>
 
-      <!-- Products Sections -->
-      <main class="container mx-auto py-10 px-4">
-         <!-- smartwatches section -->
-         <section
-            id="smartwatches"
-            class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
-            >
-            <div class="container mx-auto">
-               <!-- 1️⃣ Titre de la catégorie -->
-               <div class="flex items-center mb-6">
-                  <span class="text-5xl mr-4">⌚</span>
-                  <div>
-                     <h2 class="text-3xl font-bold">Smartwatches</h2>
-                     <p class="text-xl font-semibold">
-                        Stay connected and track your health with our smartwatches!
-                     </p>
-                  </div>
-               </div>
-               <!-- 2️⃣ Filtres & Tri -->
-               <div
-                  class="bg-gray-200 backdrop-blur-sm bg-opacity-80 border-2 border-gray-400 shadow-xl shadow-blue-100 p-6 rounded-2xl mb-8"
+    <!-- Products Sections -->
+    <div class="sm:ml-24">
+      <main class="container mx-auto px-4">
+        <!-- Smartwatches Section -->
+        <section
+          id="smartwatches"
+          class="mb-16 pt-20 select-none hidden-animate-fadeIn"
+        >
+          <div class="container mx-auto">
+            <!-- Title -->
+            <div class="flex items-center mb-4 bg-navy-800 text-white p-6">
+              <div class="flex items-center w-full">
+                <div class="bg-blue-50 rounded-full p-4 mr-8">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-14 text-blue-950"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
-                     <!-- Filtre par marque -->
-                     <div>
-                        <label class="block text-lg font-semibold text-black mb-2"
-                        
-                           >Brand</label
-                           >
-                        <select
-                        id="smartwatches-brand-filter"   
-                        class="z-20 w-full p-3 border-2 border-gray-500 rounded-md bg-gray-300 font-bold text-black hover:bg-gray-400 transition"
-                           >
-                           
-                        </select>
-                     </div>
-                     <!-- Filtre par prix -->
-                     <div>
-                        <label class="block text-lg font-semibold text-black mb-2"
-                           >Prix</label
-                           >
-                        <div class="flex flex-col gap-y-4">
-                           <div
-                              class="flex justify-between text-black font-medium tracking-wide text-base"
-                              >
-                              <span id="smartwatches-price-min-range-value">0 </span>
-                                <p class="text-xl tracking-wide" id="smartwatches-price-range-value">current price</p>
-                               <span id="smartwatches-price-max-range-value"> 0</span>
-                           </div>
-                           <input
-                              type="range"
-                              min="0"
-                              max="555555555"
-                              class="w-full accent-black"
-                              id="smartwatches-price-range"
-                              />
-                        </div>
-                     </div>
-                     
-                     
-                     <!-- Tri -->
-                     <div>
-                        <label class="block text-lg font-semibold text-black mb-2"
-                           >filter by</label
-                           >
-                        <select
-                        id="smartwatches-sort-filter"
-                           class="z-20 w-full p-3 border-2 border-gray-400 rounded-md bg-gray-300 text-black font-bold hover:bg-gray-500 transition"
-                           >
-                           <option>Ascending price</option>
-                           <option>Descending price</option>
-                        </select>
-                     </div>
-                   </div>
-                  </div>
-               </div>
-               <!-- 3️⃣ Produits Smartwatches Scroll -->
-               <div class="relative overflow-hidden text-gray-700 font-[Poppins]">
-                  <div id="smartwatches-grid" class="flex rounded-2xl space-x-4 md:space-x-8 py-6
-                     px-10 w-full transition-transform duration-500 ease-in-out" >
-                  </div>
-                  <button
-                     id="prev-btn-smartwatches"
-                     class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-white border-gray-700 border-4 font-bold text-3xl"
-                     >
-                  <
-                  </button>
-                  <button
-                     id="next-btn-smartwatches"
-                     class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-white border-gray-700 border-4 font-bold text-3xl"
-                     >
-                  >
-                  </button>
-                    <p id="smartwatches-popup" class="hidden z-40 absolute top-4 left-4 transform -translate-x-1/2 bg-gradient-to-r from-gray-300 to-gray-100 text-black text-2xl font-bold py-4 px-8 rounded-lg shadow-lg border-2 border-white animate-bounce">
-         
-                    </p>
-               </div>
-               <!-- Indicators -->
-               <div class="flex justify-between items-center mt-6">
-                <!-- Indicateurs centrés -->
-               <div class="flex justify-center space-x-2 flex-1">
-               <button id="left-indecator-smartwatches" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
-              <button id="right-indecator-smartwatches" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
-            </div>
-          
-          </div>
-          <div id="smarwatches-banner" class="animate-fadeIn"></div> 
-       
-         </section>
-         <!-- headsets section -->
-         <section
-            id="headsets"
-            class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
-            >
-         <div class="container mx-auto">
-         <!-- 1️⃣ Titre de la catégorie -->
-         <div class="flex items-center mb-6">
-         <span class="text-5xl mr-4">
-         <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="48px" height="48px">
-         <path d="M12 1C6.48 1 2 5.48 2 11v5c0 2.21 1.79 4 4 4h2v-6H6v-3c0-3.86 3.14-7 7-7s7 3.14 7 7v3h-2v6h2c2.21 0 4-1.79 4-4v-5c0-5.52-4.48-10-10-10zm-5 17H6c-1.1 0-2-.9-2-2v-2h3v4zm12 0h-3v-4h3v2c0 1.1-.9 2-2 2z"/>
-         </svg>
-         </span>
-         <div>
-         <h2 class="text-3xl font-bold text-gray-700">Headsets</h2>
-         <p class="text-gray-600 text-xl font-semibold">
-         Experience immersive sound with our top-quality headsets!
-         </p>
-         </div>
-         </div>
-         <!-- 2️⃣ Filtres & Tri -->
-         <div
-            class="bg-neutral-300 backdrop-blur-sm bg-opacity-80 border-2 border-neutral-500 shadow-xl shadow-neutral-500 p-6 rounded-2xl mb-8"
-            >
-         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-         <!-- Filtre par marque -->
-         <div>
-         <label class="block text-lg font-semibold text-black mb-2"
-            >Brand</label
-            >
-         <select
-           id="headsets-brand-filter"
-            class="z-20 w-full p-3 border-2 border-black  rounded-md bg-neutral-400 text-black hover:bg-neutral-500 transition"
-            >
-         </select>
-         </div>
-         <!-- Filtre par prix -->
-         <div>
-         <label class="block text-lg font-semibold text-black mb-2"
-            >Prix</label
-            >
-         <div class="flex flex-col gap-y-4">
-         <div class="flex justify-between text-black font-medium">
-         <span id="headsets-price-min-range-value">0</span>
-         <p  id="headsets-price-range-value" class="text-lg" id="headset-price-range-value">current price</p>
-         <span id="headsets-price-max-range-value">2000</span>
-         </div>
-         <input
-            type="range"
-            min="0"
-            max="2000"
-            class="w-full accent-gray-500"
-            id="headsets-price-range"
-            />
-         </div>
-         </div>
-        
-         <!-- Tri -->
-         <div>
-         <label class="block text-lg font-semibold text-black mb-2"
-            >Filter by</label
-            >
-         <select
-            id="headsets-sort-filter"
-            class="z-20 w-full p-3 border-2 border-black rounded-md bg-neutral-400 text-black hover:bg-neutral-500 transition"
-            >
-         <option >Ascending Price</option>
-         <option >Descending Price</option>
-         </select>
-         </div>
-         </div>
-         </div>
-         <!-- 3️⃣ Produits Smartwatches Scroll -->
-         <div class="relative overflow-hidden text-black">
-         <div id="headsets-grid" class="flex rounded-2xl space-x-4 md:space-x-8 py-6
-            px-10 w-full transition-transform duration-500 ease-in-out" >
-         </div>
-         <button
-            id="prev-btn-headsets"
-            class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-white text-black border-4 border-black font-bold text-3xl"
-            >
-         <
-         </button>
-         <button
-            id="next-btn-headsets"
-            class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-white text-black border-4 border-black font-bold text-3xl"
-            >
-         >
-         </button>
-         <p id="headsets-popup" class="hidden z-40 absolute top-4 left-4 transform -translate-x-1/2 bg-gradient-to-r from-gray-300 to-gray-100 text-black text-2xl font-bold py-4 px-8 rounded-lg shadow-lg border-2 border-white animate-bounce">
-
-         </p>
-         </div>
-         </div>
-         <!-- Indicators -->
-         <div class="flex justify-between items-center mt-6">
-          <!-- Indicateurs centrés -->
-          <div class="flex justify-center space-x-2 flex-1">
-            <button id="left-indecator-headsets" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
-            <button id="right-indecator-headsets" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
-          </div>
-        </div>
-        
-         </section>
-         <div id="headsets-container"></div>
-
-        
-         <!-- smartphones section -->
-         <section
-            id="phones"
-            class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
-            >
-         <div class="container mx-auto">
-         <!-- 1️⃣ Titre de la catégorie -->
-         <div class="flex items-center mb-6">
-         <span class="text-5xl mr-4">📱</span>
-         <div>
-         <h2 class="text-3xl font-bold text-gray-700">Smartphones</h2>
-         <p class="text-gray-600 text-xl font-semibold">
-         Explore our latest and most powerful smartphones!
-         </p>
-         </div>
-         </div>
-         <!-- 2️⃣ Filtres & Tri -->
-         <div
-            class="bg-gray-300 backdrop-blur-sm bg-opacity-80 border-2 border-gray-500 shadow-xl shadow-gray-500 p-6 rounded-2xl mb-8"
-            >
-         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-         <!-- Filtre par marque -->
-         <div>
-         <label class="block text-lg font-semibold  text-gray-500 mb-2"
-            >Brand</label
-            >
-         <select
-         id="phones-brand-filter"
-            class="z-20 w-full p-3 border-2 border-gray-600 rounded-md bg-gray-400 text-black hover:bg-gray-500 transition"
-            >
-        
-         </select>
-         </div>
-         <!-- Filtre par prix -->
-         <div>
-         <label class="block text-lg font-semibold text-gray-500 mb-2"
-            >Prix</label
-            >
-         <div class="flex flex-col gap-y-4">
-         <div class="flex justify-between text-gray-500 font-medium">
-         <span id="phones-price-min-range-value">0</span>
-          <span id="phones-price-range-value" class="text-lg">current price</span>
-          <span id="phones-price-max-range-value"></span>        
-          </div>
-         <input
-            type="range"
-            min="0"
-            max="2000"
-            class="w-full accent-gray-800"
-            id="phones-price-range"
-            />
-         </div>
-         </div>
-         
-         <!-- Tri -->
-         <div>
-         <label class="block text-lg font-semibold text-gray-500 mb-2"
-            >Filter by</label
-            >
-         <select
-           id="phones-sort-filter"
-            class="z-20 w-full p-3 border-2 border-gray-700 rounded-md bg-gray-400 text-black hover:bg-gray-600 transition"
-            >
-         <option>Ascending Price</option>
-         <option>Descending Price</option>
-         </select>
-         </div>
-         </div>
-         </div>
-         <!-- 3️⃣ Produits Phone Scroll -->
-         <div class="relative overflow-hidden text-black">
-         <div id="phones-grid" class="flex rounded-2xl space-x-4 md:space-x-8 py-6
-            px-10 w-full transition-transform duration-500 ease-in-out" >
-         </div>
-         <button
-            id="prev-btn-phones"
-            class="absolute top-1/3 left-0 z-20 px-4 py-3 rounded-full bg-white text-gray-800 border-4 border-black font-bold text-3xl"
-            >
-         <
-         </button>
-         <button
-            id="next-btn-phones"
-            class="absolute top-1/3 right-0 z-20 px-4 py-3 rounded-full bg-white text-gray-800 border-4 border-black font-bold text-3xl"
-            >
-         >
-         </button>
-         <p id="phones-popup" class="hidden z-40 absolute top-4 left-4 transform -translate-x-1/2 bg-gradient-to-r from-gray-300 to-gray-100 text-black text-2xl font-bold py-4 px-8 rounded-lg shadow-lg border-2 border-white animate-bounce">
-
-         </p>
-         </div>
-         </div>
-         <!-- Indicators -->
-         <div class="flex justify-between items-center mt-6">
-            <!-- Indicateurs centrés -->
-            <div class="flex justify-center space-x-2 flex-1">
-              <button id="left-indecator-phones" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
-              <button id="right-indecator-phones" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
-            </div>
-        
-          </div>
-         </div>
-         </section>
-          
-         <div id="phone-banner"></div>
-
-
-         <!--  Gaming Consoles section -->
-         <section
-            id="consoles"
-            class="mb-16 pt-64 md:pt-40 select-none hidden-animate-fadeIn"
-            >
-            <div class="container mx-auto">
-               <!-- 1️⃣ Titre de la catégorie -->
-               <div class="flex items-center mb-6">
-                  <span class="text-5xl mr-4">🎮</span>
-                  <div>
-                     <h2 class="text-3xl font-bold text-gray-700">Gaming Consoles</h2>
-                     <p class="text-gray-600 text-xl font-semibold">
-                        Enjoy next-gen gaming with our powerful consoles!
-                     </p>
-                  </div>
-               </div>
-               <!-- 2️⃣ Filtres & Tri -->
-<div class="bg-blue-200 backdrop-blur-sm bg-opacity-80 border-2 border-blue-500 shadow-xl shadow-blue-100 p-6 rounded-2xl mb-8">
-   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Filtre par marque -->
-      <div class="text-blue-900">
-         <label class="block text-lg font-semibold mb-2">Brand</label>
-         <select 
-           id="consoles-brand-filter"
-           class="
-            w-full p-3 
-            border-2 border-blue-700 
-            rounded-lg 
-            text-blue-900 
-            bg-blue-100 
-            hover:bg-blue-200 
-            focus:ring-2 focus:ring-blue-700 
-            transition-all duration-300
-         ">
-         </select>
-      </div>
-
-      <!-- Filtre par prix -->
-      <div>
-         <label class="block text-lg font-semibold text-blue-900 mb-2">Price Range (DZD)</label>
-         <div class="flex flex-col gap-y-4">
-            <div class="flex justify-between text-blue-800 font-medium">
-               <span id="console-price-min-range-value">0 </span>
-               <p class="text-lg" id="console-price-range-value">current price</p>
-               <span id="console-price-max-range-value"> </span>
-            </div>
-            <input
-               type="range"
-               min="0"
-               max="74000000"
-               class="
-                  w-full 
-                  appearance-none 
-                  h-2 
-                  bg-blue-500 
-                  rounded-full 
-                  outline-none 
-                  opacity-70 
-                  hover:opacity-100 
-                  transition-opacity
-                  accent-blue-700
-               "
-               id="console-price-range"
-            />
-         </div>
-      </div>
-      <!-- Tri -->
-      <div class="text-blue-900">
-         <label class="block text-lg font-semibold mb-2">Sort By</label>
-         <select 
-         id="consoles-sort-filter"
-           class="
-            w-full p-3 
-            border-2 border-blue-700 
-            rounded-lg 
-            text-blue-900 
-            bg-blue-100 
-            hover:bg-blue-200 
-            focus:ring-2 focus:ring-blue-500 
-            transition-all duration-300
-         ">
-            <option>Ascending Price</option>
-            <option>Descending Price</option>
-         </select>
-      </div>
-   </div>
-</div>
-               <!-- 3️⃣ Grid Console Scroll -->
-               <div class="relative overflow-hidden text-black">
-                  <div id="consoles-grid" class="flex rounded-2xl space-x-4 md:space-x-8 py-6
-                     px-10 w-full transition-transform duration-500 ease-in-out" >
-                  </div>
-                  <button
-                     id="prev-btn-consoles"
-                     class="absolute top-1/3 left-0 z-20 px-5 py-3 rounded-full bg-gray-200 text-3xl text-blue-700 border-4 border-blue-800 font-bold"
-                     >
-                  <
-                  </button>
-                  <button
-                     id="next-btn-consoles"
-                     class="absolute top-1/3 right-0 z-20 px-5 py-3 rounded-full bg-gray-200 text-3xl text-blue-700 border-4 border-blue-800 font-bold"
-                     >
-                  >
-                  </button>
-                  <p id="consoles-popup" class="hidden z-40 absolute top-4 left-4 transform -translate-x-1/2 bg-gradient-to-r from-gray-300 to-gray-100 text-black text-2xl font-bold py-4 px-8 rounded-lg shadow-lg border-2 border-white animate-bounce">
-
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h2 class="text-4xl font-bold tracking-wide">Smartwatches</h2>
+                  <p class="text-3xl opacity-90">
+                    Stay connected and track your health with our smartwatches!
                   </p>
-               </div>
+                </div>
+              </div>
             </div>
+
+            <!-- Filters & Sorting -->
+            <div
+              class="bg-blue-200/50 backdrop-blur-sm border border-blue-200 shadow-2xl shadow-blue-950/40 py-4 px-10 rounded-[50px] mb-8 w-[95%] mx-auto"
+            >
+              <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-x-10">
+                <!-- Filter by Brand -->
+                <div class="flex flex-col gap-y-2 items-start p-4">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-4 justify-start"
+                  >
+                    <label
+                      class="block text-xl font-semibold mb-2 tracking-wider"
+                      >Brand</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-6 mb-2"
+                    >
+                      <path
+                        d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <select
+                    id="smartwatches-brand-filter"
+                    class="rounded-full w-80 p-3 border-2 border-blue-950/20 bg-blue-950/20 font-medium text-blue-50 focus:border-blue-500 focus:ring focus:ring-blue-200"
+                  >
+                    <option>All Brands</option>
+                  </select>
+                </div>
+
+                <!-- Filter by Price -->
+                <div class="flex flex-col justify-center py-3">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-2 justify-start"
+                  >
+                    <label
+                      class="block text-2xl font-semibold mb-2 tracking-wider"
+                      >Price</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-8 mb-2"
+                    >
+                      <path
+                        d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col gap-y-3">
+                    <div class="flex justify-between items-center">
+                      <span
+                        id="smartwatches-price-min-range-value"
+                        class="text-blue-50 tracking-wider"
+                      ></span>
+                      <div
+                        class="px-4 py-2 bg-blue-100 rounded-full text-blue-950/90 font-medium tracking-wider"
+                      >
+                        <span id="smartwatches-price-range-value"></span>
+                      </div>
+                      <span
+                        id="smartwatches-price-max-range-value"
+                        class="text-blue-50 tracking-wider"
+                      ></span>
+                    </div>
+                    <input
+                      type="range"
+                      min="3575"
+                      max="9310"
+                      class="w-full accent-blue-950"
+                      id="smartwatches-price-range"
+                    />
+                  </div>
+                </div>
+
+                <!-- Sorting -->
+                <div class="flex flex-col gap-y-2 items-start p-4">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-4 justify-start"
+                  >
+                    <label
+                      class="block text-xl font-semibold mb-2 tracking-wider"
+                      >Filter by</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-6 mb-2"
+                    >
+                      <path
+                        d="M4.25 5.61C6.27 8.2 10 13 10 13v6c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-6s3.72-4.8 5.74-7.39c.51-.66.04-1.61-.79-1.61H5.04c-.83 0-1.3.95-.79 1.61z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <select
+                    id="smartwatches-sort-filter"
+                    class="w-80 p-3 border-2 border-blue-950/20 rounded-full bg-blue-950/20 font-medium text-blue-50 focus:border-blue-500 focus:ring focus:ring-blue-200"
+                  >
+                    <option class="text-blue-900 bg-blue-400/35">
+                      Ascending price
+                    </option>
+                    <option class="text-blue-900 bg-blue-400/35">
+                      Descending price
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Products Scroll -->
+            <div class="relative overflow-hidden text-gray-700">
+              <div
+                id="smartwatches-grid"
+                class="flex rounded-2xl space-x-4 md:space-x-8 py-6 px-10 w-full transition-transform duration-500 ease-in-out"
+              ></div>
+              <button
+                id="prev-btn-smartwatches"
+                class="absolute top-1/3 left-0 z-20 p-3 rounded-full bg-blue-950 hover:bg-blue-900 transition-colors border border-white shadow-lg"
+              >
+                <svg
+                  class="size-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              <button
+                id="next-btn-smartwatches"
+                class="absolute top-1/3 right-0 z-20 p-3 rounded-full bg-blue-950 hover:bg-blue-900 transition-colors border border-white shadow-lg"
+              >
+                <svg
+                  class="size-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+
+              <p
+                id="smartwatches-popup"
+                class="hidden z-40 absolute top-4 left-4 transform -translate-x-1/2 bg-blue-300 text-black text-2xl font-bold py-4 px-8 rounded-lg shadow-lg border-2 border-white animate-bounce"
+              ></p>
+            </div>
+
             <!-- Indicators -->
-         <div class="flex justify-between items-center mt-6">
-            <!-- Indicateurs centrés -->
-            <div class="flex justify-center space-x-2 flex-1">
-              <button id="left-indecator-consoles" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
-              <button id="right-indecator-consoles" class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"></button>
+            <div class="flex justify-between items-center mt-6">
+              <div class="flex justify-center space-x-2 flex-1">
+                <button
+                  id="left-indecator-smartwatches"
+                  class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+                ></button>
+                <button
+                  id="right-indecator-smartwatches"
+                  class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+                ></button>
+              </div>
             </div>
-          
+            <div id="smarwatches-banner" class="animate-fadeIn"></div>
           </div>
+        </section>
+
+        <!-- headsets section -->
+        <section
+          id="headsets"
+          class="mb-16 pt-20 select-none hidden-animate-fadeIn"
+        >
+          <div class="container mx-auto">
+            <!-- Title -->
+            <div class="flex items-center mb-4 bg-navy-800 text-white p-6">
+              <div class="flex items-center w-full">
+                <div class="bg-blue-50 rounded-full p-4 mr-8">
+                  <svg
+                    class="size-14 text-blue-400/95"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                    <path
+                      d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <h2 class="text-4xl font-bold tracking-wide">Headsets</h2>
+                  <p class="text-3xl opacity-90">
+                    Experience immersive sound with our top-quality headsets!
+                  </p>
+                </div>
+              </div>
             </div>
-         </section>
 
-         <div id="consoles-container"></div>
+            <!-- Filters & Sorting -->
+            <div
+              class="bg-blue-400/50 backdrop-blur-sm border border-blue-200 shadow-2xl shadow-blue-950/40 py-4 px-10 rounded-[50px] mb-8 w-[95%] mx-auto"
+            >
+              <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-x-10">
+                <!-- Filter by Brand -->
+                <div class="flex flex-col gap-y-2 items-start p-4">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-4 justify-start"
+                  >
+                    <label
+                      class="block text-xl font-semibold mb-2 tracking-wider"
+                      >Brand</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-6 mb-2"
+                    >
+                      <path
+                        d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <select
+                    id="headsets-brand-filter"
+                    class="rounded-full w-80 p-3 border-2 border-blue-950/20 bg-blue-100/20 font-medium text-blue-50 focus:border-blue-500 focus:ring focus:ring-blue-200"
+                  >
+                    <option>All Brands</option>
+                  </select>
+                </div>
+
+                <!-- Filter by Price -->
+                <div class="flex flex-col justify-center py-3">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-2 justify-start"
+                  >
+                    <label
+                      class="block text-2xl font-semibold mb-2 tracking-wider"
+                      >Price</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-8 mb-2"
+                    >
+                      <path
+                        d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col gap-y-3">
+                    <div class="flex justify-between items-center">
+                      <span
+                        id="headsets-price-min-range-value"
+                        class="text-blue-50 tracking-wider"
+                        >0</span
+                      >
+                      <div
+                        class="px-4 py-2 bg-blue-100 rounded-full text-blue-950/90 font-medium tracking-wider"
+                      >
+                        <span id="headsets-price-range-value"
+                          >current price</span
+                        >
+                      </div>
+                      <span
+                        id="headsets-price-max-range-value"
+                        class="text-blue-50 tracking-wider"
+                        >2000</span
+                      >
+                    </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="2000"
+                      class="w-full accent-blue-200/40"
+                      id="headsets-price-range"
+                    />
+                  </div>
+                </div>
+
+                <!-- Sorting -->
+                <div class="flex flex-col gap-y-2 items-start p-4">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-4 justify-start"
+                  >
+                    <label
+                      class="block text-xl font-semibold mb-2 tracking-wider"
+                      >Filter by</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-6 mb-2"
+                    >
+                      <path
+                        d="M4.25 5.61C6.27 8.2 10 13 10 13v6c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-6s3.72-4.8 5.74-7.39c.51-.66.04-1.61-.79-1.61H5.04c-.83 0-1.3.95-.79 1.61z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <select
+                    id="headsets-sort-filter"
+                    class="w-80 p-3 border-2 border-blue-950/20 rounded-full bg-blue-200/20 font-medium text-blue-50 focus:border-blue-500 focus:ring focus:ring-blue-200"
+                  >
+                    <option class="bg-blue-200/80 text-blue-950">
+                      Ascending price
+                    </option>
+                    <option class="bg-blue-200/80 text-blue-950">
+                      Descending price
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Products Scroll -->
+            <div class="relative overflow-hidden text-black">
+              <div
+                id="headsets-grid"
+                class="flex rounded-2xl space-x-4 md:space-x-8 py-6 px-10 w-full transition-transform duration-500 ease-in-out"
+              ></div>
+              <button
+                id="prev-btn-headsets"
+                class="absolute top-1/3 left-0 z-20 p-3 rounded-full bg-blue-950 hover:bg-blue-900 transition-colors border border-white shadow-lg"
+              >
+                <svg
+                  class="size-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              <button
+                id="next-btn-headsets"
+                class="absolute top-1/3 right-0 z-20 p-3 rounded-full bg-blue-950 hover:bg-blue-900 transition-colors border border-white shadow-lg"
+              >
+                <svg
+                  class="size-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+              <p
+                id="headsets-popup"
+                class="hidden z-40 absolute top-4 left-4 transform -translate-x-1/2 bg-blue-200 text-black text-2xl font-bold py-4 px-8 rounded-lg shadow-lg border-2 border-white animate-bounce"
+              ></p>
+            </div>
+          </div>
+
+          <!-- Indicators -->
+          <div class="flex justify-between items-center mt-6">
+            <div class="flex justify-center space-x-2 flex-1">
+              <button
+                id="left-indecator-headsets"
+                class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+              ></button>
+              <button
+                id="right-indecator-headsets"
+                class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+              ></button>
+            </div>
+          </div>
+        </section>
+        <div id="headsets-banner"></div>
+
+        <!-- smartphones section -->
+        <section
+          id="phones"
+          class="mb-16 pt-20 select-none hidden-animate-fadeIn"
+        >
+          <div class="container mx-auto">
+            <!-- Title -->
+            <div class="flex items-center mb-4 bg-navy-800 text-white p-6">
+              <div class="flex items-center w-full">
+                <div class="bg-blue-50 rounded-full p-4 mr-8">
+                  <svg
+                    class="size-14 text-blue-800/90"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect
+                      x="5"
+                      y="2"
+                      width="14"
+                      height="20"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <path d="M12 18h.01"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h2 class="text-4xl font-bold tracking-wide">Smartphones</h2>
+                  <p class="text-3xl opacity-90">
+                    Explore our latest and most powerful smartphones!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Filters & Sorting -->
+            <div
+              class="bg-blue-800/50 backdrop-blur-sm border border-blue-200 shadow-2xl shadow-blue-950/40 py-4 px-10 rounded-[50px] mb-8 w-[95%] mx-auto"
+            >
+              <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-x-10">
+                <!-- Filter by Brand -->
+                <div class="flex flex-col gap-y-2 items-start p-4">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-4 justify-start"
+                  >
+                    <label
+                      class="block text-xl font-semibold mb-2 tracking-wider"
+                      >Brand</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-6 mb-2"
+                    >
+                      <path
+                        d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <select
+                    id="phones-brand-filter"
+                    class="rounded-full w-80 p-3 border-2 border-blue-950/20 bg-blue-100/20 font-medium text-blue-50 focus:border-blue-500 focus:ring focus:ring-blue-200"
+                  >
+                    <option>All Brands</option>
+                  </select>
+                </div>
+
+                <!-- Filter by Price -->
+                <div class="flex flex-col justify-center py-3">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-2 justify-start"
+                  >
+                    <label
+                      class="block text-2xl font-semibold mb-2 tracking-wider"
+                      >Price</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-8 mb-2"
+                    >
+                      <path
+                        d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col gap-y-3">
+                    <div class="flex justify-between items-center">
+                      <span
+                        id="phones-price-min-range-value"
+                        class="text-blue-50 tracking-wider"
+                        >0</span
+                      >
+                      <div
+                        class="px-4 py-2 bg-blue-100 rounded-full text-blue-950/90 font-medium tracking-wider"
+                      >
+                        <span id="phones-price-range-value">current price</span>
+                      </div>
+                      <span
+                        id="phones-price-max-range-value"
+                        class="text-blue-50 tracking-wider"
+                        >2000</span
+                      >
+                    </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="2000"
+                      class="w-full accent-blue-200/40"
+                      id="phones-price-range"
+                    />
+                  </div>
+                </div>
+
+                <!-- Sorting -->
+                <div class="flex flex-col gap-y-2 items-start p-4">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-4 justify-start"
+                  >
+                    <label
+                      class="block text-xl font-semibold mb-2 tracking-wider"
+                      >Filter by</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-6 mb-2"
+                    >
+                      <path
+                        d="M4.25 5.61C6.27 8.2 10 13 10 13v6c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-6s3.72-4.8 5.74-7.39c.51-.66.04-1.61-.79-1.61H5.04c-.83 0-1.3.95-.79 1.61z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <select
+                    id="phones-sort-filter"
+                    class="w-80 p-3 border-2 border-blue-950/20 rounded-full bg-blue-200/20 font-medium text-blue-50 focus:border-blue-500 focus:ring focus:ring-blue-200"
+                  >
+                    <option class="bg-blue-200/80 text-blue-950">
+                      Ascending price
+                    </option>
+                    <option class="bg-blue-200/80 text-blue-950">
+                      Descending price
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Products Scroll -->
+            <div class="relative overflow-hidden text-black">
+              <div
+                id="phones-grid"
+                class="flex rounded-2xl space-x-4 md:space-x-8 py-6 px-10 w-full transition-transform duration-500 ease-in-out"
+              ></div>
+              <button
+                id="prev-btn-phones"
+                class="absolute top-1/3 left-0 z-20 p-3 rounded-full bg-blue-950 hover:bg-blue-900 transition-colors border border-white shadow-lg"
+              >
+                <svg
+                  class="size-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              <button
+                id="next-btn-phones"
+                class="absolute top-1/3 right-0 z-20 p-3 rounded-full bg-blue-950 hover:bg-blue-900 transition-colors border border-white shadow-lg"
+              >
+                <svg
+                  class="size-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+              <p
+                id="phones-popup"
+                class="hidden z-40 absolute top-4 left-4 transform -translate-x-1/2 bg-gradient-to-r from-gray-300 to-gray-100 text-black text-2xl font-bold py-4 px-8 rounded-lg shadow-lg border-2 border-white animate-bounce"
+              ></p>
+            </div>
+          </div>
+
+          <!-- Indicators -->
+          <div class="flex justify-between items-center mt-6">
+            <div class="flex justify-center space-x-2 flex-1">
+              <button
+                id="left-indecator-phones"
+                class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+              ></button>
+              <button
+                id="right-indecator-phones"
+                class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+              ></button>
+            </div>
+          </div>
+        </section>
+        <div id="phone-banner"></div>
+
+        <!-- Gaming Consoles section -->
+        <section
+          id="consoles"
+          class="mb-16 pt-20 select-none hidden-animate-fadeIn"
+        >
+          <div class="container mx-auto">
+            <!-- 1️⃣ Titre de la catégorie -->
+            <div class="flex items-center mb-4 bg-navy-800 text-white p-6">
+              <div class="flex items-center w-full">
+                <div class="bg-blue-50 rounded-full p-4 mr-8">
+                  <svg
+                    class="size-14 text-blue-950/95"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="6" y1="11" x2="10" y2="11"></line>
+                    <line x1="8" y1="9" x2="8" y2="13"></line>
+                    <line x1="15" y1="12" x2="15.01" y2="12"></line>
+                    <line x1="18" y1="10" x2="18.01" y2="10"></line>
+                    <path
+                      d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.544-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.152A4 4 0 0 0 17.32 5z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <h2 class="text-4xl font-bold tracking-wide">
+                    Gaming Consoles
+                  </h2>
+                  <p class="text-3xl opacity-90">
+                    Enjoy next-gen gaming with our powerful consoles!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2️⃣ Filtres & Tri -->
+            <div
+              class="bg-blue-950/50 backdrop-blur-sm border border-blue-200 shadow-2xl shadow-blue-950/40 py-4 px-10 rounded-[50px] mb-8 w-[95%] mx-auto"
+            >
+              <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-x-10">
+                <!-- Filtre par marque -->
+                <div class="flex flex-col gap-y-2 items-start p-4">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-4 justify-start"
+                  >
+                    <label
+                      class="block text-xl font-semibold mb-2 tracking-wider"
+                      >Brand</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-6 mb-2"
+                    >
+                      <path
+                        d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+
+                  <select
+                    id="consoles-brand-filter"
+                    class="rounded-full w-80 p-3 border-2 border-blue-950/20 bg-blue-100/20 font-medium text-blue-50 focus:border-blue-500 focus:ring focus:ring-blue-200"
+                  >
+                    <option>All Brands</option>
+                  </select>
+                </div>
+
+                <!-- Filtre par prix -->
+                <div class="flex flex-col justify-center py-3">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-2 justify-start"
+                  >
+                    <label
+                      class="block text-2xl font-semibold mb-2 tracking-wider"
+                      >Price</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-8 mb-2"
+                    >
+                      <path
+                        d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col gap-y-3">
+                    <div class="flex justify-between items-center">
+                      <span
+                        id="console-price-min-range-value"
+                        class="text-blue-50 tracking-wider"
+                        >0</span
+                      >
+                      <div
+                        class="px-4 py-2 bg-blue-100 rounded-full text-blue-950/90 font-medium tracking-wider"
+                      >
+                        <span id="console-price-range-value"
+                          >current price</span
+                        >
+                      </div>
+                      <span
+                        id="console-price-max-range-value"
+                        class="text-blue-50 tracking-wider"
+                        >74000000</span
+                      >
+                    </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="74000000"
+                      class="w-full accent-blue-200/40"
+                      id="console-price-range"
+                    />
+                  </div>
+                </div>
+
+                <!-- Tri -->
+                <div class="flex flex-col gap-y-2 items-start p-4">
+                  <div
+                    class="w-full flex flex-row items-center gap-x-4 justify-start"
+                  >
+                    <label
+                      class="block text-xl font-semibold mb-2 tracking-wider"
+                      >Sort By</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="size-6 mb-2"
+                    >
+                      <path
+                        d="M4.25 5.61C6.27 8.2 10 13 10 13v6c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-6s3.72-4.8 5.74-7.39c.51-.66.04-1.61-.79-1.61H5.04c-.83 0-1.3.95-.79 1.61z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <select
+                    id="consoles-sort-filter"
+                    class="w-80 p-3 border-2 border-blue-950/20 rounded-full bg-blue-200/20 font-medium text-blue-50 focus:border-blue-500 focus:ring focus:ring-blue-200"
+                  >
+                    <option class="bg-blue-200/80 text-blue-950">
+                      Ascending price
+                    </option>
+                    <option class="bg-blue-200/80 text-blue-950">
+                      Descending price
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Products Scroll -->
+            <div class="relative overflow-hidden text-black">
+              <div
+                id="consoles-grid"
+                class="flex rounded-2xl space-x-4 md:space-x-8 py-6 px-10 w-full transition-transform duration-500 ease-in-out"
+              ></div>
+              <button
+                id="prev-btn-consoles"
+                class="absolute top-1/3 left-0 z-20 p-3 rounded-full bg-blue-950 hover:bg-blue-900 transition-colors border border-white shadow-lg"
+              >
+                <svg
+                  class="size-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              <button
+                id="next-btn-consoles"
+                class="absolute top-1/3 right-0 z-20 p-3 rounded-full bg-blue-950 hover:bg-blue-900 transition-colors border border-white shadow-lg"
+              >
+                <svg
+                  class="size-10 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+              <p
+                id="consoles-popup"
+                class="hidden z-40 absolute top-4 left-4 transform -translate-x-1/2 bg-gradient-to-r from-gray-300 to-gray-100 text-black text-2xl font-bold py-4 px-8 rounded-lg shadow-lg border-2 border-white animate-bounce"
+              ></p>
+            </div>
+          </div>
+
+          <!-- Indicators -->
+          <div class="flex justify-between items-center mt-6">
+            <div class="flex justify-center space-x-2 flex-1">
+              <button
+                id="left-indecator-consoles"
+                class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+              ></button>
+              <button
+                id="right-indecator-consoles"
+                class="size-5 rounded-full bg-white hover:bg-gray-600 transition-colors"
+              ></button>
+            </div>
+          </div>
+        </section>
+        <div id="consoles-banner"></div>
       </main>
-
-
 
       <!-- Footer -->
       <div id="footer-container"></div>
-      <script>
-         document.addEventListener("DOMContentLoaded", function () {
-           if (window.location.hash) {
-             setTimeout(function () {
-               let element = document.querySelector(window.location.hash);
-               if (element) {
-                 element.scrollIntoView({ behavior: "smooth", block: "start" });
-               }
-             }, 300); // Attendre 300ms avant de scroller
-           }
-         });
-      </script>
-   </body>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.location.hash) {
+          setTimeout(function () {
+            let element = document.querySelector(window.location.hash);
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }, 300);
+        }
+      });
+    </script>
+  </body>
 </html>

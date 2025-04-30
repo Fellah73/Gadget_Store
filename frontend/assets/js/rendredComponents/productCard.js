@@ -102,69 +102,40 @@ export function createProductPurchaseCard(product, category) {
   // Configuration des catégories et couleurs de fond
   const categories = ["phones", "headsets", "consoles", "smartwatches"];
   const colors = [
-    "from-gray-700 to-gray-900",
-    "from-neutral-500 to-neutral-700",
-    "from-blue-700 to-blue-900",
-    "from-gray-400 to-gray-600",
+    "from-blue-900/50 to-blue-600/50",
+    "from-blue-500/90 to-blue-400/40",
+    "from-blue-800/50 via-gray-900/50 to-gray-600/50",
+    "from-blue-600/50 to-blue-400/50",
   ];
 
-  // Générer un badge de réduction dynamique
   const generateDiscountBadge = (discount) => {
     if (!discount || discount === 0) return "";
 
-    let badgeColor = "bg-amber-600";
-    if (discount >= 30 && discount < 50) badgeColor = "bg-green-500";
-    if (discount >= 50) badgeColor = "bg-violet-800";
+    let badgeColor = "bg-amber-500";
+    if (discount >= 30 && discount < 50) badgeColor = "bg-blue-950";
+    if (discount >= 50) badgeColor = "bg-gray-600";
 
     return `
-      <div class="absolute top-2 left-2 ${badgeColor} text-white text-sm font-bold px-2 py-1 rounded-full shadow-lg z-10">
+      <div class="absolute flex items-center justify-center top-2 left-2 ${badgeColor} text-white text-center text-lg tracking-wide font-bold size-16 rounded-full shadow-lg z-10">
         -${discount}%
       </div>
     `;
   };
 
-  // Calculer le prix après réduction
-  const calculateDiscountedPrice = (price, discount) => {
-    if (!discount) return price;
-    return (price * (1 - discount / 100)).toFixed(2);
-  };
-
-  // Générer des étoiles de notation
-  const generateRatingStars = (rating) => {
-    const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
-    let starsHTML = "";
-
-    for (let i = 0; i < 5; i++) {
-      if (i < fullStars) {
-        starsHTML += `<span class="text-yellow-500">★</span>`;
-      } else if (i === fullStars && halfStar) {
-        starsHTML += `<span class="text-yellow-500">½</span>`;
-      } else {
-        starsHTML += `<span class="text-gray-300">★</span>`;
-      }
-    }
-    return starsHTML;
-  };
-
-  // Sélectionner le fond de couleur en fonction de la catégorie
   const bgColor = colors[categories.indexOf(category)] || colors[0];
-
-  const rating = Math.floor(Math.random() * 5) + 1;
-  const reviews = Math.floor(Math.random() * 100) + 1;
   const discount = Math.floor(Math.random() * 51);
-  // Créer l'élément de la carte
+ 
   const card = document.createElement("div");
   card.className = `
-    relative flex-shrink-0 w-[300px] h-[450px] md:w-[350px] h-[490px] 
+    relative flex-shrink-0 w-[300px] h-[450px] md:w-[350px] 
     bg-gradient-to-br ${bgColor} 
-    text-white rounded-2xl 
+    text-white rounded-xl 
     shadow-2xl overflow-hidden 
     transform transition-all duration-300 
     hover:scale-105 hover:shadow-xl
   `;
 
-  // Contenu HTML de la carte
+  
   card.innerHTML = `
     <div class="relative h-full flex flex-col">
       ${generateDiscountBadge(product.discount)}
@@ -177,24 +148,11 @@ export function createProductPurchaseCard(product, category) {
         />
       </div>
       
-      <div class="p-4 flex-grow flex flex-col justify-between">
-        <div>
+      <div class="p-4 gap-y-2 flex flex-col">
+        
           <h3 class="text-xl font-bold mb-2 truncate">${product.name}</h3>
           
-          <div class="flex items-center justify-between mb-3">
-            <div class="flex items-center">
-              ${generateRatingStars(rating || 0)}
-              <span class="text-sm ml-2 text-gray-200">
-                (${reviews || 0} avis)
-              </span>
-            </div>
-            
-            <span class="text-sm bg-white/20 px-2 py-1 text-center rounded-full">
-              ${category || "Product"}
-            </span>
-          </div>
-          
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between mt-4">
             <div class="flex items-center space-x-2">
               <span class="text-2xl font-bold">
                 ${product.price_discounted} DZD
@@ -202,42 +160,44 @@ export function createProductPurchaseCard(product, category) {
               ${
                 discount || true
                   ? `<span class="text-sm line-through text-gray-300">
-                   ${product.price} DZD
-                 </span>`
+                      ${product.price} DZD
+                    </span>`
                   : ""
               }
             </div>
+            <span class="text-sm bg-white/20 px-2 py-1 text-center rounded-full">
+              ${category || "Product"}
+            </span>
           </div>
-        </div>
-        <div class="mt-4 flex space-x-2">
-    <button id="buy" class="
-        w-1/2 bg-white text-black 
-        py-2 rounded-lg font-semibold 
-        hover:bg-transparent hover:text-white hover:border-white hover:border-2 hover:rounded-lg
-        transition-colors duration-300 
-        flex items-center justify-center
-        ">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="9" cy="21" r="1"/>
-            <circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-        </svg>
-        Add to Cart
-    </button>
-    <a href="product.html?id=${product.id}" class="
-        w-1/2 bg-transparent border-2 border-white text-white
-        py-2 rounded-lg font-semibold 
-        hover:bg-white hover:text-black
-        transition-colors duration-300 
-        flex items-center justify-center
-        ">
-        View Product
-    </a>
-</div>
-</div>
-</div>
         
-         
+        
+        <div class="mt-8 flex space-x-2">
+          <button id="buy" class="
+              w-1/2 bg-white text-black 
+              py-2 rounded-sm font-semibold 
+              hover:bg-transparent hover:text-white hover:border-white hover:border-2 hover:rounded-lg
+              transition-colors duration-300 
+              flex items-center justify-center
+          ">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"/>
+              <circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            Add to Cart
+          </button>
+          <a href="product.html?id=${product.id}" class="
+              w-1/2 bg-transparent border-2 border-white text-white
+              py-2 rounded-sm font-semibold 
+              hover:bg-white hover:text-black
+              transition-colors duration-300 
+              flex items-center justify-center
+          ">
+            View Product
+          </a>
+        </div>
+      </div>
+    </div>
   `;
 
   return card;

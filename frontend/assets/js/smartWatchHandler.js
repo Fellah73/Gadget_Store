@@ -44,11 +44,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   function populateBrandFilter(brands) {
-    brandSelect.innerHTML = '<option value="">All Brands</option>';
+    brandSelect.innerHTML = '<option value="" class="bg-blue-200 text-blue-950">All Brands</option>';
     brands.forEach((brand) => {
       const option = document.createElement("option");
       option.value = brand;
       option.textContent = brand;
+      option.classList.add("bg-blue-200", "text-blue-950");
       brandSelect.appendChild(option);
     });
   }
@@ -180,7 +181,7 @@ const addToCart = async (product) => {
   if (!isAuth) {
     const popUp = document.getElementById("smartwatches-popup");
 
-    popUp.textContent = `Login orRegister to add to cart 🛒`;
+    popUp.textContent = `Login or Register to add to cart 🛒`;
     popUp.style.display = "block";
 
     setTimeout(() => {

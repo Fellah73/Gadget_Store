@@ -39,11 +39,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   function populateBrandFilter(brands) {
-    brandSelect.innerHTML = '<option value="">All Brands</option>';
+    brandSelect.innerHTML = '<option value="" class="rounded-lg bg-blue-800 text-white">All Brands</option>';
     brands.forEach((brand) => {
       const option = document.createElement("option");
       option.value = brand;
       option.textContent = brand;
+      option.classList.add("bg-blue-800", "text-white", "rounded-lg");
       brandSelect.appendChild(option);
     });
   }
@@ -130,9 +131,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     "right-indecator-phones"
   );
 
-  //scroll handling
+
   let scrollAmount = 0;
-  const cardWidth = 300; // Largeur d'une carte + marge
+  const cardWidth = 300; 
 
   nextBtnphones.addEventListener("click", () => {
     scrollAmount += cardWidth;
