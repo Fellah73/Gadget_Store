@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   nextBtnsmartWatchs.addEventListener("click", () => {
     scrollAmount += cardWidth;
-    right_Indicator_smartWatchs.style.backgroundColor = "black";
+    right_Indicator_smartWatchs.style.backgroundColor = "rgb(30 64 175)";
     left_Indicator_smartWatchs.style.backgroundColor = "white";
 
     if (
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   prevBtnsmartWatchs.addEventListener("click", () => {
     scrollAmount -= cardWidth;
-    left_Indicator_smartWatchs.style.backgroundColor = "black";
+    left_Indicator_smartWatchs.style.backgroundColor = "rgb(30 64 175)";
     right_Indicator_smartWatchs.style.backgroundColor = "white";
 
     if (scrollAmount < 0) {

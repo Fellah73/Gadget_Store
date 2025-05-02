@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         nextBtn.addEventListener("click", () => {
           scrollAmount += cardWidth;
           leftIndicator.style.backgroundColor = "white";
-          rightIndicator.style.backgroundColor = "rgb(120 113 108)";
+          rightIndicator.style.backgroundColor = "rgb(30 58 138)";
 
           if (scrollAmount > container.scrollWidth - container.clientWidth) {
             scrollAmount = container.scrollWidth - container.clientWidth;
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         prevBtn.addEventListener("click", () => {
           scrollAmount -= cardWidth;
           rightIndicator.style.backgroundColor = "white";
-          leftIndicator.style.backgroundColor = "rgb(120 113 108)";
+          leftIndicator.style.backgroundColor = "rgb(30 58 138)";
 
           if (scrollAmount < 0) {
             scrollAmount = 0;

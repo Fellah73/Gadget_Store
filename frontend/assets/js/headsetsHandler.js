@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   nextBtnheadsets.addEventListener("click", () => {
     scrollAmount += cardWidth;
-    right_Indicator_headsets.style.backgroundColor = "black";
+    right_Indicator_headsets.style.backgroundColor = "rgb(30 64 175)";
     left_Indicator_headsets.style.backgroundColor = "white";
 
     if (scrollAmount > headsetsGrid.scrollWidth - headsetsGrid.clientWidth) {
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   prevBtnheadsets.addEventListener("click", () => {
     scrollAmount -= cardWidth;
-    left_Indicator_headsets.style.backgroundColor = "black";
+    left_Indicator_headsets.style.backgroundColor = "rgb(30 64 175)";
     right_Indicator_headsets.style.backgroundColor = "white";
 
     if (scrollAmount < 0) {

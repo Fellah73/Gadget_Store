@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const statusFilter = document.getElementById("status-filter");
     const ordersCount = document.getElementById("orders-count");
 
-    let totalOrders = null;
+    let totalOrders = [];
     let filtredOrders = [];
     const userId = localStorage.getItem("user");
     const fetchToatalOrders = async () => {
@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
           filtredOrders = totalOrders.filter(
             (order) => order.status == statusFilter.value
           );
+
           ordersCount.textContent = totalOrders.filter(
             (order) => order.status == "processing"
           ).length;
@@ -63,19 +64,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
     const displayOrders = async () => {
-      if (!totalOrders) {
+      if (filtredOrders.length === 0) {
         await fetchToatalOrders();
       }
+      if (!totalOrders) return;
       totalOrdersContainter.innerHTML = "";
       filtredOrders.forEach((order, index) => {
         const row = document.createElement("tr");
-        row.classList.add(`${index % 2 === 0 ? "bg-gray-100" : "bg-white"}`);
+        row.classList.add(`${index % 2 === 0 ? "bg-blue-200" : "bg-blue-100"}`);
 
         row.innerHTML = `
-          <td class="px-6 py-4 whitespace-nowrap text-blue-800 text-left ">
-              ORD-${order.created_at.split(" ")[0].replaceAll("-", "")}-${order.id}	
+          <td class="px-6 py-4 font-semibold whitespace-nowrap text-blue-950 text-left ">
+              ORD-${order.created_at.split(" ")[0].replaceAll("-", "")}-${
+          order.id
+        }	
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-left text-black text-base tracking-wide truncate">${
+            <td class="px-6 py-4 whitespace-nowrap font-semibold text-left text-black text-base tracking-wide truncate">${
               order.full_name
             }</td>
             <td class="px-6 py-4 whitespace-nowrap">
@@ -87,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
               >
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-start">
-              <span class="text-gray-500 px-4 py-2 text-base font-semibold">
+              <span class="text-gray-800 px-4 py-2 text-base font-bold">
             ${formatOrderDate(order.created_at)} 
               </span>
             </td>
@@ -146,15 +150,14 @@ const getStatusColor = (status) => {
 };
 
 const formatOrderDate = (dateString) => {
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    };
-  
-    const date = new Date(dateString.replace(" ", "T"));
-    return date.toLocaleString("en-GB", options).replace(",", " at");
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   };
-  
+
+  const date = new Date(dateString.replace(" ", "T"));
+  return date.toLocaleString("en-GB", options).replace(",", " at");
+};

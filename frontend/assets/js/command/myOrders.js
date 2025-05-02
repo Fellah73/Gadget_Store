@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!data.orders) {
           orders = null;
         }
-        orders = data.orders ? data.orders : null;
+        orders = data.orders ? data.orders.sort((orderA, orderB) => new Date(orderB.created_at) - new Date(orderA.created_at)) : null;
         orderCount.textContent = orders ? orders.length : 0;
         user.textContent = data.user;
         let total = !data.orders

@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await response.json();
         if (data.success) {
           if (data.founder) {
-            isFounder.style.display = "block";
+            isFounder.style.display = "flex";
             users = data.users.filter(
               (user) => user.role != "user" && user.id != user_id
             );
@@ -92,16 +92,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       usersContainer.innerHTML = "";
       if (users.length === 0) return;
-      filtredUsers.forEach((user) => {
+      filtredUsers.forEach((user,index) => {
         const userCard = document.createElement("tr");
-        userCard.classList.add("border-b", "border-gray-200");
+        userCard.classList.add("border-b", "border-blue-950");
+        userCard.classList.add(index % 2 === 0 ? "bg-blue-200" : "bg-blue-100");
         userCard.innerHTML = `
             <td class="py-3 px-4">
          <div class="flex items-center">
-           <span class="font-medium text-gray-800">${user.name}</span>
+           <span class="font-medium text-base tracking-wide text-black">${user.name}</span>
          </div>
             </td>
-            <td class="py-3 px-4 text-gray-600">${user.email}</td>
+            <td class="py-3 px-4 text-gray-800 tracking-wider">${user.email}</td>
             <td class="py-3 px-4">
          <span
            class="inline-flex items-center px-4 py-2 rounded-full text-base tracking-wide font-medium ${
@@ -115,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
            ${user.role.toLowerCase().replace("_", " ")}
          </span>
             </td>
-            <td class="py-3 px-4 text-gray-600">${new Date(
+            <td class="py-3 px-4 text-gray-900 tracking-wider">${new Date(
               user.createdAt
             ).toLocaleDateString()}</td>
             <td class="py-3 px-4">
@@ -123,12 +124,12 @@ document.addEventListener("DOMContentLoaded", () => {
            <button id="promote"
              class="${
                user.role === "super_admin" && "hidden"
-             } bg-blue-700 hover:bg-blue-900 hover:transition-colors hover:duration-300 text-white px-4 py-2 rounded-lg text-base"
+             } bg-blue-700 hover:bg-blue-950 hover:transition-colors hover:duration-300 text-white tracking-wider px-4 py-2 rounded-md text-base"
            >
              Promote
            </button>
            <button id="demote"
-             class="bg-amber-600 hover:bg-amber-700 hover:transition-colors hover:duration-300 text-white px-4 py-2 rounded-lg text-base hover-transition"
+             class="bg-amber-600 hover:bg-amber-700 hover:transition-colors hover:duration-300 text-gray-200 hover:text-white tracking-wider px-4 py-2 rounded-md text-base hover-transition"
            >
              Demote
            </button>

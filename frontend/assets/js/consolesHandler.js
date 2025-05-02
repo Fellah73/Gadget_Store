@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   nextBtnconsoles.addEventListener("click", () => {
     scrollAmount += cardWidth;
-    right_Indicator_consoles.style.backgroundColor = "black";
+    right_Indicator_consoles.style.backgroundColor = "rgb(30 64 175)";
     left_Indicator_consoles.style.backgroundColor = "white";
 
     if (scrollAmount > consolesGrid.scrollWidth - consolesGrid.clientWidth) {
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   prevBtnconsoles.addEventListener("click", () => {
     scrollAmount -= cardWidth;
-    left_Indicator_consoles.style.backgroundColor = "black";
+    left_Indicator_consoles.style.backgroundColor = "rgb(30 64 175)";
     right_Indicator_consoles.style.backgroundColor = "white";
 
     if (scrollAmount < 0) {

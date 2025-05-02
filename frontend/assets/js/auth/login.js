@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("user");
 
-  if (token !=='null') {
-    window.location.href = "shop.html";
+  if (token !== "null") {
+    window.location.href = "shop.html#smartwatches";
   }
 
   fetch("components/navbar.html")
@@ -65,15 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (data.success) {
         console.log("Login successful: ", data?.user);
 
-        // update the local storage with the user data
         localStorage.setItem("user", `${data?.user.id}`);
-        const expirationInMinutes = 30; // durée de session
+        const expirationInMinutes = 30;
         const expirationTime =
           new Date().getTime() + expirationInMinutes * 60 * 1000;
 
-        // update the local storage with the user data
         localStorage.setItem("session_expiration", expirationTime.toString());
-        window.location.href = "shop.html";
+        window.location.href = "shop.html#smartwatches";
       } else {
         SubmiterrorMessage.textContent = data.message;
       }

@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   nextBtnphones.addEventListener("click", () => {
     scrollAmount += cardWidth;
-    right_Indicator_phones.style.backgroundColor = "black";
+    right_Indicator_phones.style.backgroundColor = "rgb(30 64 175)";
     left_Indicator_phones.style.backgroundColor = "white";
 
     if (scrollAmount > phonesGrid.scrollWidth - phonesGrid.clientWidth) {
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   prevBtnphones.addEventListener("click", () => {
     scrollAmount -= cardWidth;
-    left_Indicator_phones.style.backgroundColor = "black";
+    left_Indicator_phones.style.backgroundColor = "rgb(30 64 175)";
     right_Indicator_phones.style.backgroundColor = "white";
 
     if (scrollAmount < 0) {
