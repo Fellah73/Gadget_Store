@@ -60,28 +60,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
       orders.slice(0, 6).forEach((order, key) => {
         const row = document.createElement("tr");
-        row.classList.add(`${key % 2 === 0 ? "bg-gray-100" : "bg-white"}`);
+        row.classList.add(`${key % 2 === 1 ? "bg-blue-100" : "bg-blue-200"}`);
         row.classList.add("border-t");
         row.classList.add("border-gray-100");
+        row.classList.add("text-blue-900");
         row.innerHTML = `
                   <td class="px-4 py-3 text-sm text-blue-900 font-semibold">#ORD-${order.created_at
                     .split(" ")[0]
                     .replaceAll("-", "")}-${order.id}</td>
-                  <td class="px-4 py-3">${order.full_name}</td>
+                  <td class="px-4 py-3 font-bold">${order.full_name}</td>
                   <td class="px-4 py-3">
                     <span
-                      class="px-2 py-1 ${getStatusColorOverview(
+                      class="px-4 py-2 ${getStatusColorOverview(
                         order.status
-                      )} rounded-full text-xs"
+                      )} rounded-full text-xs tracking-wider font-semibold"
                       >${order.status ?? "cancelled"}</span
                     >
                   </td>
-                  <td class="px-4 py-3 text-base -tracking-tight text-gray-500">${formatOrderDateOverview(
-                    order.created_at.split(" ")[0]
+                  <td class="px-4 py-3 text-base -tracking-tight text-blue-800">${formatOrderDateOverview(
+                    order.created_at
                   )}</td>
                   <td class="px-4 py-3">${
                     order.total
-                  }  <span class="text-gray-500 text-xs">DZD</span> </td>
+                  }  <span class="text-blue-700 text-xs">DZD</span> </td>
                 `;
         ordersContainer.appendChild(row);
       });
@@ -101,8 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const data = await response.json();
         if (data.success) {
-            console.log('data.products');
-          outOfStockItems = data.products.filter((item) => item.qte <= 5).sort((a, b) => b.qte - a.qte);
+          console.log("data.products");
+          outOfStockItems = data.products
+            .filter((item) => item.qte <= 5)
+            .sort((a, b) => a.qte - b.qte);
         } else {
           console.log(data.message);
         }
@@ -119,11 +122,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const row = document.createElement("li");
         row.classList.add("flex");
         row.classList.add("items-center");
+        row.classList.add(item.qte <= 2 ? "bg-blue-200" : "bg-blue-100");
+        row.classList.add(item.qte <= 2 ? "text-blue-950" : "text-blue-900");
         row.innerHTML = `
           <img src="${item.image}" alt="Product Image" class="size-10 bg-gray-200 rounded-md"/>
           <div class="ml-3">
             <p class="text-sm font-medium">${item.name}</p>
-            <p class="text-xs text-gray-500">${item.qte} units</p>
+            <p class="text-xs font-bold">${item.qte} units</p>
           </div>
         `;
         outOfStockItemsContainer.appendChild(row);

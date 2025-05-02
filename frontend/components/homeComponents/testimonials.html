@@ -14,7 +14,6 @@
           transform: scale(1.05);
         }
       }
-      /* Animations personnalisées */
       @keyframes fade-in {
         from {
           opacity: 0;
@@ -61,11 +60,13 @@
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-12">
           <h2
-            class="text-3xl font-bold text-blue-600 mb-3 tracking-tight animate-fade-in"
+            class="text-3xl font-bold text-gray-100 mb-3 tracking-wide animate-fade-in"
           >
             What our customers say
           </h2>
-          <p class="text-gray-900 text-2xl font-bold max-w-2xl mx-auto">
+          <p
+            class="text-gray-300 tracking-wider text-2xl font-bold max-w-2xl mx-auto"
+          >
             Discover our satisfied customers' experiences with our technological
             gadgets
           </p>
@@ -74,7 +75,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Témoignage 1 -->
           <div
-            class="bg-gradient-to-br from-gray-400 to-gray-50 rounded-lg shadow-lg p-6 transition duration-300 hover:shadow-xl hover:-translate-y-2 border-t-4 border-gray-500"
+            class="bg-gradient-to-br from-blue-950/90 to-blue-950/70 rounded-lg shadow-lg p-6 transition duration-300 hover:shadow-xl hover:-translate-y-2 border-t-4 border-blue-950"
           >
             <div class="flex items-center mb-4">
               <img
@@ -83,8 +84,8 @@
                 class="w-12 h-12 rounded-full object-cover mr-4"
               />
               <div>
-                <h4 class="font-bold text-gray-800">Sophie Martin</h4>
-                <p class="text-gray-700 text-base font-semibold">
+                <h4 class="font-bold text-white">Fellah Mohamed</h4>
+                <p class="text-white text-base font-semibold">
                   Smartphone Buyer
                 </p>
               </div>
@@ -143,19 +144,19 @@
                 </svg>
               </div>
             </div>
-            <p class="text-stone-700 text-lg font-semibold mb-4">
+            <p class="text-gray-200 text-lg font-semibold tracking-wide mb-4">
               The user interface of the smartphone I bought is incredibly
               intuitive. The camera is exceptional even in low light. The fast
               delivery was a plus
             </p>
-            <span class="text-blue-600 text-base font-bold">
+            <span class="text-gray-100 text-base font-bold">
               Verified Purchase - March 2025</span
             >
           </div>
 
           <!-- Témoignage 2 -->
           <div
-            class="bg-gradient-to-br from-gray-400 to-gray-50 rounded-lg shadow-lg p-6 transition duration-300 hover:shadow-xl hover:-translate-y-2 border-t-4 border-gray-500 animate-delay-300"
+            class="bg-gradient-to-r from-blue-950/90 to-blue-900/70 rounded-lg shadow-lg p-6 transition duration-300 hover:shadow-xl hover:-translate-y-2 border-t-4 border-blue-950"
           >
             <div class="flex items-center mb-4">
               <img
@@ -164,8 +165,8 @@
                 class="w-12 h-12 rounded-full object-cover mr-4"
               />
               <div>
-                <h4 class="font-bold text-gray-800">Lucas Dubois</h4>
-                <p class="text-gray-700 text-base font-semibold">
+                <h4 class="font-bold text-white">Djamel Lamine</h4>
+                <p class="text-white text-base font-semibold">
                   gaming console buyer
                 </p>
               </div>
@@ -224,19 +225,19 @@
                 </svg>
               </div>
             </div>
-            <p class="text-stone-700 text-lg font-semibold mb-4">
+            <p class="text-white tracking-wide text-lg font-semibold mb-4">
               The graphics on my new console are breathtaking! Customer service
               responded quickly to all my questions. I highly recommend this
               site for all gamers.
             </p>
-            <span class="text-blue-600 text-base font-bold">
+            <span class="text-white text-base font-bold">
               Verified Purchase - February 2025</span
             >
           </div>
 
           <!-- Témoignage 3 -->
           <div
-            class="bg-gradient-to-br from-gray-400 to-gray-50 rounded-lg shadow-lg p-6 transition duration-300 hover:shadow-xl hover:-translate-y-2 border-t-4 border-gray-500 animate-delay-600"
+          class="bg-gradient-to-br from-blue-900/90 to-blue-900/70 rounded-lg shadow-lg p-6 transition duration-300 hover:shadow-xl hover:-translate-y-2 border-t-4 border-blue-950"
           >
             <div class="flex items-center mb-4">
               <img
@@ -245,8 +246,8 @@
                 class="w-12 h-12 rounded-full object-cover mr-4"
               />
               <div>
-                <h4 class="font-bold text-gray-800">Emma Leclerc</h4>
-                <p class="text-gray-700 text-base font-semibold">
+                <h4 class="font-bold text-white">Omar Rahmoun</h4>
+                <p class="text-white text-base font-semibold">
                   headset buyer
                 </p>
               </div>
@@ -305,12 +306,12 @@
                 </svg>
               </div>
             </div>
-            <p class="text-stone-700 font-semibold text-lg mb-4">
+            <p class="text-white tracking-wide font-semibold text-lg mb-4">
               The sound quality of my new headset is exceptional! The noise
               reduction works perfectly. The packaging was neat and the headset
               is very comfortable even after several hours.
             </p>
-            <span class="text-blue-600 text-base font-bold">
+            <span class="text-white text-base font-bold">
               Verified Purchase - January 2025</span
             >
           </div>
@@ -318,13 +319,13 @@
 
         <!-- Témoignage en vedette avec animation -->
         <div
-          class="mt-16 bg-blue-300 rounded-xl p-8 shadow-xl text-white relative overflow-hidden group animate-fade-in-up"
+          class="mt-16 bg-gradient-to-br from-blue-950/90 to-blue-900/70  rounded-xl p-8 shadow-xl text-white relative overflow-hidden group animate-fade-in-up"
         >
           <div
-            class="absolute top-0 right-0 w-32 h-32 -mt-10 -mr-10 bg-blue-500 rounded-full opacity-50 transform group-hover:scale-150 transition-transform duration-500"
+            class="absolute top-0 right-0 w-32 h-32 -mt-10 -mr-10 bg-blue-950 rounded-full opacity-50 transform group-hover:scale-150 transition-transform duration-500"
           ></div>
           <div
-            class="absolute bottom-0 left-0 w-24 h-24 -mb-8 -ml-8 bg-blue-700 rounded-full opacity-50 transform group-hover:scale-150 transition-transform duration-500"
+            class="absolute bottom-0 left-0 w-24 h-24 -mb-8 -ml-8 bg-blue-950 rounded-full opacity-50 transform group-hover:scale-150 transition-transform duration-500"
           ></div>
 
           <div
@@ -389,7 +390,7 @@
                   />
                 </svg>
               </div>
-              <p class="text-xl mb-4 italic">
+              <p class="text-xl text-white tracking-wide mb-4 italic">
                 I am a tech enthusiast and have purchased several products from
                 this site. My smartwatch is perfect - the battery life is
                 impressive and the health tracking features are accurate. The
@@ -397,8 +398,8 @@
                 Definitely my go-to site for all my tech purchases
               </p>
               <div class="mt-2">
-                <h4 class="font-bold text-lg">Thomas Bernard</h4>
-                <p class="text-gray-700">
+                <h4 class="font-bold text-white text-lg">Kamel Mohamed</h4>
+                <p class="text-white">
                   Loyal customer since 2023 • Smartwatch buyer
                 </p>
               </div>

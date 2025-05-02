@@ -1,75 +1,98 @@
 export function createProductCard(data) {
+  const generateDiscountBadge = (discount) => {
+    if (!discount || discount === 0) return "";
+
+    let badgeColor = "bg-amber-500";
+    if (discount >= 30 && discount < 50) badgeColor = "bg-blue-950";
+    if (discount >= 50) badgeColor = "bg-gray-600";
+
+    return `
+      <div class="absolute flex items-center justify-center top-2 left-2 ${badgeColor} text-white text-center text-lg tracking-wide font-bold size-16 rounded-full shadow-lg z-10">
+        -${discount}%
+      </div>
+    `;
+  };
+
+  const generateCategoryName = (categoryId) => {
+    switch (categoryId) {
+      case 1:
+        return "Smartphones";
+      case 2:
+        return "Gaming Consoles";
+      case 3:
+        return "Headsets";
+      default:
+        return "Smartwatches";
+    }
+  };
+
   // Créer un élément div pour la carte produit
   const card = document.createElement("div");
   card.className =
-    "flex-shrink-0 w-64 md:w-72 bg-gradient-to-br from-gray-300 to-gray-50 rounded-2xl transition-transform duration-300 hover:-translate-y-4";
+    "realative flex-shrink-0 w-64 md:w-[310px]  h-[470px] bg-gradient-to-r from-blue-950/80  to-blue-900/50 rounded-2xl transition-transform duration-300 hover:-translate-y-4";
   card.style.animationDelay = "0.1s";
 
   // Remplir la carte avec le contenu HTML
   card.innerHTML = `
-        <div class="relative overflow-hidden rounded-xl">
-            <!-- Badges -->
-            <div class="absolute top-3 left-3 z-10 flex flex-col space-y-2">
-                <span class="px-3 py-4 bg-zinc-600 text-white text-lg font-semibold rounded-full">
-                    ${data.discount ? `-${data.discount}%` : ""}
-                </span>
-            </div>
+    <div class="relative overflow-hidden  rounded-t-2xl h-1/2 w-full group">
+      ${data.discount ? `-${generateDiscountBadge(data.discount)}%` : ""}
 
-            <!-- Product Image -->
-            <div class="h-full bg-neutral-300 flex px-5 scale-125">
-                <img src="${data.image}" alt="${
+      <!-- Product Image -->
+      <div class="h-full bg-neutral-300 flex px-5 scale-125">
+        <img src="${data.image}" alt="${
     data.name
-  }" class="h-full object-contain" />
-            </div>
+  }" class="w-full h-[200px]  object-contain" />
+      </div>
+    </div>
 
-            
+    <div class="p-5 mt-2">
+      <!-- Category -->
+      <div class="flex items-center justify-between pr-4 w-full"> 
+        <p class="text-lg text-gray-200 tracking-wider">${generateCategoryName(
+          data.category_id
+        )}</p>
+        <span class="text-xl font-bold text-gray-200 tracking-wider">
+          ${data.total_sold} <span class="text-2xl">🏷️</span>
+        </span>
+      </div>
+
+      <!-- Product Name -->
+      <h3 class="text-lg font-semibold truncate text-gray-100 mb-2 group-hover:text-primary-blue transition-colors">
+        ${data.name}
+      </h3>
+
+      <!-- Rating -->
+      <div class="flex items-center mb-2">
+        <div class="flex text-yellow-400">
+          ${generateStars(Math.floor(Math.random() * 5) + 1)}
         </div>
+      </div>
 
-        <div class="p-5">
-            <!-- Category -->
-            <p class="text-base text-gray-500 tracking-wider mb-1">${
-              data.category
-            }</p>
+      <!-- Price -->
+      <div class="flex items-center space-x-2 mb-3">
+        <span class="text-lg font-bold text-white">${
+          data.price_discounted
+        } DZD</span>
+        ${
+          data.price
+            ? `<span class="text-base text-gray-400 line-through">${data.price} DZD</span>`
+            : ""
+        }
+      </div>
 
-            <!-- Product Name -->
-            <h3 class="text-lg font-semibold text-gray-800 mb-2 group-hover:text-primary-blue transition-colors">
-                ${data.name}
-            </h3>
-
-            <!-- Rating -->
-            <div class="flex items-center mb-2">
-                <div class="flex text-yellow-400">
-                    ${generateStars(data.rating)}
-                </div>
-                <span class="text-sm text-gray-500 ml-2">(${
-                  data.reviews
-                })</span>
-            </div>
-
-            <!-- Price -->
-            <div class="flex items-center space-x-2 mb-3">
-                <span class="text-lg font-bold text-primary-blue">${genreateNewProductCard(
-                  data
-                )}€</span>
-                ${
-                  data.oldPrice
-                    ? `<span class="text-sm text-gray-500 line-through">${data.oldPrice}€</span>`
-                    : ""
-                }
-            </div>
-
-            <!-- View Product Button -->
-            <a href="#" class="block w-full py-2 text-center border-2 border-primary-blue text-primary-blue font-medium rounded-lg hover:bg-primary-blue hover:text-white transition-colors duration-300 relative overflow-hidden group">
-                <span class="relative z-10">Voir le produit</span>
-                <span class="absolute inset-0 w-0 bg-gradient-to-r from-primary-blue to-secondary-blue group-hover:w-full transition-all duration-300 -z-0"></span>
-            </a>
-        </div>
-    `;
+      <!-- View Product Button -->
+      <a href="product.html?id=${
+        data.id
+      }" class="block w-full py-2 text-center tracking-wide border-2 border-blue-950 text-blue-950 bg-gray-200 font-medium rounded-lg hover:bg-primary-blue hover:text-white transition-colors duration-300 relative overflow-hidden group">
+        <span class="relative z-10">View Product</span>
+        <span class="absolute inset-0 w-0 bg-gradient-to-r from-blue-950 to-blue-800/50 group-hover:w-full transition-all duration-300 -z-0"></span>
+      </a>
+    </div>
+  `;
 
   return card;
 }
 
-// Fonction pour générer les étoiles en fonction du rating
 function generateStars(rating) {
   let stars = "";
 
@@ -124,7 +147,7 @@ export function createProductPurchaseCard(product, category) {
 
   const bgColor = colors[categories.indexOf(category)] || colors[0];
   const discount = Math.floor(Math.random() * 51);
- 
+
   const card = document.createElement("div");
   card.className = `
     relative flex-shrink-0 w-[300px] h-[450px] md:w-[350px] 
@@ -135,7 +158,6 @@ export function createProductPurchaseCard(product, category) {
     hover:scale-105 hover:shadow-xl
   `;
 
-  
   card.innerHTML = `
     <div class="relative h-full flex flex-col">
       ${generateDiscountBadge(product.discount)}
@@ -204,29 +226,33 @@ export function createProductPurchaseCard(product, category) {
 }
 
 export const recommendationCard = (product) => {
-  // Create the card container
   const card = document.createElement("div");
   card.className =
-    "hover:scale-95 hover:shadow-2xl hover:shadow-gray-600 flex-shrink-0 h-96 md:h-80 w-64 snap-start bg-white shadow-md overflow-hidden border border-gray-500 rounded-[30px] transition-transform duration-300";
+    "hover:scale-95 hover:shadow-2xl hover:shadow-blue-900 flex-shrink-0 h-96 md:h-80 w-64 snap-start bg-blue-50 shadow-md overflow-hidden border border-gray-500 rounded-[30px] transition-transform duration-300";
 
-  // Create the product card content
-  // Determine dynamic background color based on discount value
   const getDiscountBgColor = (discount) => {
-    if (discount >= 50) return "bg-red-500";
-    if (discount >= 30) return "bg-orange-400";
-    if (discount > 0) return "bg-green-400";
-    return "bg-gray-300";
+    if (!discount || discount === 0) return "";
+
+    let badgeColor = "bg-amber-500";
+    if (discount >= 30 && discount < 50) badgeColor = "bg-blue-950";
+    if (discount >= 50) badgeColor = "bg-gray-600";
+
+    return badgeColor;
   };
 
   card.innerHTML = `
      <div class="product-card p-4 w-full relative">
        <!-- Discount Badge -->
        <div class="absolute top-2 left-2">
-         <div class="size-12 rounded-full flex items-center justify-center text-white font-bold ${getDiscountBgColor(product.discount)}">${product.discount}%</div>
+         <div class="size-12 rounded-full flex items-center justify-center text-white font-bold ${getDiscountBgColor(
+           product.discount
+         )}">${product.discount}%</div>
        </div>
        <!-- Action Icons -->
        <div class="absolute top-1 right-2 flex flex-col space-y-4">
-         <a href="product.html?id=${product.id}" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+         <a href="product.html?id=${
+           product.id
+         }" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
            <svg xmlns="http://www.w3.org/2000/svg" class="size-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
            </svg>
@@ -234,15 +260,23 @@ export const recommendationCard = (product) => {
        </div>
        
        <div class="flex justify-center items-center py-2">
-         <img src="${product.image}" alt="${product.name}" class="h-48 object-contain" />
+         <img src="${product.image}" alt="${
+    product.name
+  }" class="h-48 object-contain" />
        </div>
        
        <div class="mt-8 md:mt-1 w-full flex flex-col items-start justify-center p-2">
-         <h3 class="text-2xl md:text-xl truncate font-bold text-blue-900 ">${product.name}</h3>
+         <h3 class="text-2xl md:text-xl truncate font-bold text-blue-900">${
+           product.name
+         }</h3>
        
          <div class="mt-2 flex items-center gap-x-6">
-           <span class="text-gray-400 line-through mr-2 text-xl md:text-base">${product.price}</span>
-           <span class="text-2xl md:text-xl font-bold">${product.price_discounted}<span class="text-base ml-1">DZD</span></span>
+           <span class="text-gray-700 line-through mr-2 text-xl md:text-base">${
+             product.price
+           }</span>
+           <span class="text-2xl md:text-xl font-bold">${
+             product.price_discounted
+           }<span class="text-base ml-1">DZD</span></span>
          </div>
        </div>
      </div>

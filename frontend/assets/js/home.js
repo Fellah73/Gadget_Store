@@ -1,5 +1,3 @@
-import { createProductCard } from "./rendredComponents/productCard.js";
-import { products } from "./static/stataicData.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   fetch("components/navbar.html")
@@ -86,12 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
           container.style.transform = `translateX(-${scrollAmount}px)`;
         });
 
-        if (products) {
-          products.forEach((product) => {
-            const productCard = createProductCard(product);
-            container.appendChild(productCard);
-          });
-        }
       } else {
         console.error("Main content container not found");
       }

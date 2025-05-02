@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (data.success) {
         role = data.role;
         if (role != "user") {
-          document.getElementById("admin-name").textContent = `${data.name} 👨🏻‍💻`;
+          document.getElementById("admin-name").textContent = `${data.name} `;
         }
         role = data.role;
       } else {

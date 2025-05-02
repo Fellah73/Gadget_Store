@@ -7,8 +7,8 @@
   </head>
   <body>
     <div class="flex flex-col gap-y-2 md:gap-y-4">
-      <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Products</h1>
-      <p class="text-gray-500">
+      <h1 class="text-2xl md:text-3xl font-bold text-white">Products</h1>
+      <p class="text-gray-200 text-xl tracking-wider">
         You can view and update the quantity of the stock products
       </p>
     </div>
@@ -21,12 +21,33 @@
         <div class="ml-4">
           <select
             id="category-filter"
-            class="border border-gray-300 rounded-lg w-40 md:w-64 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+            class="border border-gray-300 bg-blue-200 text-blue-900 text-center font-bold text-lg rounded-lg w-40 md:w-64 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
           >
-            <option value="1">Phones</option>
-            <option value="3">Headsets</option>
-            <option value="4">SmartWatch</option>
-            <option value="2">Gaming</option>
+            <option
+              selected
+              value="1"
+              class="font-bold hover:bg-blue-800 hover:text-white transform duration-300 ease-in-out"
+            >
+              Phones
+            </option>
+            <option
+              value="3"
+              class="font-bold hover:bg-blue-800 hover:text-white transform duration-300 ease-in-out"
+            >
+              Headsets
+            </option>
+            <option
+              value="4"
+              class="font-bold hover:bg-blue-800 hover:text-white transform duration-300 ease-in-out"
+            >
+              SmartWatch
+            </option>
+            <option
+              value="2"
+              class="font-bold hover:bg-blue-800 hover:text-white transform duration-300 ease-in-out"
+            >
+              Gaming
+            </option>
           </select>
         </div>
       </div>
@@ -36,35 +57,35 @@
     <div class="bg-white rounded-lg shadow overflow-hidden">
       <div class="overflow-y-auto max-h-96">
         <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
+          <thead class="bg-blue-900/90 text-white sticky top-0 z-10">
             <tr class="text-sm">
               <th
                 scope="col"
-                class="px-6 py-3 text-left  font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 text-left font-medium uppercase tracking-wider"
               >
                 Product
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left  font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 text-left font-medium uppercase tracking-wider"
               >
                 Category
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left  font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 text-left font-medium uppercase tracking-wider"
               >
                 Stock
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-left  font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 text-left font-medium uppercase tracking-wider"
               >
                 Price
               </th>
               <th
                 scope="col"
-                class="px-6 py-3 text-right font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-3 text-right font-medium uppercase tracking-wider"
               >
                 Increment quantity
               </th>
@@ -72,21 +93,21 @@
           </thead>
           <tbody
             id="stock-products-container"
-            class="bg-white divide-y divide-gray-200"
+            class="bg-blue-200 divide-y-2 divide-blue-950"
           ></tbody>
         </table>
       </div>
       <div
-        class="px-5 py-4 bg-white border-t flex flex-col sm:flex-row items-center justify-between"
+        class="px-5 py-4 bg-blue-900/90 border-t flex flex-col sm:flex-row items-center justify-between"
       >
         <div
           id="stock-items-count"
-          class="text-lg tracking-wide text-black mb-4 sm:mb-0"
+          class="text-lg tracking-wide text-white mb-4 sm:mb-0"
         ></div>
         <div class="flex">
           <span
             href="#"
-            class="px-4 py-2 rounded-md text-bold text-lg tracking-wide mx-1 bg-gradient-to-r from-blue-900 to-blue-700 text-white"
+            class="px-4 py-2 rounded-sm font-bold text-lg tracking-wider mx-1 bg-blue-300 text-blue-950"
             ><span id="stock-items-qte"></span> items available in stock</span
           >
         </div>

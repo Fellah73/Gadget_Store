@@ -5,7 +5,7 @@ export const products = [
     image: "assets/images/heroSection/iphone.webp",
     oldPrice: 1249,
     discount: 20,
-    rating: 4.5,
+    rating: 4,
     reviews: 129,
   },
   {
@@ -14,7 +14,7 @@ export const products = [
     image: "assets/images/heroSection/headphones.webp",
     oldPrice: 1249,
     discount: 71,
-    rating: 4.5,
+    rating: 4,
     reviews: 149,
   },
   {
@@ -23,7 +23,7 @@ export const products = [
     image: "assets/images/heroSection/smartwatch.webp",
     oldPrice: 1249,
     discount: 45,
-    rating: 2.5,
+    rating: 3,
     reviews: 49,
   },
   {
@@ -41,7 +41,7 @@ export const products = [
     image: "assets/images/heroSection/iphone.webp",
     oldPrice: 1249,
     discount: 20,
-    rating: 4.5,
+    rating: 4,
     reviews: 129,
   },
   {
@@ -50,7 +50,7 @@ export const products = [
     image: "assets/images/heroSection/headphones.webp",
     oldPrice: 1249,
     discount: 71,
-    rating: 4.5,
+    rating: 4,
     reviews: 149,
   },
   {
@@ -59,7 +59,7 @@ export const products = [
     image: "assets/images/heroSection/smartwatch.webp",
     oldPrice: 1249,
     discount: 45,
-    rating: 2.5,
+    rating: 2,
     reviews: 49,
   },
   {

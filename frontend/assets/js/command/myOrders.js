@@ -32,11 +32,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     .catch((error) => console.error("Error loading navbar:", error));
 
-  // Load footer component
+  
   fetch("components/footer.html")
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("footer-container").innerHTML = data;
+      const backToTopButton = document.getElementById("back-to-top");
+
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
     })
     .catch((error) => console.error("Error loading footer:", error));
 
@@ -129,27 +137,28 @@ const createOrderCard = (key, order) => {
   const getStatusColor = (status) => {
     switch (status) {
       case "shipped":
-        return "bg-blue-100 text-blue-700 border border-blue-900";
+        return "bg-blue-800 text-blue-100 border border-blue-400";
       case "delivered":
-        return "bg-green-50 text-green-700 border border-green-900";
+        return "bg-emerald-800 text-emerald-100 border border-emerald-400";
       case "cancelled":
-        return "bg-red-50 text-red-700 border border-red-900";
+        return "bg-red-800 text-red-100 border border-red-400";
       default:
-        return "bg-yellow-50 text-yellow-700 border border-yellow-900";
+        return "bg-amber-800 text-amber-100 border border-amber-400";
     }
   };
+
   // Créer le conteneur principal de la carte
   const card = document.createElement("div");
   card.className =
-    "bg-white rounded-2xl border border-blue-700 shadow-lg shadow-gray-500 overflow-hidden hover:-translate-y-2 transition-all duration-300";
+    "bg-blue-900/50 rounded-2xl border border-blue-300 shadow-lg shadow-blue-900/50 overflow-hidden hover:-translate-y-2 transition-all duration-300";
 
   // Ajouter le contenu HTML de la carte
   card.innerHTML = `
-    <div class="bg-blue-50 px-4 py-3 border-b border-blue-700">
+    <div class="bg-blue-950 px-4 py-3 border-b border-blue-400">
       <div class="flex justify-between items-center px-2">
         <div class="flex flex-col gap-y-2">
-          <h3 class="font-semibold text-lg text-blue-800">Order #${key}</h3>
-          <p class="text-sm tracking-wide text-gray-600">Placed on ${formatOrderDate(
+          <h3 class="font-semibold text-lg text-blue-100">Order #${key}</h3>
+          <p class="text-sm tracking-wide text-blue-200">Placed on ${formatOrderDate(
             order.created_at
           )}</p>
         </div>
@@ -160,12 +169,12 @@ const createOrderCard = (key, order) => {
         </span>
       </div>
     </div>
-
+    
     <div>
-      <div class="overflow-x-auto border border-gray-600">
+      <div class="overflow-x-auto border border-blue-700">
         <table class="size-full flex flex-col">
           <thead>
-            <tr class="sticky top-0 mr-4 grid grid-cols-10 md:grid-cols-12 border-b border-gray-400 divide-x divide-gray-300 text-base tracking-wider text-gray-500 font-thin">
+            <tr class="sticky top-0 mr-4 grid grid-cols-10 md:grid-cols-12 border-b border-blue-600 divide-x divide-blue-700 text-base tracking-wider text-blue-200 font-thin">
               <th class="py-2 col-span-5">Gadget</th>
               <th class="py-2 col-span-1 hidden md:block">Type</th>
               <th class="py-2 col-span-1 hidden md:block">Qte</th>
@@ -173,18 +182,18 @@ const createOrderCard = (key, order) => {
               <th class="py-2 col-span-3">Subtotal</th>
             </tr>
           </thead>
-          <tbody class="text-base text-black font-semibold text-center h-[200px] overflow-y-scroll">
+          <tbody class="text-base text-blue-50 font-semibold text-center h-[200px] overflow-y-scroll">
             ${order.items
               .map(
                 (item) => `
-              <tr class="grid grid-cols-10 md:grid-cols-12 divide-x divide-gray-300 border border-gray-400">
+              <tr class="grid grid-cols-10 md:grid-cols-12 divide-x divide-blue-700 border border-blue-700 hover:bg-blue-800/90 transition-colors duration-200">
                 <td class="py-2 col-span-5 px-2 text-left truncate text-base">${
                   item.name
                 }</td>
-                <td class="py-2 col-span-1 text-3xl hidden md:block">${generateCategEmoji(
+                <td class="py-2 col-span-1 items-center justify-center hidden md:flex">${generateCategEmoji(
                   item.category_id
                 )}</td>
-                <td class="py-2 col-span-1 hidden md:block text-lg text-gray-600">${
+                <td class="py-2 col-span-1 hidden md:block text-lg text-blue-300">${
                   item.quantity
                 }</td>
                 <td class="py-2 col-span-2">${item.price_discounted}</td>
@@ -198,11 +207,11 @@ const createOrderCard = (key, order) => {
           </tbody>
         </table>
       </div>
-
+      
       <div class="mt-4 py-3 w-[90%] md:w-[70%] mx-auto">
         <div class="w-full flex justify-between items-center px-4 md:px-8 text-xl tracking-wider">
-          <span class="font-semibold text-gray-800">Total :</span>
-          <span class="font-bold text-blue-900">${order.total} DZD</span>
+          <span class="font-semibold text-blue-200">Total :</span>
+          <span class="font-bold text-blue-100">${order.total} DZD</span>
         </div>
         <div class="mt-4">
           <button id="cancel-order" class="${
@@ -221,15 +230,77 @@ const createOrderCard = (key, order) => {
 const generateCategEmoji = (category) => {
   switch (category) {
     case 1:
-      return "📱";
+      return `<svg
+            class="size-8 text-gray-200"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+            <line x1="12" y1="18" x2="12" y2="18"></line>
+          </svg>`;
     case 2:
-      return "🎮";
-    case 4:
-      return "⌚";
+      return `
+      <svg
+            class="size-8 text-gray-200"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="6" y1="11" x2="10" y2="11"></line>
+            <line x1="8" y1="9" x2="8" y2="13"></line>
+            <line x1="15" y1="12" x2="15.01" y2="12"></line>
+            <line x1="18" y1="10" x2="18.01" y2="10"></line>
+            <path
+              d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.544-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.152A4 4 0 0 0 17.32 5z"
+            ></path>
+          </svg>
+        `;
     case 3:
-      return "🎧";
+      return `
+      <svg
+            class="size-8 text-gray-200"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="7"></circle>
+            <polyline points="12 9 12 12 13.5 13.5"></polyline>
+            <path
+              d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"
+            ></path>
+          </svg>
+          `;
     default:
-      return "🛍️";
+      return `
+      <svg
+            class="size-8 text-gray-200"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+            <path
+              d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"
+            ></path>
+          </svg>
+      `;
   }
 };
 

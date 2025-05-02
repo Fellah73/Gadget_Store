@@ -9,42 +9,42 @@
     <script type="module" defer src="./assets/js/search/search.js"></script>
     <script type="module" src="./assets/js/command/checkout.js"></script>
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-gradient-to-br from-blue-950/95 to-blue-900/80">
     <div id="navbar-container"></div>
     <div
       class="relative w-[90%] h-[1900px] mx-auto pt-24 md:pt-32 flex flex-col items-center gap-y-12"
     >
       <h1
-        class="text-3xl md:text-5xl text-center font-extrabold tracking-wide text-blue-900"
+        class="text-3xl md:text-5xl text-center font-extrabold tracking-wide text-white"
       >
         Complete Your Purchase
       </h1>
       <div
-        class="w-[90%] h-[1170px] mx-auto grid grid-cols-1 md:grid-cols-5 md:gap-x-8 gap-y-8"
+        class=" w-[90%] h-[1170px] mx-auto grid grid-cols-1 md:grid-cols-5 md:gap-x-8 gap-y-8"
       >
         <!-- billing form -->
         <form
           id="checkout-form"
-          class="col-span-1 md:col-span-3 px-4 md:px-8 py-8 flex flex-col items-center h-full gap-y-4  md:gap-y-8 border border-gray-400 rounded-3xl"
+          class="bg-gradient-to-br from-blue-950/95 to-blue-900/80 col-span-1 md:col-span-3 px-4 md:px-8 py-8 flex flex-col items-center h-full gap-y-4  md:gap-y-8 border-4 border-gray-50 rounded-3xl"
         >
           <div class="w-full flex justify-start">
             <p
-              class="text-blue-950 tracking-wide font-bold text-lg md:text-xl pl-2"
+              class="text-gray-200 tracking-wide font-bold text-lg md:text-xl pl-2"
             >
               Billing Details
             </p>
           </div>
-          <div class="w-full h-[0.5px] bg-gray-400" />
+          <div class="w-full h-[1.5px] bg-white" />
           <div class="w-full flex flex-col gap-y-4 my-4">
             <div class="w-full flex flex-row justify-between">
               <label
                 for="name"
-                class="w-[20%] text-blue-900 font-thin text-base"
+                class="w-[20%] text-gray-200 font-thin text-base"
                 >Name</label
               >
               <p
                 id="name-error"
-                class="text-indigo-700 font-bold tracking-wide text-sm"
+                class="text-white font-bold tracking-wide text-sm"
               ></p>
             </div>
 
@@ -60,12 +60,12 @@
             <div class="w-full flex flex-row justify-between">
               <label
                 for="email"
-                class="w-[20%] text-blue-900 font-thin text-base"
+                class="w-[20%] text-gray-300 font-thin text-base"
                 >Email Address</label
               >
               <p
                 id="email-error"
-                class="text-indigo-700 font-bold tracking-wide text-sm"
+                class="text-white font-bold tracking-wide text-sm"
               ></p>
             </div>
             <input
@@ -80,12 +80,12 @@
             <div class="w-full flex flex-row justify-between">
               <label
                 for="phone-number"
-                class="w-[20%] text-blue-900 font-thin text-base"
+                class="w-[20%] text-gray-300 font-thin text-base"
                 >Phone Number</label
               >
               <p
                 id="phone-number-error"
-                class="text-indigo-700 font-bold tracking-wide text-sm"
+                class="text-white font-bold tracking-wide text-sm"
               ></p>
             </div>
             <input
@@ -99,7 +99,7 @@
           <div class="w-full flex items-start flex-col gap-y-4 my-4">
             <label
               for="country"
-              class="w-[20%] text-blue-900 font-thin text-base"
+              class="w-[20%] text-gray-300 font-thin text-base"
               >Country / Region</label
             >
             <select
@@ -117,12 +117,12 @@
             <div class="w-full flex flex-row justify-between">
               <label
                 for="street-details"
-                class="w-[20%] text-blue-900 font-thin text-base"
+                class="w-[20%] text-gray-300 font-thin text-base"
                 >Street Address</label
               >
               <p
                 id="street-details-error"
-                class="text-indigo-700 font-bold tracking-wide text-sm"
+                class="text-white font-bold tracking-wide text-sm"
               ></p>
             </div>
             <input
@@ -135,7 +135,7 @@
             <div class="w-full flex flex-row justify-end px-4">
               <p
                 id="home-details-error"
-                class="text-indigo-700 font-bold tracking-wide text-sm"
+                class="text-white font-bold tracking-wide text-sm"
               ></p>
             </div>
             <input
@@ -150,12 +150,12 @@
             <div class="w-full flex flex-row justify-between">
               <label
                 for="city"
-                class="w-[20%] text-blue-900 font-thin text-base"
+                class="w-[20%] text-gray-300 font-thin text-base"
                 >City / Town</label
               >
               <p
                 id="city-error"
-                class="text-indigo-700 font-bold tracking-wide text-sm"
+                class="text-white font-bold tracking-wide text-sm"
               ></p>
             </div>
             <input
@@ -170,12 +170,12 @@
             <div class="w-full flex flex-row justify-between">
               <label
                 for="state"
-                class="w-[20%] text-blue-900 font-thin text-base"
+                class="w-[20%] text-gray-300 font-thin text-base"
                 >State / Province</label
               >
               <p
                 id="state-error"
-                class="text-indigo-700 font-bold tracking-wide text-sm"
+                class="text-white font-bold tracking-wide text-sm"
               ></p>
             </div>
             <input
@@ -188,12 +188,12 @@
           </div>
           <div class="w-full flex items-start flex-col gap-y-4 my-4">
             <div class="w-full flex flex-row justify-between">
-              <label for="zip" class="w-[20%] text-blue-900 font-thin text-base"
+              <label for="zip" class="w-[20%] text-gray-300 font-thin text-base"
                 >ZIP / Postal Code</label
               >
               <p
                 id="zip-error"
-                class="text-indigo-700 font-bold tracking-wide text-sm"
+                class="text-white font-bold tracking-wide text-sm"
               ></p>
             </div>
             <input
@@ -207,7 +207,7 @@
           <div class="w-full flex items-start flex-col gap-y-4 my-4">
             <label
               for="payment-method"
-              class="w-[20%] text-blue-900 font-thin text-base"
+              class="w-[20%] text-gray-300 font-thin text-base"
             >
               Payment Method
             </label>
@@ -225,13 +225,13 @@
           <div class="w-full px-5 text-center py-4">
             <p
               id="payment-method-error"
-              class="text-red-800 text-base tracking-wide"
+              class="text-white text-lg tracking-wide"
             ></p>
           </div>
           <button
             type="submit"
             id="checkout-button"
-            class="w-full mt-4 py-2 px-4 bg-blue-500 hover:bg-blue-800 text-white text-lg font-bold tracking-wide rounded-full"
+            class="w-full mt-4 py-2 px-4 bg-blue-100 text-blue-950 hover:bg-blue-900 hover:text-white border-2 border-blue-200 transition-colors duration-300 ease-in-out text-lg font-bold tracking-wide rounded-full"
           >
             Place Order
           </button>
@@ -239,30 +239,30 @@
       </div>
       <!-- oreder infos -->
       <div
-        class="hidden w-full h-[70%] mt-[20%] p-4 md:col-span-2 md:flex md:flex-col md:gap-y-8 items-start border border-gray-400 rounded-3xl"
+        class="bg-gradient-to-br from-blue-950/95 to-blue-900/80 hidden w-full h-[70%] mt-[20%] p-4 md:col-span-2 md:flex md:flex-col md:gap-y-8 items-start border-2 border-gray-50 rounded-3xl"
       >
         <div class="w-full flex justify-start">
           <p
-            class="text-blue-950 tracking-wide font-bold text-lg md:text-xl pl-2"
+            class="text-white tracking-wide font-bold text-lg md:text-xl pl-2"
           >
             Your Order
           </p>
         </div>
-        <div class="w-full h-[0.5px] bg-gray-400" />
+        <div class="w-full h-[1px] bg-white" />
 
         <!-- Order table -->
         <div
           class="w-full overflow-x-hidden overflow-y-auto max-h-[650px] rounded-t-lg mt-8"
         >
           <!-- Table header -->
-          <div class="grid grid-cols-8 bg-neutral-300">
+          <div class="grid grid-cols-8 bg-blue-100">
             <div
-              class="p-4 col-span-5 font-semibold text-blue-950 text-lg border border-gray-200"
+              class="p-4 col-span-5 font-semibold text-blue-950 text-lg "
             >
               Product
             </div>
             <div
-              class="p-4 col-span-3 text-left font-semibold text-blue-950 text-lg border border-gray-200"
+              class="p-4 col-span-3 text-left font-semibold text-blue-950 text-lg border-l-2 border-blue-950"
             >
               Subtotal
             </div>
@@ -270,30 +270,30 @@
 
           <div id="order-items"></div>
           <!-- Subtotal row -->
-          <div class="grid grid-cols-8 border-2 border-gray-200 bg-gray-50">
+          <div class="grid grid-cols-8 bg-blue-100">
             <div
-              class="p-4 col-span-5 font-semibold text-blue-900 border border-gray-200"
+              class="p-4 col-span-5 text-xl tracking-wide font-semibold text-blue-950 border  border-blue-950"
             >
               Subtotal
             </div>
             <p
               id="subtotal"
-              class="p-4 col-span-3 font-semibold text-blue-900 text-left tracking-wide text-lg border border-gray-200"
+              class="p-4 col-span-3 font-semibold text-black text-left tracking-wide text-lg border border-blue-950"
             >
               0 DZD
             </p>
           </div>
 
           <!-- Total row -->
-          <div class="grid grid-cols-8 border-2 border-gray-200 bg-gray-50">
+          <div class="grid grid-cols-8  bg-blue-100">
             <div
-              class="p-4 col-span-5 font-bold text-blue-950 border border-gray-200"
+              class="p-4 col-span-5 text-xl tracking-wide font-bold text-blue-950 border border-blue-950"
             >
               Total
             </div>
             <p
               id="total"
-              class="p-4 col-span-3 font-bold text-blue-950 text-left tracking-wide text-lg border border-gray-200"
+              class="p-4 col-span-3 font-bold text-black text-left tracking-wide text-lg border border-blue-950"
             >
               0 DZD
             </p>

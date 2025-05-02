@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // update category
     const categoryElement = document.getElementById("category");
-    categoryElement.textContent = generateCategEmoji(product[0].categ);
+    categoryElement.innerHTML = generateCategEmoji(product[0].categ);
 
     //update title
     const titleElement = document.getElementById("product-title");
@@ -68,6 +68,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     //update discount
     const discountElement = document.getElementById("product-discount");
     discountElement.textContent = `${product[0].discount}%`;
+    let badgeColor = "bg-amber-500";
+    if (product[0].discount >= 30 && product[0].discount < 50)
+      badgeColor = "bg-blue-950";
+    if (product[0].discount >= 50) badgeColor = "bg-gray-600";
+    document.getElementById("product-promo").classList.add(badgeColor);
 
     //update price
     const priceElement = document.getElementById("product-price");
@@ -101,11 +106,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const extraInfo = JSON.parse(product[0].extra_info);
     Object.entries(extraInfo).forEach(([key, value]) => {
       const infoElementKey = document.createElement("p");
-      infoElementKey.classList.add("text-blue-950", "text-base", "font-bold");
-      infoElementKey.textContent = key;
+      infoElementKey.classList.add("text-cyan-50", "text-base", "font-bold");
+      infoElementKey.textContent = key.replace("_", " ");
 
       const infoElementValue = document.createElement("p");
-      infoElementValue.classList.add("text-gray-700", "text-base", "truncate");
+      infoElementValue.classList.add("text-gray-300", "text-base", "truncate");
       infoElementValue.textContent = value;
 
       extraInfoElement.appendChild(infoElementKey);
@@ -117,6 +122,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       .then((response) => response.text())
       .then((data) => {
         footerElement.innerHTML = data;
+        const backToTopButton = document.getElementById("back-to-top");
+
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
       })
       .catch((error) => console.error("Error loading footer:", error));
   };
@@ -124,15 +137,77 @@ document.addEventListener("DOMContentLoaded", async () => {
   const generateCategEmoji = (category) => {
     switch (category) {
       case "Smartphones":
-        return "📱";
+        return `<svg
+              class="size-14 mr-2 text-gray-200"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12" y2="18"></line>
+            </svg>`;
       case "Gaming Consoles":
-        return "🎮";
+        return `
+        <svg
+              class="size-14 mr-2 text-gray-200"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="6" y1="11" x2="10" y2="11"></line>
+              <line x1="8" y1="9" x2="8" y2="13"></line>
+              <line x1="15" y1="12" x2="15.01" y2="12"></line>
+              <line x1="18" y1="10" x2="18.01" y2="10"></line>
+              <path
+                d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.544-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.152A4 4 0 0 0 17.32 5z"
+              ></path>
+            </svg>
+          `;
       case "Smartwatches":
-        return "⌚";
-      case "Headsets":
-        return "🎧";
+        return `
+        <svg
+              class="size-14 mr-2 text-gray-200"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="7"></circle>
+              <polyline points="12 9 12 12 13.5 13.5"></polyline>
+              <path
+                d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"
+              ></path>
+            </svg>
+            `;
       default:
-        return "🛍️";
+        return `
+        <svg
+              class="size-14 mr-2 text-gray-200"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path
+                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"
+              ></path>
+            </svg>
+        `;
     }
   };
 

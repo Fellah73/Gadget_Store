@@ -39,6 +39,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     .then((response) => response.text())
     .then((data) => {
       document.getElementById("footer-container").innerHTML = data;
+      const backToTopButton = document.getElementById("back-to-top");
+
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
     })
     .catch((error) => console.error("Error loading footer:", error));
 
@@ -63,9 +71,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (data.success) {
         console.log(data.cart_items);
         cartItems = data.cart_items;
-        titleContainer.textContent = `${data.user} Here is your cart 🛒`;
+        titleContainer.textContent = `${data.user} Here is your cart `;
       } else {
-        titleContainer.textContent = `${data.user} your cart is empty 🛒`;
+        titleContainer.textContent = `${data.user} your cart is empty`;
         tableContainer.style.display = "none";
       }
     } catch (error) {
@@ -310,18 +318,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 function createCartItem(cardItem) {
   const container = document.createElement("div");
   container.className =
-    "flex flex-col md:grid md:grid-cols-12 items-center border-b border-gray-200";
+    "flex flex-col md:grid md:grid-cols-12 items-center border-b border-blue-900";
   container.id = `item-container`;
   container.innerHTML = `
-    <div  class="col-span-1 p-4 flex items-center justify-center">
+    <div  class="bg-blue-900/50 col-span-1 p-4 flex items-center justify-center">
       <button  
         id="remove-from-cart"
-       class=" text-red-800 rounded-full hover:scale-150 font-bold text-4xl"
+       class=" text-red-900 rounded-full hover:scale-125 font-bold text-5xl"
        data-id="${cardItem.product_id}">
        &times;
       </button>
     </div>
-    <div class="hidden md:block col-span-2 p-4">
+    <div class="hidden md:block col-span-2 bg-blue-900/50 p-4">
       <a href="product.html?id=${cardItem.product_id}">
        <img
         src="${cardItem.image}"
@@ -330,43 +338,69 @@ function createCartItem(cardItem) {
        />
       </a>
     </div>
-    <div class="col-span-4 p-4 flex flex-col justify-center items-end md:items-start">
-      <h3 class="font-bold text-gray-800">${cardItem.name}</h3>
-      <p class="text-gray-700 text-lg">${cardItem.categ} ${categEmoji(
+    <div class="bg-blue-900/50 col-span-4 p-4 flex flex-col justify-center items-end md:items-start">
+      <h3 class="font-bold text-black text-2xl tracking-wide">${
+        cardItem.name
+      }</h3>
+      <p class="text-gray-900  text-xl">${cardItem.categ} ${categEmoji(
     cardItem.categ
   )}</p>
     </div>
-    <div class="p-4 text-right md:col-span-2 md:flex md:items-center md:justify-center text-gray-800 font-semibold">
+    <div class="bg-blue-900/50 p-4 text-xl tracking-wider font-bold text-right md:col-span-2 md:flex md:items-center md:justify-center text-black">
       ${cardItem.product_price} DZD
     </div>
-    <div class="col-span-2 p-4 flex justify-between items-center md:flex-col md:gap-y-4 md:justify-center md:items-center">
+    <div class="bg-blue-900/50 col-span-2 p-4 flex justify-between items-center md:flex-col md:gap-y-4 md:justify-center md:items-center">
     <span class="flex items-center">
       <button
-       class="size-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 text-3xl text-center font-bold"
+       class="flex items-center justify-center size-12 hover:bg-blue-300 hover:text-blue-900 bg-blue-800 text-white rounded-full transition-colors duration-200"
        id="decrement-quantity">
-       -
+       <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
       </button>
       <input
        id="quantity-value"
        type="text"
        value="${cardItem.quantity}"
-       class="mx-2 w-20 p-2 text-center border border-gray-300 rounded-2xl"
+       class="mx-2 w-20 p-3 bg-blue-200 text-center text-black font-bold  border border-blue-800 rounded-2xl"
        data-id="${cardItem.id}"
       />
       <button
-       class="size-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 text-3xl text-center font-bold"
-       id="increment-quantity">
-       +
+       class="flex items-center justify-center size-12 hover:bg-blue-300 hover:text-blue-900 bg-blue-800 text-white rounded-full transition-colors duration-200"
+      id="increment-quantity">
+       <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                 
       </button>
     </span>  
       <button
        id="update-quantity"
-       class="px-3 py-2 rounded-lg bg-blue-700  text-white hover:bg-white hover:text-blue-700 hover:border-blue-700 hover:border-2 text-base text-center font-bold tracking-wider"
+       class="px-3 py-2 rounded-lg bg-blue-900  text-white hover:bg-blue-200 hover:text-blue-800 transition-colors duration-200 text-base text-center font-bold tracking-wider"
        >
        Update quantity
       </button>
     </div>
-    <div class="p-4 text-right md:flex md:col-span-1 md:items-center md:justify-center text-gray-800 font-semibold">
+    <div class="bg-blue-900/50 p-4 text-right md:flex md:col-span-1 md:items-center md:justify-center text-gray-800 font-bold text-xl tracking-wide">
       ${cardItem.subtotal} DZD
     </div>
    `;

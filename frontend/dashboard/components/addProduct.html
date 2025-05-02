@@ -5,27 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard - Add New Product</title>
   </head>
+  <style>
+    label,
+    span {
+      font-size: 0.9rem;
+      color: white;
+    }
+    input,
+    select,
+    textarea {
+      font-size: 0.9rem;
+      color: rgbb(30 58 138);
+      background-color: rgb(219 234 254);
+    }
+    input::placeholder,
+    select::placeholder,
+    textarea::placeholder {
+      color: #a0aec0;
+    }
+  </style>
   <body>
-    <div class="relative container mx-auto px-4 py-8">
+    <div class="relative container mx-auto px-4 py-4">
       <div
         id="add-product-success-popup"
-        class="absolute hidden flex-row text-center px-2 md:p-4 text-lg md:text-3xl tracking-wide border border-blue-500 text-blue-900 bg-blue-100 top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 w-[220px] md:w-[300px] h-[90px] md:h-[150px] animate-bounce"
+        class="absolute hidden flex-row text-center px-2 md:p-4 text-lg md:text-3xl tracking-wide border bg-blue-100 border-blue-500 text-blue-900 top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 w-[220px] md:w-[300px] h-[90px] md:h-[150px] animate-bounce"
       >
         You added a new product successfully ✅️
       </div>
 
       <!-- Page Title -->
       <div class="mb-6">
-        <h1 class="text-2xl md:text-3xl font-bold text-gray-800">
-          Add New Product
-        </h1>
-        <p class="text-gray-500">Create a new product for your inventory</p>
+        <div class="flex flex-col gap-y-2">
+          <h1 class="text-2xl md:text-3xl font-bold text-white">
+            Add New Product
+          </h1>
+
+          <p class="text-gray-200">Create a new product for your inventory</p>
+        </div>
       </div>
 
       <!-- Product Form Card -->
-      <div class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="rounded-lg shadow overflow-hidden">
         <div class="px-5 py-4 border-b border-gray-100">
-          <h2 class="font-bold text-gray-800">Product Information</h2>
+          <h2 class="font-bold text-gray-200 text-xl">Product Information</h2>
         </div>
 
         <form class="p-6" id="add-product-form">
@@ -35,14 +57,12 @@
               <!-- Product Name -->
               <div class="flex flex-col gap-y-2">
                 <div class="w-full px-4 flex flex-row justify-between">
-                  <label
-                    for="productName"
-                    class="text-sm font-medium text-gray-700"
+                  <label for="productName" class="text-sm font-medium"
                     >Product Name</label
                   >
                   <span
                     id="name-error"
-                    class="text-sm font-bold text-red-700 tracking-wide"
+                    class="text-sm font-bold tracking-wide"
                   ></span>
                 </div>
                 <input
@@ -58,7 +78,7 @@
               <!-- Price & Discount Row -->
               <div class="grid grid-cols-2 gap-4">
                 <div class="flex flex-col gap-y-2">
-                  <label for="price" class="text-sm font-medium text-gray-700"
+                  <label for="price" class="text-sm font-medium"
                     >Price (DZD)</label
                   >
                   <input
@@ -73,9 +93,7 @@
                   />
                 </div>
                 <div class="flex flex-col gap-y-2">
-                  <label
-                    for="discount"
-                    class="text-sm font-medium text-gray-700"
+                  <label for="discount" class="text-sm font-medium"
                     >Discount (%)</label
                   >
                   <input
@@ -94,7 +112,7 @@
               <!-- Stock & Category Row -->
               <div class="grid grid-cols-2 gap-4">
                 <div class="flex flex-col gap-y-2">
-                  <label for="stock" class="text-sm font-medium text-gray-700"
+                  <label for="stock" class="text-sm font-medium"
                     >Stock Quantity</label
                   >
                   <input
@@ -108,9 +126,7 @@
                   />
                 </div>
                 <div class="flex flex-col gap-y-2">
-                  <label
-                    for="category"
-                    class="text-sm font-medium text-gray-700"
+                  <label for="category" class="text-sm font-medium"
                     >Category</label
                   >
                   <select
@@ -130,12 +146,12 @@
               <!-- Brand -->
               <div class="flex flex-col gap-y-2">
                 <div class="w-full px-4 flex flex-row justify-between">
-                  <label for="brand" class="text-sm font-medium text-gray-700"
+                  <label for="brand" class="text-sm font-medium"
                     >Product Name</label
                   >
                   <span
                     id="brand-error"
-                    class="text-sm font-bold text-red-700 tracking-wide"
+                    class="text-sm font-bold tracking-wide"
                   ></span>
                 </div>
                 <input
@@ -151,14 +167,12 @@
               <!-- Description -->
               <div class="flex flex-col gap-y-2">
                 <div class="w-full px-4 flex flex-row justify-between">
-                  <label
-                    for="description"
-                    class="text-sm font-medium text-gray-700"
+                  <label for="description" class="text-sm font-medium"
                     >Product Name</label
                   >
                   <span
                     id="description-error"
-                    class="text-sm font-bold text-red-700 tracking-wide"
+                    class="text-sm font-bold tracking-wide"
                   ></span>
                 </div>
                 <textarea
@@ -176,7 +190,7 @@
             <div class="space-y-6">
               <!-- Image URL -->
               <div class="flex flex-col gap-y-2">
-                <label for="imageUrl" class="text-sm font-medium text-gray-700"
+                <label for="imageUrl" class="text-sm font-medium"
                   >Image URL</label
                 >
                 <input
@@ -200,7 +214,7 @@
                     alt="Product image preview"
                     class="max-h-full hidden"
                   />
-                  <span id="placeholder" class="text-gray-400"
+                  <span id="placeholder" class="text-blue-950"
                     >Image preview will appear here</span
                   >
                 </div>
@@ -213,7 +227,7 @@
                 <div class="w-[50%] py-4 h-full overflow-y-auto">
                   <span
                     id="add-product-form-error"
-                    class="text-red-700 text-center tracking-wide text-base"
+                    class="text-center tracking-wide text-base"
                   >
                   </span>
                 </div>
@@ -223,13 +237,13 @@
                   <button
                     type="button"
                     id="reset-form"
-                    class="px-6 py-1 border border-transparent bg-amber-600 hover:bg-amber-500 hover:transition hover:duration-300 rounded-md shadow-sm text-lg tracking-wide font-medium text-white 0 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="px-6 py-1 border-transparent bg-amber-500 text-black hover:text-white hover:bg-amber-700 border-white border hover:transition hover:duration-300 rounded-md shadow-sm text-lg tracking-wide font-medium focus:outline-none"
                   >
                     Reset
                   </button>
                   <button
                     type="submit"
-                    class="px-6 py-2 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-gradient-to-l from-blue-900 to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    class="px-6 py-2 border border-transparent rounded-md shadow-sm text-lg font-medium bg-blue-200 text-blue-950 hover:text-white hover:bg-blue-800 border-white transition-colors duration-300 ease-in-out focus:outline-none"
                   >
                     Add Product
                   </button>

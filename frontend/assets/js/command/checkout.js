@@ -82,15 +82,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     orderItemsConatiner.innerHTML = "";
     cartItems.forEach((item) => {
       const card = document.createElement("div");
-      card.className = "grid grid-cols-8 border-t border-gray-200";
-      card.innerHTML = ` <div class="p-4 col-span-4 truncate text-blue-950 font-bold border-gray-200 border-y border-l">
+      card.className = "grid grid-cols-8 border-t border-gray-200 bg-blue-50 border-2 border-blue-950";
+      card.innerHTML = ` <div class="p-4 col-span-4 truncate text-blue-950 bg-blue-50 border-y-2 border-blue-950 font-bold">
               ${item.name}
             </div>
-             <div class="text-sm py-5 col-span-1 text-blue-950 font-extrabold tracking-wider border-gray-200 border-y border-r">
+             <div class="text-sm py-5 col-span-1 text-blue-950 font-extrabold tracking-wider border-y-2 border-blue-950 border-r">
               X <span class="text-base">${item.quantity}</span>
             </div>
             <div
-              class="p-4 col-span-3 text-blue-950 text-left tracking-wide text-base border-gray-200 border-y border-r"
+              class="p-4 col-span-3 text-blue-950 text-left font-bold tracking-wide text-lg border-2 border-blue-950 border-y-2 border-r-2"
             > 
               ${item.subtotal} DZD
             </div>`;

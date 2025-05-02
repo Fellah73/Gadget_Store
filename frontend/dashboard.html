@@ -37,12 +37,12 @@
       }
     </style>
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-gradient-to-br from-blue-950/95 to-blue-900/90">
     <div class="flex flex-row gap-x-5">
       <!-- Vertical Sidebar (Desktop) -->
       <aside
         id="sidebar"
-        class="fixed-sidebar bg-white w-64 shadow-md hidden md:flex flex-col z-10"
+        class="fixed-sidebar bg-gradient-to-br from-blue-950/95 to-blue-900/80 w-64 shadow-2xl shadow-blue-800 hidden md:flex flex-col z-10"
       >
         <nav class="h-full py-6">
           <a
@@ -55,7 +55,7 @@
               height="40"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#1e40af"
+              stroke="#ffffff"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -63,7 +63,9 @@
               <rect x="7" y="2" width="10" height="20" rx="2" ry="2" />
               <line x1="12" y1="18" x2="12.01" y2="18" />
             </svg>
-            <h1 class="text-xl font-bold text-blue-800">Tech Dashboard</h1>
+            <h1 class="text-xl font-bold text-gray-100 tracking-wider">
+              Tech Dashboard
+            </h1>
           </a>
 
           <div class="px-5">
@@ -74,46 +76,46 @@
             <li class="px-3">
               <a
                 href="#overview"
-                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-200 text-white hover:text-blue-950"
               >
                 <i class="fas fa-tachometer-alt w-5 text-center"></i>
-                <span>Overview</span>
+                <span class="hover:text-blue-950">Overview</span>
               </a>
             </li>
             <li class="px-3">
               <a
                 href="#stock"
-                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-200 text-white hover:text-blue-950 transition-colors"
               >
                 <i class="fas fa-box w-5 text-center"></i>
-                <span>Stock</span>
+                <span class="hover:text-blue-950">Stock</span>
               </a>
             </li>
             <li class="px-3">
               <a
                 href="#add-product"
-                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-200 text-white hover:text-blue-950 transition-colors"
               >
                 <i class="fas fa-plus-circle w-5 text-center"></i>
-                <span>Add Product</span>
+                <span class="hover:text-blue-950">Add Product</span>
               </a>
             </li>
             <li class="px-3">
               <a
                 href="#orders"
-                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-200 text-white hover:text-blue-950 transition-colors"
               >
                 <i class="fas fa-shopping-cart w-5 text-center"></i>
-                <span>Orders</span>
+                <span class="hover:text-blue-950">Orders</span>
               </a>
             </li>
             <li class="px-3">
               <a
                 href="#users"
-                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-colors"
+                class="flex items-center gap-x-3 px-2 py-3 rounded-lg hover:bg-blue-200 text-white hover:text-blue-950 transition-colors"
               >
                 <i class="fas fa-users w-5 text-center"></i>
-                <span>Users</span>
+                <span class="hover:text-blue-950">Users</span>
               </a>
             </li>
             <li class="px-3">
@@ -145,19 +147,59 @@
           </ul>
         </nav>
 
-        <!-- User Profile at Bottom -->
         <div class="mt-auto px-5 py-4 border-t border-gray-200">
           <div class="flex items-center">
             <div class="ml-3">
-              <p id="user-role" class="text-lg font-medium text-gray-800"></p>
+              <div class="w-full flex justify-between gap-x-2 pr-2">
+                <p
+                  id="user-role"
+                  class="text-xl font-medium text-cyan-50 tracking-wider"
+                ></p>
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-10 h-10 text-white"
+                >
+                  <path
+                    d="M12 22c-1.5-1.2-9-5.4-9-12.8V4.2L12 2l9 2.2v5c0 7.4-7.5 11.6-9 12.8z"
+                    fill="#ffffff"
+                    stroke="#1e40af"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 20c-1.2-1-7-4.5-7-10.5V5.7L12 4l7 1.7v3.8c0 6-5.8 9.5-7 10.5z"
+                    fill="#3b82f6"
+                    stroke="none"
+                  />
+
+                  <path
+                    d="M8 6l8 2v2.5c0 4.5-3.5 7-4 7.5"
+                    fill="none"
+                    stroke="#60a5fa"
+                    stroke-width="0.8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M12 7.5L13 10h2.5l-2 1.5 0.5 2.5-2-1.5-2 1.5 0.5-2.5-2-1.5H11z"
+                    fill="#ffffff"
+                    stroke="#1e40af"
+                    stroke-width="0.5"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+
               <span
                 id="admin-name"
-                class="text-base text-gray-700 hover:text-blue-600"
+                class="text-base text-white tracking-widest"
               ></span>
             </div>
             <a
               href="shop.html"
-              class="ml-auto text-gray-400 hover:text-gray-600"
+              class="ml-auto text-white hover:scale-150 transition-transform duration-300"
             >
               <i class="fas fa-sign-out-alt"></i>
             </a>
@@ -168,29 +210,29 @@
       <!-- Mobile Navigation Bar -->
       <nav
         id="mobile-nav"
-        class="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-gray-200 z-10"
+        class="md:hidden fixed bottom-0 inset-x-0 bg-gradient-to-br from-blue-950/95 to-blue-900/80 border-t border-gray-200 z-10"
       >
         <div class="flex justify-around">
           <a
             href="#overview"
-            class="flex flex-col items-center justify-center py-3 w-full text-gray-600 hover:text-blue-600"
+            class="flex flex-col items-center justify-center py-3 w-full text-white"
           >
             <i class="fas fa-tachometer-alt text-lg"></i>
             <span class="text-xs mt-1">Overview</span>
           </a>
           <a
             href="#stock"
-            class="flex flex-col items-center justify-center py-3 w-full text-gray-600 hover:text-blue-600"
+            class="flex flex-col items-center justify-center py-3 w-full text-white"
           >
             <i class="fas fa-box text-lg"></i>
             <span class="text-xs mt-1">Stock</span>
           </a>
           <a
             href="#add-product"
-            class="flex flex-col items-center justify-center py-3 w-full text-blue-600 relative"
+            class="flex flex-col items-center justify-center py-3 w-full text-white relative"
           >
             <div
-              class="bg-blue-600 rounded-full h-12 w-12 flex items-center justify-center text-white absolute -top-6"
+              class="bg-white rounded-full h-12 w-12 flex items-center justify-center text-blue-950 border-2 border-blue-950 absolute -top-6"
             >
               <i class="fas fa-plus text-lg"></i>
             </div>
@@ -198,14 +240,14 @@
           </a>
           <a
             href="#orders"
-            class="flex flex-col items-center justify-center py-3 w-full text-gray-600 hover:text-blue-600"
+            class="flex flex-col items-center justify-center py-3 w-full text-white"
           >
             <i class="fas fa-shopping-cart text-lg"></i>
             <span class="text-xs mt-1">Orders</span>
           </a>
           <a
             href="#"
-            class="flex flex-col items-center justify-center py-3 w-full text-gray-600 hover:text-blue-600"
+            class="flex flex-col items-center justify-center py-3 w-full text-white"
           >
             <i class="fas fa-bars text-lg"></i>
             <span class="text-xs mt-1">More</span>
@@ -245,25 +287,23 @@
         class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden"
       >
         <div
-          class="bg-white h-full w-64 shadow-lg transform transition-transform"
+          id="mobile-menu-content"
+          class="bg-gradient-to-br from-blue-950/95 to-blue-900/80 h-full w-64 shadow-lg transform transition-transform"
         >
           <div
-            class="p-4 border-b border-gray-200 flex items-center justify-between"
+            class="p-4 bg-blue-950 border-b border-gray-200 flex items-center justify-between"
           >
-            <h2 class="text-lg font-medium text-gray-800">Dashboard Menu</h2>
-            <button
-              id="close-mobile-menu"
-              class="text-gray-500 hover:text-gray-700"
-            >
+            <h2 class="text-lg font-medium text-white">Tech Dashboard</h2>
+            <button id="close-mobile-menu" class="text-white">
               <i class="fas fa-times"></i>
             </button>
           </div>
-          <nav class="p-4">
+          <nav class="p-4 text-white">
             <ul class="space-y-2">
               <li>
                 <a
                   href="#overview"
-                  class="block px-3 py-2 rounded-md hover:bg-gray-100"
+                  class="block px-3 py-2 rounded-md hover:bg-blue-200 hover:text-blue-950"
                 >
                   <i class="fas fa-tachometer-alt w-5 inline-block"></i>
                   <span>Overview</span>
@@ -272,7 +312,7 @@
               <li>
                 <a
                   href="#stock"
-                  class="block px-3 py-2 rounded-md hover:bg-gray-100"
+                  class="block px-3 py-2 rounded-md hover:bg-blue-200 hover:text-blue-950"
                 >
                   <i class="fas fa-box w-5 inline-block"></i>
                   <span>Stock</span>
@@ -281,7 +321,7 @@
               <li>
                 <a
                   href="#add-product"
-                  class="block px-3 py-2 rounded-md hover:bg-gray-100"
+                  class="block px-3 py-2 rounded-md hover:bg-blue-200 hover:text-blue-950"
                 >
                   <i class="fas fa-plus-circle w-5 inline-block"></i>
                   <span>Add Product</span>
@@ -290,7 +330,7 @@
               <li>
                 <a
                   href="#orders"
-                  class="block px-3 py-2 rounded-md hover:bg-gray-100"
+                  class="block px-3 py-2 rounded-md hover:bg-blue-200 hover:text-blue-950"
                 >
                   <i class="fas fa-shopping-cart w-5 inline-block"></i>
                   <span>Orders</span>
@@ -299,7 +339,7 @@
               <li>
                 <a
                   href="#users"
-                  class="block px-3 py-2 rounded-md hover:bg-gray-200"
+                  class="block px-3 py-2 rounded-md hover:bg-blue-200 hover:text-blue-950"
                 >
                   <i class="fas fa-users w-5 inline-block"></i>
                   <span>Users</span>
@@ -365,19 +405,19 @@
       e.preventDefault();
       mobileMenuOverlay.classList.remove("hidden");
       mobileMenuOverlay
-        .querySelector(".bg-white")
+        .querySelector("#mobile-menu-content")
         .classList.add("translate-x-0");
       mobileMenuOverlay
-        .querySelector(".bg-white")
+        .querySelector("#mobile-menu-content")
         .classList.remove("-translate-x-full");
     });
 
     closeButton.addEventListener("click", function () {
       mobileMenuOverlay
-        .querySelector(".bg-white")
+        .querySelector("#mobile-menu-content")
         .classList.remove("translate-x-0");
       mobileMenuOverlay
-        .querySelector(".bg-white")
+        .querySelector("#mobile-menu-content")
         .classList.add("-translate-x-full");
       setTimeout(() => {
         mobileMenuOverlay.classList.add("hidden");

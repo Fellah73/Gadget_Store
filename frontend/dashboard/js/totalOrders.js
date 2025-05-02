@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-start">
               <span class="text-gray-500 px-4 py-2 text-base font-semibold">
-            ${formatOrderDate(order.created_at.split(" ")[0])} 
+            ${formatOrderDate(order.created_at)} 
               </span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-start">
