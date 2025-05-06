@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     .then((data) => {
       document.getElementById("navbar-container").innerHTML = data;
 
-      // Re-attach navbar events after loading
+      
       const mobileMenuButton = document.querySelector(
         '[aria-controls="mobile-menu"]'
       );
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       }
 
-      // Update active navbar item
+      
       const cartNavItem = document.getElementById("cart");
       if (cartNavItem) {
         cartNavItem.style.color = "rgb(59, 130, 246)";
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const paymentMethodSelect = document.getElementById("payment-method");
   const checkoutButton = document.getElementById("checkout-button");
 
-  // Example usage: Add event listeners to validate inputs on blur
+  
   nameInput.addEventListener("input", () => {
     if (!validateName(nameInput.value)) {
       document.getElementById("name-error").textContent =
@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (data.success) {
         console.log(data.message);
 
-        // add a small pop up message
+        
         const popUpMessage = document.getElementById("order-success");
         popUpMessage.style.display = "flex";
 

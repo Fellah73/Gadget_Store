@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     .then((data) => {
       document.getElementById("navbar-container").innerHTML = data;
 
-      // Re-attacher les événements après le chargement du navbar
+      
       const mobileMenuButton = document.querySelector(
         '[aria-controls="mobile-menu"]'
       );
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       }
 
-      // Mettre à jour l'état du menu actif
+      
       const currentNavbar = document.getElementById("home");
       if (currentNavbar) {
         currentNavbar.style.color = "rgb(59, 130, 246)";
@@ -53,19 +53,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const updateProductDetails = () => {
-    // update image
+    
     const productImage = document.getElementById("product-image");
     productImage.src = product[0].image;
 
-    // update category
+    
     const categoryElement = document.getElementById("category");
     categoryElement.innerHTML = generateCategEmoji(product[0].categ);
 
-    //update title
+    
     const titleElement = document.getElementById("product-title");
     titleElement.textContent = product[0].name;
 
-    //update discount
+    
     const discountElement = document.getElementById("product-discount");
     discountElement.textContent = `${product[0].discount}%`;
     let badgeColor = "bg-amber-500";
@@ -74,15 +74,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (product[0].discount >= 50) badgeColor = "bg-gray-600";
     document.getElementById("product-promo").classList.add(badgeColor);
 
-    //update price
+    
     const priceElement = document.getElementById("product-price");
     priceElement.textContent = product[0].price;
 
-    //update old price
+    
     const newPriceElement = document.getElementById("product-price-discounted");
     newPriceElement.textContent = `${product[0].price_discounted} DZD`;
 
-    //update description
+    
     const descriptionElement = document.getElementById("product-description");
 
     descriptionElement.textContent = product[0].description
@@ -92,11 +92,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     Ideal for those looking for superior quality, the ${product[0].name} of ${product[0].brand} is
     An essential choice for enthusiasts`;
 
-    //update brand
+    
     const productBrand = document.getElementById("product-brand");
     productBrand.textContent = product[0].brand;
 
-    //update extra info
+    
 
     if (!product[0].extra_info) {
       return;
@@ -211,8 +211,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
-  // quantity hadling
-  let quantity = 1; // default quantitys
+  
+  let quantity = 1; 
   const quantityInput = document.getElementById("product-qte");
   quantityInput.textContent = quantity;
   const increaseQuantity = () => {
@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const inreaseBtn = document.getElementById("incremente-qte");
   const decreaseBtn = document.getElementById("decremente-qte");
   const addToCartButton = document.getElementById("add-to-cart");
-  // get the product
+  
   await fetchProducts();
 
   if (!product) {
@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     existingProductDiv.style.display = "none";
   }
 
-  // update the product details
+  
   updateProductDetails();
 
   inreaseBtn.addEventListener("click", increaseQuantity);

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       document.getElementById("navbar-container").innerHTML = data;
 
-      // Re-attacher les événements après le chargement du navbar
+      
       const mobileMenuButton = document.querySelector(
         '[aria-controls="mobile-menu"]'
       );
@@ -22,14 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // Mettre à jour l'état du menu actif
+      
       const currentNavbarLink = document.getElementById("shop");
       if (currentNavbarLink) {
         currentNavbarLink.style.color = "rgb(59, 130, 246)";
         currentNavbarLink.style.borderBottomColor = "rgb(147 197 253)";
       }
 
-      // Update the mobile nav link
+      
       const mobileNavbarLink = document.getElementById("mobile-shop-link");
       if (mobileNavbarLink) {
         mobileNavbarLink.style.color = "rgb(59, 130, 246)";
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // register through the API
+   
     await registerFunction(emailInput.value, passwordInput.value);
   });
 });

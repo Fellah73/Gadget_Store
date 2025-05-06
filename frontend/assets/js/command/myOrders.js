@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     .then((data) => {
       document.getElementById("navbar-container").innerHTML = data;
 
-      // Re-attach navbar events after loading
       const mobileMenuButton = document.querySelector(
         '[aria-controls="mobile-menu"]'
       );
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       }
 
-      // Update active navbar items
       const cartNavItem = document.getElementById("cart");
       if (cartNavItem) {
         cartNavItem.style.color = "rgb(59, 130, 246)";
@@ -32,7 +30,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     .catch((error) => console.error("Error loading navbar:", error));
 
-  
   fetch("components/footer.html")
     .then((response) => response.text())
     .then((data) => {
@@ -48,7 +45,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     .catch((error) => console.error("Error loading footer:", error));
 
-  // handle orders
   const orderCount = document.getElementById("orders-count");
   const user = document.getElementById("username");
   const orders_container = document.getElementById("orders-container");
@@ -73,7 +69,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!data.orders) {
           orders = null;
         }
-        orders = data.orders ? data.orders.sort((orderA, orderB) => new Date(orderB.created_at) - new Date(orderA.created_at)) : null;
+        orders = data.orders
+          ? data.orders
+              .filter((order) => order.status == "processing")
+              .concat(
+                data.orders
+                  .filter((order) => order.status != "processing")
+                  .sort(
+                    (orderA, orderB) =>
+                      new Date(orderB.shipped_at) - new Date(orderA.shipped_at)
+                  )
+              )
+          : null;
         orderCount.textContent = orders ? orders.length : 0;
         user.textContent = data.user;
         let total = !data.orders
@@ -147,12 +154,10 @@ const createOrderCard = (key, order) => {
     }
   };
 
-  // Créer le conteneur principal de la carte
   const card = document.createElement("div");
   card.className =
     "bg-blue-900/50 rounded-2xl border border-blue-300 shadow-lg shadow-blue-900/50 overflow-hidden hover:-translate-y-2 transition-all duration-300";
 
-  // Ajouter le contenu HTML de la carte
   card.innerHTML = `
     <div class="bg-blue-950 px-4 py-3 border-b border-blue-400">
       <div class="flex justify-between items-center px-2">

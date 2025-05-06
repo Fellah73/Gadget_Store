@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
           ordersCount.textContent = totalOrders.filter(
-            (order) => order.status == "processing"
+            (order) => order.status == "processing" || order.status == "shipped"
           ).length;
         } else {
           console.log(data.message);
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
     const displayOrders = async () => {
-      if (filtredOrders.length === 0) {
+      if (totalOrders.length === 0) {
         await fetchToatalOrders();
       }
       if (!totalOrders) return;
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         approveButton.addEventListener("click", async () => {
           await approveOrder(order.id);
-          totalOrders = null;
+          totalOrders = [];
           await displayOrders();
         });
       });

@@ -74,14 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
       displayResults(results);
     };
 
-    //rechreche dynamique
+    
     if (searchInput.value.length >= 4) {
       startSearching();
     } else {
       searchResultsContainer.style.display = "none";
     }
 
-    // recherche par le button
+    
     const searchButton = document.getElementById("search-btn");
 
     searchButton.addEventListener("click", async () => {
@@ -120,7 +120,7 @@ const createProductCard = (result) => {
   const card = document.createElement("a");
   card.className = `w-full h-80 flex flex-row items-center justify-between p-1 rounded-lg bg-gradient-to-br ${backgroundColor} hover:shadow-lg transition-shadow duration-300`;
 
-  // Ajout de l'attribut href pour rendre le lien fonctionnel
+  
   card.href = `/frontend/product.html?id=${result.id}`;
 
   card.innerHTML = `
@@ -151,7 +151,7 @@ const createProductCard = (result) => {
 };
 
 
-// update cart items count
+
 document.addEventListener("DOMContentLoaded", async () => {
   const userId = localStorage.getItem("user");
 
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-// update orders count
+
 document.addEventListener("DOMContentLoaded", async () => {
   const userId = localStorage.getItem("user");
 

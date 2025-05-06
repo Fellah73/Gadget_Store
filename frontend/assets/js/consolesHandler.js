@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   //scroll handling
   let scrollAmount = 0;
-  const cardWidth = 300; // Largeur d'une carte + marge
+  const cardWidth = 300; 
 
   nextBtnconsoles.addEventListener("click", () => {
     scrollAmount += cardWidth;

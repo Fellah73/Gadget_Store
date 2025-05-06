@@ -22,14 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // Mettre à jour l'état du menu actif
+      
       const currentNavbarLink = document.getElementById("shop");
       if (currentNavbarLink) {
         currentNavbarLink.style.color = "rgb(59, 130, 246)";
         currentNavbarLink.style.borderBottomColor = "rgb(147 197 253)";
       }
 
-      // Update the mobile nav link
+      
       const mobileNavbarLink = document.getElementById("mobile-shop-link");
       if (mobileNavbarLink) {
         mobileNavbarLink.style.color = "rgb(59, 130, 246)";
@@ -77,15 +77,15 @@ document.addEventListener("DOMContentLoaded", () => {
       if (data.success) {
         console.log("Registration successful: ", data?.user);
 
-        // update the local storage with the user data
+        
         localStorage.setItem("user", `${data?.user.id}`);
 
-        //set the session time
-        const expirationInMinutes = 30; // durée de session
+        
+        const expirationInMinutes = 30; 
         const expirationTime =
           new Date().getTime() + expirationInMinutes * 60 * 1000;
 
-        // update the local storage with the user data
+        
         localStorage.setItem("session_expiration", expirationTime.toString());
 
         window.location.href = "shop.html";

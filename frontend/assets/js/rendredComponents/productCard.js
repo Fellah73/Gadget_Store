@@ -26,13 +26,13 @@ export function createProductCard(data) {
     }
   };
 
-  // Créer un élément div pour la carte produit
+  
   const card = document.createElement("div");
   card.className =
     "realative flex-shrink-0 w-64 md:w-[310px]  h-[470px] bg-gradient-to-r from-blue-950/80  to-blue-900/50 rounded-2xl transition-transform duration-300 hover:-translate-y-4";
   card.style.animationDelay = "0.1s";
 
-  // Remplir la carte avec le contenu HTML
+ 
   card.innerHTML = `
     <div class="relative overflow-hidden  rounded-t-2xl h-1/2 w-full group">
       ${data.discount ? `-${generateDiscountBadge(data.discount)}%` : ""}
@@ -98,17 +98,17 @@ function generateStars(rating) {
 
   for (let i = 1; i <= 5; i++) {
     if (i <= Math.floor(rating)) {
-      // Étoile pleine
+      
       stars += `<svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 .587l3.668 7.568 8.332 1.151-6.065 5.81 1.435 8.269L12 18.896l-7.37 4.489 1.435-8.269-6.065-5.81 8.332-1.151z"/>
                       </svg>`;
     } else if (i - rating < 1) {
-      // Étoile à moitié remplie
+     
       stars += `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 .587l3.668 7.568 8.332 1.151-6.065 5.81 1.435 8.269L12 18.896V.587z"/>
                       </svg>`;
     } else {
-      // Étoile vide
+      
       stars += `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5  text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                       </svg>`;
@@ -122,7 +122,7 @@ function genreateNewProductCard(data) {
 }
 
 export function createProductPurchaseCard(product, category) {
-  // Configuration des catégories et couleurs de fond
+  
   const categories = ["phones", "headsets", "consoles", "smartwatches"];
   const colors = [
     "from-blue-900/50 to-blue-600/50",
