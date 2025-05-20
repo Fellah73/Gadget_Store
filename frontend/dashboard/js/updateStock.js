@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <td class="px-6 py-4 whitespace-nowrap">
           <div class="text-lg tracking-wide ">${
             item.price_discounted
-          }<span class="ml-2 text-sm tracking-wider ">DZD</span> </div>
+          }<span class="ml-2 text-sm tracking-wider text-blue-950">DZD</span> </div>
               </td>
 
               <td
